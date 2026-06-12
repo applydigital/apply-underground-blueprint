@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "underground",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "3737", "--directory", "/Users/danielrizzotto/Library/CloudStorage/GoogleDrive-daniel.rizzotto@applydigital.com/My Drive/Claude/Projects/Agentic Product Delivery/underground.applydigital.com"],
+      "port": 3737
+    }
+  ]
+}

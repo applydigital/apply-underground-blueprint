@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /Users/danielrizzotto/Library/CloudStorage/GoogleDrive-daniel.rizzotto@applydigital.com -name \"app.js\" -type f 2>/dev/null | head -20)"
+    ]
+  }
+}
