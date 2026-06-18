@@ -393,12 +393,14 @@
       }
     });
 
-    selected.forEach(seed => {
-      (outboundOf.get(seed) || []).forEach(e => {
-        bumpRole(edgeRole, e._i, 'out');
-        if (!selected.has(e.tgt)) bumpRole(nodeRole, e.tgt, 'out');
+    if (!chainMode) {
+      selected.forEach(seed => {
+        (outboundOf.get(seed) || []).forEach(e => {
+          bumpRole(edgeRole, e._i, 'out');
+          if (!selected.has(e.tgt)) bumpRole(nodeRole, e.tgt, 'out');
+        });
       });
-    });
+    }
 
     return { nodeRole, edgeRole };
   }
