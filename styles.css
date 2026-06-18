@@ -152,37 +152,26 @@ header .selcount {
   letter-spacing: 0.06em;
   color: var(--color-fg-muted);
 }
-/* Engagement type filter — replaces the old presets <select> */
-header .eng-filter {
-  display: flex;
+/* Filter selects (layer, engagement, templates) */
+header .filter-select {
+  appearance: none;
+  background: var(--color-surface-container-lowest) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236D6A63' stroke-width='1.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 8px center;
   border: 1px solid var(--color-border-neutral);
   border-radius: var(--radius-default);
-  overflow: hidden;
-}
-header .eng-filter-btn {
-  appearance: none;
-  background: none;
-  border: none;
-  border-right: 1px solid var(--color-border-neutral);
   color: var(--color-fg-muted);
   font-family: var(--font-headline);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.04em;
-  padding: 5px 12px;
+  padding: 5px 26px 5px 10px;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: border-color 0.15s ease, color 0.15s ease;
   white-space: nowrap;
+  min-width: 0;
 }
-header .eng-filter-btn:last-child { border-right: none; }
-header .eng-filter-btn:hover:not(.active) {
-  background: var(--color-surface-container-low);
-  color: var(--color-fg);
-}
-header .eng-filter-btn.active {
-  background: var(--color-fg);
-  color: var(--color-bg);
-}
+header .filter-select:hover { border-color: var(--color-outline); color: var(--color-fg); }
+header .filter-select:focus { outline: none; border-color: var(--color-outline); }
+header .filter-select.is-active { border-color: var(--color-outline-variant); color: var(--color-primary); }
 
 header button.clear {
   appearance: none;
@@ -603,6 +592,13 @@ aside.tray.open { transform: translateX(0); }
   gap: 6px;
 }
 .chip--static:hover { border-color: var(--color-border-neutral); color: var(--color-fg-muted); }
+
+/* ACx layer chip variants in tray */
+.chip--layer-strategy   { background: #EEF2FF; color: #3730A3; border-color: #C7D2FE; }
+.chip--layer-experience { background: #F5F0FF; color: #6D28D9; border-color: #DDD6FE; }
+.chip--layer-data       { background: #ECFDF5; color: #065F46; border-color: #A7F3D0; }
+.chip--layer-technology { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
+.chip--layer-governance { background: #FFF7ED; color: #92400E; border-color: #FDE68A; }
 
 .tray-body .markdown {
   font-family: var(--font-body);

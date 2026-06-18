@@ -18,11 +18,22 @@
       </div>
     </div>
     <div class="actions">
-      <div class="eng-filter" id="engFilter" role="group" aria-label="Engagement type">
-        <button class="eng-filter-btn active" data-filter="all">All</button>
-        <button class="eng-filter-btn" data-filter="strategy">Strategy-Led</button>
-        <button class="eng-filter-btn" data-filter="delivery">Delivery-Led</button>
-      </div>
+      <select class="filter-select" id="layerFilter" aria-label="ACx Architecture Map layer">
+        <option value="all">All layers</option>
+        <option value="strategy">Strategy</option>
+        <option value="experience">Experience</option>
+        <option value="data">Data</option>
+        <option value="technology">Technology</option>
+        <option value="governance">Governance</option>
+      </select>
+      <select class="filter-select" id="engFilter" aria-label="Engagement type">
+        <option value="all">All engagements</option>
+        <option value="strategy">Strategy-Led</option>
+        <option value="delivery">Delivery-Led</option>
+      </select>
+      <select class="filter-select" id="templates" aria-label="Templates">
+        <option value="">Templates…</option>
+      </select>
       <button class="conn-btn" id="connBtn" title="Show connection lines">Connections</button>
       <button class="zoom-btn" id="zoomBtn" title="Toggle zoom">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">

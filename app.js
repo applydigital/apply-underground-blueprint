@@ -113,7 +113,7 @@
     inboundOf  = new Map();
     outboundOf = new Map();
 
-    const { rowY, gridRows, PM_Y, PM_LAST_BOX_BOTTOM } = buildLayout(activeItems);
+    const { rowY, gridRows, PM_Y, PM_LAST_BOX_BOTTOM } = buildLayout(allItems);
 
     const allRows = gridRows.concat(
       [...Array(PM_MAX_ROW - PM_MIN_ROW + 1).keys()].map(i => i + PM_MIN_ROW)
@@ -158,7 +158,7 @@
       const trackRows = (t.key === 'pm')
         ? allRows.filter(r => r >= t.rowStart && r <= t.rowEnd)
         : [...new Set(
-            activeItems
+            allItems
               .filter(d => d.row >= t.rowStart && d.row <= t.rowEnd && d.row < PM_MIN_ROW &&
                            d.cols[0] >= t.colStart && d.cols[1] <= t.colEnd)
               .map(d => d.row)
@@ -433,15 +433,30 @@
     });
   }
 
+  // ───── Filter state ─────
+  let activeEngagement = 'all';
+  let activeLayer = 'all';
+
+  function filteredItems() {
+    return allItems.filter(d => {
+      const engOk = activeEngagement === 'all' || (d.engagementType && d.engagementType.includes(activeEngagement));
+      const layerOk = activeLayer === 'all' || (d.acxLayer && d.acxLayer.includes(activeLayer));
+      return engOk && layerOk;
+    });
+  }
+
   // ───── Engagement filter ─────
   function filterEngagement(type) {
-    document.querySelectorAll('.eng-filter-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.filter === type);
-    });
-    const activeItems = type === 'all'
-      ? allItems
-      : allItems.filter(d => d.engagementType && d.engagementType.includes(type));
-    renderMap(activeItems);
+    activeEngagement = type;
+    document.getElementById('engFilter').classList.toggle('is-active', type !== 'all');
+    renderMap(filteredItems());
+  }
+
+  // ───── ACx Layer filter ─────
+  function filterLayer(layer) {
+    activeLayer = layer;
+    document.getElementById('layerFilter').classList.toggle('is-active', layer !== 'all');
+    renderMap(filteredItems());
   }
 
   // ───── Events ─────
@@ -464,10 +479,11 @@
     document.getElementById('connBtn').classList.toggle('active', showConnections);
     render();
   });
-  document.getElementById('engFilter').addEventListener('click', (e) => {
-    const btn = e.target.closest('.eng-filter-btn');
-    if (!btn) return;
-    filterEngagement(btn.dataset.filter);
+  document.getElementById('engFilter').addEventListener('change', (e) => {
+    filterEngagement(e.target.value);
+  });
+  document.getElementById('layerFilter').addEventListener('change', (e) => {
+    filterLayer(e.target.value);
   });
 
   // ───── Tray ─────
@@ -617,6 +633,14 @@
           </dl>
         </section>`;
       })()}
+
+      ${d.acxLayer?.length ? `
+      <section>
+        <h3>ACx layer</h3>
+        <div class="chips">${d.acxLayer.map(l =>
+          `<span class="chip chip--static chip--layer-${escapeHtml(l)}">${escapeHtml(l.charAt(0).toUpperCase() + l.slice(1))}</span>`
+        ).join('')}</div>
+      </section>` : ''}
 
       ${d.humanGate?.who ? `
       <section>

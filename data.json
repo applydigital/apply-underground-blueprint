@@ -81,7 +81,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Intake Agent harness reads SOW, BD estimate, and discovery inputs \u2192 extracts structured `scope.md` and `constraints.md` committed to Git (Layer 1). Proposal narrative sections are generated from these structured files via the Interface layer (e.g., Cowork). Human PM and Client Partner review and approve before client delivery. PDF is a Layer 3 generated output.",
+      "aiGeneration": "Intake Agent harness reads SOW, BD estimate, and discovery inputs → extracts structured `scope.md` and `constraints.md` committed to Git (Layer 1). Proposal narrative sections are generated from these structured files via the Interface layer (e.g., Cowork). Human PM and Client Partner review and approve before client delivery. PDF is a Layer 3 generated output.",
       "clientAudience": [
         "business-stakeholder"
       ],
@@ -113,6 +113,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -161,7 +164,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Human-owned contractual document. Post-signature, Intake Agent harness reads the signed SOW \u2192 commits `brief.md`, `scope.md`, and `constraints.md` to Git (Layer 1) as the machine-readable SOW summary consumed by all downstream agent harnesses. This structured intake is the intelligence substrate for the entire engagement.",
+      "aiGeneration": "Human-owned contractual document. Post-signature, Intake Agent harness reads the signed SOW → commits `brief.md`, `scope.md`, and `constraints.md` to Git (Layer 1) as the machine-readable SOW summary consumed by all downstream agent harnesses. This structured intake is the intelligence substrate for the entire engagement.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -186,6 +189,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -229,7 +235,7 @@
         ],
         "external": []
       },
-      "aiGeneration": "Kickoff deck is generated from `brief.md`, `scope.md`, and `constraints.md` (Layer 1, Git). Agent harness drafts narrative sections \u2014 project goals, scope summary, risk identification \u2014 from structured intake inputs. Human PM reviews and refines via the Interface layer (e.g., Cowork). PDF is a Layer 3 generated output.",
+      "aiGeneration": "Kickoff deck is generated from `brief.md`, `scope.md`, and `constraints.md` (Layer 1, Git). Agent harness drafts narrative sections — project goals, scope summary, risk identification — from structured intake inputs. Human PM reviews and refines via the Interface layer (e.g., Cowork). PDF is a Layer 3 generated output.",
       "clientAudience": [],
       "internalReceiver": [
         "delivery-team",
@@ -260,6 +266,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -304,7 +313,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Generated from Git-backed structured inputs \u2014 scope, goals, and delivery approach are drawn directly from `brief.md` and `scope.md` (Layer 1). Agent harness produces first-draft deck from internal kickoff content. Human PM reviews and approves (Layer 2 gate). PDF is a Layer 3 generated output.",
+      "aiGeneration": "Generated from Git-backed structured inputs — scope, goals, and delivery approach are drawn directly from `brief.md` and `scope.md` (Layer 1). Agent harness produces first-draft deck from internal kickoff content. Human PM reviews and approves (Layer 2 gate). PDF is a Layer 3 generated output.",
       "clientAudience": [
         "business-stakeholder",
         "delivery-team"
@@ -337,6 +346,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -384,7 +396,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Agent harness generates RACI from `brief.md` scope definitions and role configurations (Layer 1, Git). `raci.md` is committed to Git as the canonical version \u2014 updated by harness when scope changes are committed. External PDF is a Layer 3 generated output.",
+      "aiGeneration": "Agent harness generates RACI from `brief.md` scope definitions and role configurations (Layer 1, Git). `raci.md` is committed to Git as the canonical version — updated by harness when scope changes are committed. External PDF is a Layer 3 generated output.",
       "clientAudience": [
         "project-owner",
         "delivery-team"
@@ -409,6 +421,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -456,7 +471,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "`raidd.md` in Git (Layer 1) is the canonical source. Agent harness monitors delivery signals \u2014 PR blockers, missed milestones, open decisions \u2014 and flags new RAIDD items for PM review. Smartsheet/Notion views are Layer 3 generated outputs, not the source of truth. Human PM owns item triage and mitigation ownership.",
+      "aiGeneration": "`raidd.md` in Git (Layer 1) is the canonical source. Agent harness monitors delivery signals — PR blockers, missed milestones, open decisions — and flags new RAIDD items for PM review. Smartsheet/Notion views are Layer 3 generated outputs, not the source of truth. Human PM owns item triage and mitigation ownership.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -488,7 +503,7 @@
       "humanGate": {
         "who": "Project Manager",
         "action": "Triages agent-flagged RAIDD items, assigns mitigation owners, and closes resolved items",
-        "trigger": "Ongoing \u2014 each time agent flags a new item"
+        "trigger": "Ongoing — each time agent flags a new item"
       },
       "skills": [
         {
@@ -499,6 +514,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -575,6 +593,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -624,7 +645,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Timeline structure is generated from Git milestone definitions and sprint configurations (Layer 1). `sprint-status.yaml` is committed to Git by `/bmad-sprint-planning` and tracks epic/story progress. On build engagements, GitHub Actions (Tier 2 Observability) auto-updates milestone progress from Git activity. Static PDF is a Layer 3 generated output from structured milestone data \u2014 not manually maintained.",
+      "aiGeneration": "Timeline structure is generated from Git milestone definitions and sprint configurations (Layer 1). `sprint-status.yaml` is committed to Git by `/bmad-sprint-planning` and tracks epic/story progress. On build engagements, GitHub Actions (Tier 2 Observability) auto-updates milestone progress from Git activity. Static PDF is a Layer 3 generated output from structured milestone data — not manually maintained.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -654,6 +675,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -700,7 +724,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Status reports are auto-generated via GitHub Actions (Tier 2 Observability) triggered by sprint milestones, PR merge events, and weekly schedule. Agent reads Git activity \u2014 story progress, PR throughput, open blockers, hours burned \u2014 and produces a structured markdown report committed to the repo and posted to Slack. Human PM reviews before external distribution. Smartsheet/PDF are Layer 3 generated formats from the Git source.",
+      "aiGeneration": "Status reports are auto-generated via GitHub Actions (Tier 2 Observability) triggered by sprint milestones, PR merge events, and weekly schedule. Agent reads Git activity — story progress, PR throughput, open blockers, hours burned — and produces a structured markdown report committed to the repo and posted to Slack. Human PM reviews before external distribution. Smartsheet/PDF are Layer 3 generated formats from the Git source.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -743,6 +767,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -821,6 +848,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -895,6 +925,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "governance"
       ]
     },
     {
@@ -904,7 +937,7 @@
       "stage": "Discovery & Planning",
       "row": 1,
       "span": 1,
-      "description": "A critical alignment milestone that translates immersion findings into a clear evaluation of current-state gaps and high-value opportunities; it ensures the client is brought along on the journey to validate and align on the strategic direction.",
+      "description": "A high-level articulation of the business problem or opportunity, grounded in client context, market signals, and competitive dynamics. In ACx engagements, this is read through the lens of the seven ACx Readiness dimensions — Strategy Definition, Data Foundation, Delivery Acceleration, Workforce & AI Proficiency, Industry Depth, Governance & Responsible AI, and Measurement Rigor — to identify where the opportunity is widest and where investment will compound fastest.",
       "owner": {
         "R": [
           "Strategy",
@@ -948,7 +981,7 @@
           "Slides."
         ]
       },
-      "aiGeneration": "`/bmad-domain-research`, `/bmad-market-research`, and `/bmad-agent-analyst` harness reads raw interview transcripts, workshop notes, and audit inputs \u2192 produces structured `findings.md` committed to Git (Layer 1). Discovery readout slide deck is a Layer 3 generated output from structured findings. Human PM gate: review and approve `findings.md` before committing; Delivery Lead reviews deck before client delivery. Miro and NotebookLM remain valid working tools for synthesis sessions.",
+      "aiGeneration": "`/bmad-domain-research`, `/bmad-market-research`, and `/bmad-agent-analyst` harness reads raw interview transcripts, workshop notes, and audit inputs → produces structured `findings.md` committed to Git (Layer 1). Discovery readout slide deck is a Layer 3 generated output from structured findings. Human PM gate: review and approve `findings.md` before committing; Delivery Lead reviews deck before client delivery. Miro and NotebookLM remain valid working tools for synthesis sessions.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -999,6 +1032,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "strategy"
       ]
     },
     {
@@ -1053,7 +1089,7 @@
           "Slides"
         ]
       },
-      "aiGeneration": "`/bmad-brainstorming` facilitates ideation sessions and commits session outputs to `brainstorming/` in Git (Layer 2 working reference). Research Synthesis Agent consolidates `findings.md`, workshop transcripts, and strategic inputs (Layer 1, Git) \u2192 produces structured `strategy.md`. Strategy lead reviews and refines via the Interface layer (e.g., Cowork). Slide deck \u2014 including the placemat visualization \u2014 is a Layer 3 generated output from the structured strategy file, not the working document.",
+      "aiGeneration": "`/bmad-brainstorming` facilitates ideation sessions and commits session outputs to `brainstorming/` in Git (Layer 2 working reference). Research Synthesis Agent consolidates `findings.md`, workshop transcripts, and strategic inputs (Layer 1, Git) → produces structured `strategy.md`. Strategy lead reviews and refines via the Interface layer (e.g., Cowork). Slide deck — including the placemat visualization — is a Layer 3 generated output from the structured strategy file, not the working document.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -1092,6 +1128,9 @@
       ],
       "engagementType": [
         "delivery",
+        "strategy"
+      ],
+      "acxLayer": [
         "strategy"
       ]
     },
@@ -1144,7 +1183,7 @@
           "Deck or URL"
         ]
       },
-      "aiGeneration": "Loveable or Figma Make can generate interactive prototypes rapidly from design brief inputs. On engagements with a subsequent build phase, the Design-to-Component pivot applies: Figma/Loveable outputs feed the UX Agent harness via `/bmad-ux` \u2192 produces `DESIGN.md` (visual identity: tokens, typography, color) and `EXPERIENCE.md` (interaction patterns, IA, states) committed to Git (Layer 1). `/bmad-spec` distills these into a machine-readable `SPEC.md` for downstream build consumption.",
+      "aiGeneration": "Loveable or Figma Make can generate interactive prototypes rapidly from design brief inputs. On engagements with a subsequent build phase, the Design-to-Component pivot applies: Figma/Loveable outputs feed the UX Agent harness via `/bmad-ux` → produces `DESIGN.md` (visual identity: tokens, typography, color) and `EXPERIENCE.md` (interaction patterns, IA, states) committed to Git (Layer 1). `/bmad-spec` distills these into a machine-readable `SPEC.md` for downstream build consumption.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -1183,6 +1222,9 @@
       "engagementType": [
         "delivery",
         "strategy"
+      ],
+      "acxLayer": [
+        "experience"
       ]
     },
     {
@@ -1233,7 +1275,7 @@
           "slides (Exec Summary)"
         ]
       },
-      "aiGeneration": "Roadmap Agent harness reads `strategy.md` and `tech-strategy.md` (Layer 1, Git) \u2192 drafts roadmap structure, time horizons, and initiative sequencing for human review. `roadmap.md` committed to Git is the canonical artifact. Human Product and Strategy leads own final prioritization decisions. Google Slides is a Layer 3 generated output from structured roadmap files.",
+      "aiGeneration": "Roadmap Agent harness reads `strategy.md` and `tech-strategy.md` (Layer 1, Git) → drafts roadmap structure, time horizons, and initiative sequencing for human review. `roadmap.md` committed to Git is the canonical artifact. Human Product and Strategy leads own final prioritization decisions. Google Slides is a Layer 3 generated output from structured roadmap files.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -1267,6 +1309,9 @@
       ],
       "engagementType": [
         "delivery",
+        "strategy"
+      ],
+      "acxLayer": [
         "strategy"
       ]
     },
@@ -1316,7 +1361,7 @@
           "Slides"
         ]
       },
-      "aiGeneration": "Tech Synthesis Agent harness reads audit materials, stakeholder interview transcripts, and existing technical documentation \u2192 produces `tech-strategy.md` (Layer 1, Git). This structured file is the machine-readable input consumed by the Requirements Agent in the Design & Requirements phase \u2014 it must be committed as structured markdown, not only as slides. Slide deck is a Layer 3 generated output. Human Tech Lead gate before client delivery.",
+      "aiGeneration": "Tech Synthesis Agent harness reads audit materials, stakeholder interview transcripts, and existing technical documentation → produces `tech-strategy.md` (Layer 1, Git). This structured file is the machine-readable input consumed by the Requirements Agent in the Design & Requirements phase — it must be committed as structured markdown, not only as slides. Slide deck is a Layer 3 generated output. Human Tech Lead gate before client delivery.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder"
@@ -1354,6 +1399,10 @@
       "engagementType": [
         "delivery",
         "strategy"
+      ],
+      "acxLayer": [
+        "strategy",
+        "technology"
       ]
     },
     {
@@ -1409,7 +1458,7 @@
           "Slides."
         ]
       },
-      "aiGeneration": "Research Agent harness supports end-to-end: generates interview guides and screeners from defined research objectives; reads and synthesizes transcripts \u2192 produces structured `findings.md` (Layer 1, Git); generates first-draft findings slide deck (Layer 3). `interviews/` folder in Git is the structured artifact consumed by downstream agent harnesses. Human researcher reviews findings for accuracy and insight validity before committing.",
+      "aiGeneration": "Research Agent harness supports end-to-end: generates interview guides and screeners from defined research objectives; reads and synthesizes transcripts → produces structured `findings.md` (Layer 1, Git); generates first-draft findings slide deck (Layer 3). `interviews/` folder in Git is the structured artifact consumed by downstream agent harnesses. Human researcher reviews findings for accuracy and insight validity before committing.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -1420,7 +1469,7 @@
         "data"
       ],
       "keyActivities": "**Research planning:**\n- Define research objectives, participant criteria, and recruitment screener.\n- Develop structured interview guides, questionnaires, and fieldwork protocols to ensure unbiased data collection.\n- Where necessary assess or onboard external research tools,\n\n**Fieldwork & data collection:**\n- Recruit participants\n- Execute research through planned qualitative or quantitative methods.\n\n**Analysis & report creation:**\n- Triangulate data to generate actionable insights, linking specific user needs or digital capabilities to core business KPIs and strategic outcomes.\n- Distill findings into a clear narrative that validates or pivots the current project direction.",
-      "structuralFramework": "**Slide deck**\n- Title page & Agenda\n- The journey so far: we are here on the timeline.\n**Methodology: summary of what we did (e.g., # of participants, demographics, methodology used).**\n- Exec summary of insights: The 3\u20135 themes or key findings discovered during the research.\n- Detailed Findings: Deep dives into finding themes, supported by:\n**Direct quotes/evidence: voice of the customer.**\n- The so what implications\n- Recommendations: actionable next steps based on validated findings.\n- Next Steps: actions and timeline",
+      "structuralFramework": "**Slide deck**\n- Title page & Agenda\n- The journey so far: we are here on the timeline.\n**Methodology: summary of what we did (e.g., # of participants, demographics, methodology used).**\n- Exec summary of insights: The 3–5 themes or key findings discovered during the research.\n- Detailed Findings: Deep dives into finding themes, supported by:\n**Direct quotes/evidence: voice of the customer.**\n- The so what implications\n- Recommendations: actionable next steps based on validated findings.\n- Next Steps: actions and timeline",
       "cols": [
         2,
         2
@@ -1455,6 +1504,10 @@
       ],
       "engagementType": [
         "strategy"
+      ],
+      "acxLayer": [
+        "strategy",
+        "data"
       ]
     },
     {
@@ -1507,7 +1560,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Content Strategy Agent harness reads existing brand materials, audit outputs, and persona definitions from Git \u2192 produces structured content pillars, messaging framework, and content audit analysis. Human Content Strategist reviews and refines \u2014 expert editorial judgment is required to complete. Agent output is a substantive first draft, not a finished deliverable.",
+      "aiGeneration": "Content Strategy Agent harness reads existing brand materials, audit outputs, and persona definitions from Git → produces structured content pillars, messaging framework, and content audit analysis. Human Content Strategist reviews and refines — expert editorial judgment is required to complete. Agent output is a substantive first draft, not a finished deliverable.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -1540,6 +1593,9 @@
       ],
       "engagementType": [
         "delivery",
+        "strategy"
+      ],
+      "acxLayer": [
         "strategy"
       ]
     },
@@ -1629,6 +1685,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "experience"
       ]
     },
     {
@@ -1638,7 +1697,7 @@
       "stage": "Discovery & Planning",
       "row": 5,
       "span": 1,
-      "description": "A visualization of all digital and physical touch points within the user's universe.",
+      "description": "A visualization of all digital and physical touchpoints within the customer's assembled experience ecosystem. In ACx terms, brands do not own the customer's full context — they occupy a node in an ecosystem the customer assembled: across multiple brands, platforms, relationships, and moments simultaneously. This map names every node, identifies which the brand owns versus influences, and locates where agentic intelligence can earn a role the customer cannot easily reassemble elsewhere.",
       "owner": {
         "R": [
           "Strategy",
@@ -1686,7 +1745,7 @@
           "Slides with PDF or Link"
         ]
       },
-      "aiGeneration": "`/bmad-brainstorming` facilitates discovery ideation and commits session outputs to `brainstorming/` in Git (Layer 2 working reference). Agent harness reads stakeholder interview transcripts, technical documentation, and data flow inputs (Layer 1, Git) \u2192 produces draft ecosystem inventory and integration map. Figma Make or Loveable can be used for interactive visualization. Human Strategy and Tech leads review for completeness and accuracy before client delivery.",
+      "aiGeneration": "`/bmad-brainstorming` facilitates discovery ideation and commits session outputs to `brainstorming/` in Git (Layer 2 working reference). Agent harness reads stakeholder interview transcripts, technical documentation, and data flow inputs (Layer 1, Git) → produces draft ecosystem inventory mapping owned, shared, and transformational brand touchpoints — including touchpoints the brand does not control but the customer depends on. Figma Make or Lovable can be used for interactive visualization. Human Strategy and Tech leads review for completeness and accuracy before client delivery.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -1723,6 +1782,9 @@
       ],
       "engagementType": [
         "strategy"
+      ],
+      "acxLayer": [
+        "strategy"
       ]
     },
     {
@@ -1732,7 +1794,7 @@
       "stage": "Discovery & Planning",
       "row": 6,
       "span": 1,
-      "description": "A visual narrative of a user's end-to-end experience, highlighting pain points, gaps in user needs and opportunities.",
+      "description": "A map of the customer's experience across all relevant touchpoints and moments, revealing the emotional and functional arc of their relationship with the brand. Linear funnel thinking is a limiting model in the ACx era — customers have ongoing, parallel, context-dependent relationships with brands, not a path through them. This deliverable maps presence across the full ecosystem the customer has assembled, identifying where continuity breaks, where context resets, and where agentic intelligence can earn a role that compounds with every interaction.",
       "owner": {
         "R": [
           "Design"
@@ -1774,7 +1836,7 @@
           "PDF or Deck"
         ]
       },
-      "aiGeneration": "Journey Map Agent harness reads `findings.md` and persona definitions (Layer 1, Git) \u2192 produces draft journey stages, user actions, thinking/feeling layers, and friction point identification. Human Design and Strategy leads validate against user research evidence and refine the emotional journey. Agent output is a structured first draft; human expertise is required for the empathy and insight layer.",
+      "aiGeneration": "Journey Map Agent harness reads `findings.md` and persona definitions (Layer 1, Git) → produces draft journey stages, user actions, thinking/feeling layers, and friction point identification. Human Design and Strategy leads validate against user research evidence and refine the emotional journey. Agent output is a structured first draft; human expertise is required for the empathy and insight layer.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -1807,6 +1869,9 @@
         }
       ],
       "engagementType": [
+        "strategy"
+      ],
+      "acxLayer": [
         "strategy"
       ]
     },
@@ -1865,7 +1930,7 @@
           "Slides"
         ]
       },
-      "aiGeneration": "Service Blueprint Agent harness reads `findings.md`, `strategy.md`, and technical architecture inputs (Layer 1, Git) \u2192 drafts front-stage journey stages, user actions, outcomes, and initial backstage process mapping. Human cross-functional team validates backstage accuracy in workshop. Agent-produced draft significantly reduces facilitation prep time.",
+      "aiGeneration": "Service Blueprint Agent harness reads `findings.md`, `strategy.md`, and technical architecture inputs (Layer 1, Git) → drafts front-stage journey stages, user actions, outcomes, and initial backstage process mapping. Human cross-functional team validates backstage accuracy in workshop. Agent-produced draft significantly reduces facilitation prep time.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder",
@@ -1901,6 +1966,9 @@
       ],
       "engagementType": [
         "strategy"
+      ],
+      "acxLayer": [
+        "strategy"
       ]
     },
     {
@@ -1910,7 +1978,7 @@
       "stage": "Discovery & Planning",
       "row": 5,
       "span": 1,
-      "description": "A financial framework that quantifies the projected ROI, efficiency gains, and revenue growth of a digital initiative. It serves as the primary tool for securing budget and aligning stakeholders on value realization.",
+      "description": "A structured business case for the proposed initiative — quantifying expected return, risk, and strategic fit. In ACx engagements, the Value Case is anchored to the three ACx success criteria: Strategy (AI capability connected to a named customer outcome with a baseline), Delivery Execution (time from brief to working system), and Industry Depth (vertical knowledge that makes outputs commercially meaningful). The output establishes a 90-Day ROI Validation commitment — measurable lift attributable within the first quarter of deployment — and maps expected Velocity Multiple gains as the agentic capability matures.",
       "owner": {
         "R": [
           "Strategy"
@@ -1955,7 +2023,7 @@
           "Slides & Excel"
         ]
       },
-      "aiGeneration": "`/bmad-brainstorming` supports assumption discovery sessions committed to `brainstorming/` in Git (Layer 2 working reference). Financial modelling agent harness reads `strategy.md`, `tech-strategy.md`, and SOW scope inputs \u2192 generates baseline assumptions model and sensitivity analysis structure. Agent runs best/expected/worst-case scenario simulations from defined variables. Human Strategy and Data leads validate assumptions and review model logic before client presentation. Excel model is the working artifact; slides are a Layer 3 generated output.",
+      "aiGeneration": "`/bmad-brainstorming` supports assumption discovery sessions committed to `brainstorming/` in Git (Layer 2 working reference). Financial modelling agent harness reads `strategy.md`, `tech-strategy.md`, and SOW scope inputs → generates baseline assumptions model and sensitivity analysis structure. Agent runs best/expected/worst-case scenario simulations from defined variables. Human Strategy and Data leads validate assumptions and review model logic before client presentation. Excel model is the working artifact; slides are a Layer 3 generated output.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -1989,6 +2057,9 @@
         }
       ],
       "engagementType": [
+        "strategy"
+      ],
+      "acxLayer": [
         "strategy"
       ]
     },
@@ -2038,7 +2109,7 @@
           "Slides"
         ]
       },
-      "aiGeneration": "Synthesis Agent harness reads all committed deliverable files in Git (Layer 1) \u2014 `findings.md`, `strategy.md`, `tech-strategy.md`, `product-brief.md`, `roadmap.md` \u2014 and produces a structured first-draft executive summary. Human Strategy lead reviews, refines narrative, and approves before client delivery. Slide deck is a Layer 3 generated output. NotebookLM remains a valid working tool for synthesis sessions prior to committing structured files.",
+      "aiGeneration": "Synthesis Agent harness reads all committed deliverable files in Git (Layer 1) — `findings.md`, `strategy.md`, `tech-strategy.md`, `product-brief.md`, `roadmap.md` — and produces a structured first-draft executive summary. Human Strategy lead reviews, refines narrative, and approves before client delivery. Slide deck is a Layer 3 generated output. NotebookLM remains a valid working tool for synthesis sessions prior to committing structured files.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -2070,6 +2141,9 @@
         }
       ],
       "engagementType": [
+        "strategy"
+      ],
+      "acxLayer": [
         "strategy"
       ]
     },
@@ -2128,7 +2202,7 @@
           "Slides, Docs"
         ]
       },
-      "aiGeneration": "Change Strategy Agent harness reads `brief.md`, `findings.md`, and strategic roadmap inputs (Layer 1, Git) \u2192 produces structured stakeholder impact analysis, readiness assessment, and communications plan framework. `change-strategy.md` committed to Git is the canonical artifact consumed by the Change Management Enablement harness (409). Human Strategy lead reviews and approves before client delivery.",
+      "aiGeneration": "Change Strategy Agent harness reads `brief.md`, `findings.md`, and strategic roadmap inputs (Layer 1, Git) → produces structured stakeholder impact analysis, readiness assessment, and communications plan framework. `change-strategy.md` committed to Git is the canonical artifact consumed by the Change Management Enablement harness (409). Human Strategy lead reviews and approves before client delivery.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -2166,6 +2240,114 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "strategy",
+        "governance"
+      ]
+    },
+    {
+      "id": "215",
+      "title": "ACx Readiness Assessment",
+      "type": "Primary",
+      "stage": "Discovery & Planning",
+      "row": 6,
+      "span": 1,
+      "description": "A scored readiness assessment across the seven ACx Architecture Map dimensions — Strategy Definition, Data Foundation, Delivery Acceleration, Workforce & AI Proficiency, Industry Depth, Governance & Responsible AI, and Measurement Rigor — establishing a baseline and prioritized gap list before ACx investment is sequenced. Average enterprise scores 2.9/10; ACx Leaders score 7+. The gap between those numbers defines the engagement.",
+      "owner": {
+        "R": [
+          "Strategy",
+          "Product"
+        ],
+        "A": [
+          "Product"
+        ],
+        "C": [
+          "Tech",
+          "Data"
+        ],
+        "I": [
+          "Delivery Team",
+          "CS"
+        ]
+      },
+      "dependencies": {
+        "hard": [
+          "201"
+        ],
+        "soft": [
+          "202",
+          "206",
+          "209"
+        ]
+      },
+      "gitArtifacts": {
+        "consumes": [
+          "brief.md"
+        ],
+        "produces": [
+          "acx-readiness.md"
+        ]
+      },
+      "formats": {
+        "working": [
+          "Cowork + Notion"
+        ],
+        "internal": [
+          "Notion page"
+        ],
+        "external": [
+          "Exec summary slide deck"
+        ]
+      },
+      "aiGeneration": "Agent reads stakeholder inputs, existing documentation, and technology landscape (Layer 1, Git) → scores all seven ACx Readiness dimensions (1–10), identifies gaps against ACx Leader benchmarks (7+/10 average), and produces `acx-readiness.md` with a prioritized investment sequencing recommendation mapped to H1 (Prove), H2 (Scale), and H3 (Transform) horizons. `/bmad-market-research` pulls external reference data; `/bmad-product-brief` structures findings into the briefing format. PM and Agentic Champion gate: validate scores against internal knowledge before presenting to client.",
+      "clientAudience": [
+        "project-owner",
+        "business-stakeholder"
+      ],
+      "internalReceiver": [
+        "strategy",
+        "product"
+      ],
+      "keyActivities": "**Dimension Scoring (1–10 across 7 dimensions)**\n- Strategy Definition: Is AI investment tied to a named customer outcome with a baseline and accountable owner?\n- Data Foundation: Is first-party data unified with agentic access layers?\n- Delivery Acceleration: Can the org move from brief to working system in 8 weeks?\n- Workforce & AI Proficiency: Are 100% of practitioners trained, badged, and role-credentialed?\n- Industry Depth: Is vertical expertise embedded in delivery teams, not just strategy decks?\n- Governance & Responsible AI: Is AI governance an enabler, not a compliance exercise?\n- Measurement Rigor: Are AI outcomes measured — not just AI activity?\n**Gap Analysis & Horizon Sequencing**\n- Identify dimensions below 5 (critical gaps) and 5–7 (scale gaps)\n- Map remediation investments to H1/H2/H3 horizons\n- Produce recommended portfolio posture for client review",
+      "structuralFramework": "**`acx-readiness.md` including:**\n- Executive dimension scores (radar chart format in presentation layer)\n- Gap vs ACx Leader benchmark per dimension\n- Top 3 priority investments by horizon\n- Recommended H1 quick win (must be achievable within one quarter)",
+      "cols": [
+        1,
+        1
+      ],
+      "layerMap": {
+        "layer1": [
+          "acx-readiness.md"
+        ],
+        "layer2": [
+          "Cowork",
+          "Notion"
+        ],
+        "layer3": [
+          "Exec summary slide deck"
+        ]
+      },
+      "humanGate": {
+        "who": "PM & Agentic Champion",
+        "action": "Validate dimension scores against client context; prioritize gaps for horizon sequencing",
+        "trigger": "Before ACx portfolio planning and engagement scoping"
+      },
+      "skills": [
+        {
+          "name": "Market Research",
+          "command": "/bmad-market-research"
+        },
+        {
+          "name": "Product Brief",
+          "command": "/bmad-product-brief"
+        }
+      ],
+      "engagementType": [
+        "strategy"
+      ],
+      "acxLayer": [
+        "strategy",
+        "governance"
       ]
     },
     {
@@ -2224,7 +2406,7 @@
           "Slides (Exec Summary)"
         ]
       },
-      "aiGeneration": "`/bmad-product-brief` reads `findings.md`, `strategy.md`, `tech-strategy.md`, and interview transcripts (Layer 1, Git) \u2192 produces structured `brief.md` with `addendum.md` (personas, rejected alternatives, sizing) and `.decision-log.md` (append-only decision audit trail). Human PM and Strategy lead review and approve via the Interface layer (e.g., Cowork) before proceeding to story mapping. Google Doc is a Layer 3 generated view for client-facing review \u2014 not the working document.",
+      "aiGeneration": "`/bmad-product-brief` reads `findings.md`, `strategy.md`, `tech-strategy.md`, and interview transcripts (Layer 1, Git) → produces structured `brief.md` with `addendum.md` (personas, rejected alternatives, sizing) and `.decision-log.md` (append-only decision audit trail). Human PM and Strategy lead review and approve via the Interface layer (e.g., Cowork) before proceeding to story mapping. Google Doc is a Layer 3 generated view for client-facing review — not the working document.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -2270,6 +2452,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "strategy"
       ]
     },
     {
@@ -2323,7 +2508,7 @@
           "PDF, PPT"
         ]
       },
-      "aiGeneration": "Agent harness reads `brief.md` and content audit inputs (Layer 1, Git) \u2192 produces draft site structure and IA hierarchy for designer review. Agent accelerates initial structure generation from defined user types, content inventory, and navigation patterns. Human Designer leads final IA decisions and client validation sessions.",
+      "aiGeneration": "Agent harness reads `brief.md` and content audit inputs (Layer 1, Git) → produces draft site structure and IA hierarchy for designer review. Agent accelerates initial structure generation from defined user types, content inventory, and navigation patterns. Human Designer leads final IA decisions and client validation sessions.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -2356,6 +2541,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "experience"
       ]
     },
     {
@@ -2407,7 +2595,7 @@
           "Exec summary slide deck"
         ]
       },
-      "aiGeneration": "`/apply-requirements-system` reads `brief.md` and stakeholder inputs (Layer 1, Git) \u2192 produces `requirements.json`, a structured machine-readable requirements register organized by epic, user type, and priority. Agent output populates Storiesonboard for human review and prioritization. `requirements.json` in Git is the canonical artifact consumed downstream by `/bmad-create-epics-and-stories` and sprint planning. `/bmad-spec` distills the requirements into a machine-readable `SPEC.md` capability contract.",
+      "aiGeneration": "`/apply-requirements-system` reads `brief.md` and stakeholder inputs (Layer 1, Git) → produces `requirements.json`, a structured machine-readable requirements register organized by epic, user type, and priority. Agent output populates Storiesonboard for human review and prioritization. `requirements.json` in Git is the canonical artifact consumed downstream by `/bmad-create-epics-and-stories` and sprint planning. `/bmad-spec` distills the requirements into a machine-readable `SPEC.md` capability contract.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder"
@@ -2417,7 +2605,7 @@
         "data",
         "tech"
       ],
-      "keyActivities": "**Cross Functional Workshops**\n- Facilitate cross-functional reviews with stakeholders to review breadth and depth of functionality based on epics from the product brief.\n- Facilitate workshops to review and prioritize high-level functional scope across releases\n- Define key user flows and states that outlines how the solution  should function\n**Story mapping**\n- Drafting of high level user stories across all user types and epics outlined in the product brief\n- Individual user stories describe the functionality by completing \"I want to\u2026\"\n- Prioritization criteria organization user stories from highest to lowest priority so scope lines can be drawn.",
+      "keyActivities": "**Cross Functional Workshops**\n- Facilitate cross-functional reviews with stakeholders to review breadth and depth of functionality based on epics from the product brief.\n- Facilitate workshops to review and prioritize high-level functional scope across releases\n- Define key user flows and states that outlines how the solution  should function\n**Story mapping**\n- Drafting of high level user stories across all user types and epics outlined in the product brief\n- Individual user stories describe the functionality by completing \"I want to…\"\n- Prioritization criteria organization user stories from highest to lowest priority so scope lines can be drawn.",
       "structuralFramework": "**Storiesonboard spreadsheet including:**\n- Users\n- Epics\n- User Activities\n- High Level User Stories\n- Prioritization and release lines",
       "cols": [
         6,
@@ -2457,6 +2645,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "strategy"
       ]
     },
     {
@@ -2508,7 +2699,7 @@
           "Document"
         ]
       },
-      "aiGeneration": "`/bmad-create-architecture` reads `brief.md`, `tech-strategy.md`, and `epics.md` (Layer 1, Git) \u2192 produces `ARCHITECTURE-SPINE.md`: the named paradigm, core invariants, and AD-n architecture decisions that serve as the consistency contract for all downstream build work. `/bmad-spec` derives `SPEC.md` from the architecture decisions and PRD \u2014 the machine-readable kernel consumed by Developer Agent harnesses. Diagramming agent generates system diagrams from structured architecture files. Human Tech Lead owns final review and sign-off.",
+      "aiGeneration": "`/bmad-create-architecture` reads `brief.md`, `prd.md`, and design inputs (Layer 1, Git) → produces `ARCHITECTURE-SPINE.md`, the architectural contract defining paradigm, technology invariants, and Architecture Decision records. `/bmad-spec` distills the architecture into a machine-readable `SPEC.md` capability kernel consumed by dev agents. \n\n**Designed for Agents (ACx +02):** The TAD must explicitly address agent-readiness as a first-class architectural concern — machine-readable content structures, semantic APIs with deterministic pricing and policy contracts, structured product and brand data parseable by third-party agents, and identity resolution infrastructure that supports agent-to-agent protocols. These are Phase 01 foundation decisions (ACx 2026 horizon) that determine what is possible in Mode 02 (agent-led) interactions from 2027 onward. Human Tech Lead and PM gate: architecture review before implementation begins.",
       "clientAudience": [
         "it-tech-stakeholder"
       ],
@@ -2547,6 +2738,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -2606,7 +2800,7 @@
           "Figma"
         ]
       },
-      "aiGeneration": "**Design-to-Component Pivot (build projects only):** On engagements with a build phase, Figma is the exploration and iteration tool but the designer's final deliverable is functional UI component code viewable in Storybook \u2014 not Figma files. `/bmad-ux` reads Figma via MCP or design notes \u2192 produces `DESIGN.md` (visual design system: colors, typography, spacing, component anatomy) and `EXPERIENCE.md` (interaction design: IA, behavior, states, accessibility, journeys) committed to Git (Layer 1). `/bmad-spec` distills these into `SPEC.md` \u2014 the machine-readable interaction contract. Components are built and committed to `src/components/`. Storybook is the Layer 3 generated view for stakeholder review. Tech Lead and Designer jointly approve component output before Developer Agent stories reference it. For design-only projects, Figma remains the deliverable as specified.",
+      "aiGeneration": "**Design-to-Component Pivot (build projects only):** On engagements with a build phase, Figma is the exploration and iteration tool but the designer's final deliverable is functional UI component code viewable in Storybook — not Figma files. `/bmad-ux` reads Figma via MCP or design notes → produces `DESIGN.md` (visual design system: colors, typography, spacing, component anatomy) and `EXPERIENCE.md` (interaction design: IA, behavior, states, accessibility, journeys) committed to Git (Layer 1). `/bmad-spec` distills these into `SPEC.md` — the machine-readable interaction contract. Components are built and committed to `src/components/`. Storybook is the Layer 3 generated view for stakeholder review. Tech Lead and Designer jointly approve component output before Developer Agent stories reference it. For design-only projects, Figma remains the deliverable as specified.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -2640,6 +2834,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "experience"
       ]
     },
     {
@@ -2686,7 +2883,7 @@
           "Figma + Storybook"
         ]
       },
-      "aiGeneration": "**Applies when Design-to-Component pivot is active.** Git (`src/components/`) is the canonical source (Layer 1). Storybook is the Layer 3 generated view replacing the traditional Figma-only handoff. Component scaffolding is agent-assisted \u2014 the Design-to-Component onboarding skill bootstraps Storybook environment, component structure, and initial token setup. Figma file remains a Layer 2 working artifact for the design team.",
+      "aiGeneration": "**Applies when Design-to-Component pivot is active.** Git (`src/components/`) is the canonical source (Layer 1). Storybook is the Layer 3 generated view replacing the traditional Figma-only handoff. Component scaffolding is agent-assisted — the Design-to-Component onboarding skill bootstraps Storybook environment, component structure, and initial token setup. Figma file remains a Layer 2 working artifact for the design team.",
       "clientAudience": [
         "it-tech-stakeholder",
         "marketing-stakeholder"
@@ -2719,6 +2916,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "experience"
       ]
     },
     {
@@ -2770,7 +2970,7 @@
           "Sheets"
         ]
       },
-      "aiGeneration": "Measurement Agent harness reads `brief.md`, KPI definitions, and production design specifications (Layer 1, Git) \u2192 generates event taxonomy, tracking matrix, and developer implementation specifications. Agent validates coverage gaps against defined business outcomes and flags missing tracking requirements. Structured tracking specs are committed to Git for Developer Agent consumption. Human Data lead reviews and approves before engineering implementation.",
+      "aiGeneration": "Agent harness reads `prd.md`, `brief.md`, and stakeholder KPI inputs (Layer 1, Git) → drafts the measurement architecture: event taxonomy, data layer specification, and KPI definitions. \n\n**ACx Metrics:** For ACx engagements, this deliverable establishes the six new measurement constructs that replace legacy CX metrics — (1) **90-Day ROI Validation** (revenue lift or cost reduction measurable and attributable within 90 days, replacing annual retrospectives); (2) **Experience Continuity Score** (whether the system carries customer context across sessions, channels, and time, replacing per-touchpoint NPS); (3) **Time to Value** (kickoff to working system in production, replacing time-to-recommendation); (4) **Velocity Multiple** (AI-augmented output volume ÷ human baseline at equivalent quality, replacing headcount growth); (5) **AI Contribution Rate** (% of customer-facing output generated or materially enhanced by AI, replacing AI adoption rate); (6) **AI Delivery Rate** (complex interactions resolved by agentic AI without escalation, replacing cost-per-contact). Human PM and Analytics lead gate: KPI sign-off and baseline establishment before deployment begins.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -2801,6 +3001,10 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "data",
+        "strategy"
       ]
     },
     {
@@ -2850,7 +3054,7 @@
           "slide deck"
         ]
       },
-      "aiGeneration": "Roadmap Agent harness reads `epics.md`, `brief.md`, and epic priorities (Layer 1, Git) \u2192 generates RICE scoring inputs and initial roadmap sequencing for team review. `roadmap.md` committed to Git (Layer 1) is the canonical artifact. Human Product lead owns final prioritization decisions. Slide deck is a Layer 3 generated output from structured roadmap files.",
+      "aiGeneration": "Roadmap Agent harness reads `epics.md`, `brief.md`, and epic priorities (Layer 1, Git) → generates RICE scoring inputs and initial roadmap sequencing for team review. `roadmap.md` committed to Git (Layer 1) is the canonical artifact. Human Product lead owns final prioritization decisions. Slide deck is a Layer 3 generated output from structured roadmap files.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder"
@@ -2883,6 +3087,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "strategy"
       ]
     },
     {
@@ -2933,7 +3140,7 @@
           "Figma"
         ]
       },
-      "aiGeneration": "Wireframe generation agent (Figma Make, Loveable, or equivalent) produces initial low-fidelity layouts from `brief.md` and IA structure. Designer reviews and iterates. On build projects, `/bmad-ux` extracts interaction contracts from wireframe annotations \u2192 produces `EXPERIENCE.md` (component behavior, states, IA) committed to Git (Layer 1). `/bmad-spec` derives `SPEC.md` stubs per component area. Wireframe component annotations map to the interaction catalog in `EXPERIENCE.md` to ensure alignment with the Design-to-Component pipeline.",
+      "aiGeneration": "Wireframe generation agent (Figma Make, Loveable, or equivalent) produces initial low-fidelity layouts from `brief.md` and IA structure. Designer reviews and iterates. On build projects, `/bmad-ux` extracts interaction contracts from wireframe annotations → produces `EXPERIENCE.md` (component behavior, states, IA) committed to Git (Layer 1). `/bmad-spec` derives `SPEC.md` stubs per component area. Wireframe component annotations map to the interaction catalog in `EXPERIENCE.md` to ensure alignment with the Design-to-Component pipeline.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -2970,6 +3177,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "experience"
       ]
     },
     {
@@ -3019,7 +3229,7 @@
           "Delivered in CMS or doc"
         ]
       },
-      "aiGeneration": "Copywriting Agent harness takes an AI-first approach: reads persona definitions, content strategy, and page hierarchy from Git \u2192 produces first-draft copy per page. Copy is committed to Git or CMS as structured content. Human copywriter reviews for brand voice, accuracy, and SEO optimization. Copy tracker and review cycles are structured around Git-backed content states.",
+      "aiGeneration": "Copywriting Agent harness takes an AI-first approach: reads persona definitions, content strategy, and page hierarchy from Git → produces first-draft copy per page. Copy is committed to Git or CMS as structured content. Human copywriter reviews for brand voice, accuracy, and SEO optimization. Copy tracker and review cycles are structured around Git-backed content states.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -3049,6 +3259,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "experience"
       ]
     },
     {
@@ -3129,6 +3342,9 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "experience"
       ]
     },
     {
@@ -3178,7 +3394,7 @@
           "Figma, Storybook"
         ]
       },
-      "aiGeneration": "**Applies when Design-to-Component pivot is active.** Design token definitions are committed to Git as `design/tokens/` (Layer 1). Design System Agent harness reads component structure and token definitions \u2192 produces documentation framework and component usage guidelines. Storybook (Layer 3 generated) serves as the primary documentation layer on build projects, supplementing or replacing ZeroHeight/Supernova. Figma file remains a Layer 2 working artifact for the design team.",
+      "aiGeneration": "**Applies when Design-to-Component pivot is active.** Design token definitions are committed to Git as `design/tokens/` (Layer 1). Design System Agent harness reads component structure and token definitions → produces documentation framework and component usage guidelines. Storybook (Layer 3 generated) serves as the primary documentation layer on build projects, supplementing or replacing ZeroHeight/Supernova. Figma file remains a Layer 2 working artifact for the design team.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder",
@@ -3212,6 +3428,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "experience"
       ]
     },
     {
@@ -3292,6 +3511,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "experience"
       ]
     },
     {
@@ -3349,7 +3571,7 @@
           "Notion page, GitHub Wiki, or interactive SPA (per-project decision)"
         ]
       },
-      "aiGeneration": "**Gold standard: BMAD PRD workflow.** `/bmad-prd` reads all structured inputs from Git (Layer 1) \u2014 `brief.md`, `findings.md`, `tech-strategy.md`, `epics.md`, `ARCHITECTURE-SPINE.md`, and measurement plan \u2014 and generates a complete, structured `prd.md` to BMAD standards, with `addendum.md` (personas, rejected alternatives) and `.decision-log.md` (append-only decisions). `/bmad-spec` derives `SPEC.md` \u2014 the machine-readable 5-field kernel that development agents consume. Human PM and Product lead review and approve via the Interface layer (e.g., Cowork). The client-consumable PRD is a Layer 3 generated output (Notion page, GitHub Wiki, or interactive SPA \u2014 format is a per-project decision). Client feedback flows back into `prd.md`, not into the generated view.",
+      "aiGeneration": "**Gold standard: BMAD PRD workflow.** `/bmad-prd` reads all structured inputs from Git (Layer 1) — `brief.md`, `findings.md`, `tech-strategy.md`, `epics.md`, `ARCHITECTURE-SPINE.md`, and measurement plan — and generates a complete, structured `prd.md` to BMAD standards, with `addendum.md` (personas, rejected alternatives) and `.decision-log.md` (append-only decisions). `/bmad-spec` derives `SPEC.md` — the machine-readable 5-field kernel that development agents consume. Human PM and Product lead review and approve via the Interface layer (e.g., Cowork). The client-consumable PRD is a Layer 3 generated output (Notion page, GitHub Wiki, or interactive SPA — format is a per-project decision). Client feedback flows back into `prd.md`, not into the generated view.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder",
@@ -3404,6 +3626,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "strategy"
       ]
     },
     {
@@ -3457,7 +3682,7 @@
           "JIRA"
         ]
       },
-      "aiGeneration": "Developer Agent harness reads `epics.md`, `prd.md`, and acceptance criteria definitions (Layer 1, Git) \u2192 elaborates detailed JIRA-ready user stories with business rules, acceptance criteria in Gherkin format, and design/technical references. Agent output populates JIRA (Layer 3 view) for sprint planning. Human PM and Tech Lead gate: story refinement and pointing before sprint commitment.",
+      "aiGeneration": "Developer Agent harness reads `epics.md`, `prd.md`, and acceptance criteria definitions (Layer 1, Git) → elaborates detailed JIRA-ready user stories with business rules, acceptance criteria in Gherkin format, and design/technical references. Agent output populates JIRA (Layer 3 view) for sprint planning. Human PM and Tech Lead gate: story refinement and pointing before sprint commitment.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder"
@@ -3490,6 +3715,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -3546,7 +3774,7 @@
           "Demo environment, QA releases"
         ]
       },
-      "aiGeneration": "Developer Agent harness (Claude Code or equivalent) reads `prd.md`, `SPEC.md`, `epics.md`, and `ARCHITECTURE-SPINE.md` (Layer 1, Git) \u2192 implements features, unit tests, and devops scripts via PR workflow. `sprint-status.yaml` is updated by `/bmad-sprint-status` each sprint cycle. Human engineers review and approve PRs \u2014 this is the human gate before merge. `/bmad-tea` runs automated validation on every PR via CI/CD pipeline. Sprint status, PR throughput, and DORA metrics are surfaced via Tier 1\u20133 Observability; no separate reporting artifact required during active build.",
+      "aiGeneration": "Developer Agent harness (Claude Code or equivalent) reads `prd.md`, `SPEC.md`, `epics.md`, and `ARCHITECTURE-SPINE.md` (Layer 1, Git) → implements features, unit tests, and devops scripts via PR workflow. `sprint-status.yaml` is updated by `/bmad-sprint-status` each sprint cycle. Human engineers review and approve PRs — this is the human gate before merge. `/bmad-tea` runs automated validation on every PR via CI/CD pipeline. Sprint status, PR throughput, and DORA metrics are surfaced via Tier 1–3 Observability; no separate reporting artifact required during active build.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder",
@@ -3612,6 +3840,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -3694,6 +3925,10 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology",
+        "governance"
       ]
     },
     {
@@ -3744,7 +3979,7 @@
           "Live dashboards, Slides"
         ]
       },
-      "aiGeneration": "Observability Agent harness reads metric definitions from `measurement-plan.md` and business KPIs (Layer 1, Git) \u2192 generates SQL queries, dashboard data models, and metric documentation. Aligns with Agentic Delivery Tier 3 Observability: Executive, Product, and Operational dashboards are Layer 3 generated artifacts maintained alongside delivery dashboards. Human Data lead reviews metric definitions and validates data model before launch.",
+      "aiGeneration": "Agent reads `sprint-status.yaml`, deployment logs, and analytics streams (Layer 1, Git) → generates dashboard configuration for observability tooling. \n\n**ACx Runtime Indicators:** Dashboards surface the ACx metric suite as primary runtime indicators — **Velocity Multiple** (tracking AI-augmented throughput vs. human baseline), **AI Delivery Rate** (complex interactions resolved without escalation), **Experience Continuity Score** (context carry-across sessions and channels), and **AI Contribution Rate** (share of customer-facing output AI-generated or enhanced). These replace cost-per-contact and ticket-volume dashboards as the primary operational lens. Tier 1–3 Observability (sprint throughput, DORA metrics, system health) runs alongside. Human Tech Lead and PM gate: dashboard acceptance and baseline sign-off before go-live.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -3774,6 +4009,10 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "data",
+        "technology"
       ]
     },
     {
@@ -3825,7 +4064,7 @@
           "strategy"
         ]
       },
-      "aiGeneration": "QA Agent harness reads `prd.md`, `epics.md`, and acceptance criteria (Layer 1, Git) \u2192 generates comprehensive test case library, edge-case scenarios, and test data specifications. Test plan is committed to Git as a structured artifact alongside the stories it covers. Agent summarizes defect patterns and release readiness signals. Human QA lead reviews test coverage and approves scope before execution.",
+      "aiGeneration": "QA Agent harness reads `prd.md`, `epics.md`, and acceptance criteria (Layer 1, Git) → generates comprehensive test case library, edge-case scenarios, and test data specifications. Test plan is committed to Git as a structured artifact alongside the stories it covers. Agent summarizes defect patterns and release readiness signals. Human QA lead reviews test coverage and approves scope before execution.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -3867,6 +4106,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -3954,6 +4196,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -4034,6 +4279,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -4084,7 +4332,7 @@
           "Client-facing operational documentation (as required)."
         ]
       },
-      "aiGeneration": "Run Book Agent harness reads `ARCHITECTURE-SPINE.md`, `src/` implementation details, and failure patterns from Git history (Layer 1) \u2192 generates `runbook.md` with troubleshooting guides, deployment procedures, and escalation matrices. Human Tech Lead reviews and approves before client handoff. `runbook.md` in Git is the canonical source; Confluence/Notion/PDF are Layer 3 generated outputs. Agent keeps `runbook.md` current as architecture evolves through the build phase.",
+      "aiGeneration": "Run Book Agent harness reads `ARCHITECTURE-SPINE.md`, `src/` implementation details, and failure patterns from Git history (Layer 1) → generates `runbook.md` with troubleshooting guides, deployment procedures, and escalation matrices. Human Tech Lead reviews and approves before client handoff. `runbook.md` in Git is the canonical source; Confluence/Notion/PDF are Layer 3 generated outputs. Agent keeps `runbook.md` current as architecture evolves through the build phase.",
       "clientAudience": [
         "it-tech-stakeholder"
       ],
@@ -4115,6 +4363,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -4124,7 +4375,7 @@
       "stage": "Build & Run",
       "row": 2,
       "span": 2,
-      "description": "Documented design of CMS model for storing and managing content within a CMS.",
+      "description": "The structured schema defining all content types, their fields, relationships, and validation rules within the CMS or headless content platform. In ACx terms, the Content Model is not only a CMS configuration — it is the agent-legible layer through which third-party and brand agents parse, negotiate, and represent the brand in Mode 02 (agent-led) customer interactions. Machine-readable product data, semantic APIs, and structured brand context are the prerequisite for agent-readiness. A content model not designed for agent consumption is invisible to the agents that will increasingly act on the customer's behalf.",
       "owner": {
         "R": [
           "Tech"
@@ -4169,7 +4420,7 @@
           "Documentation"
         ]
       },
-      "aiGeneration": "Content Model Agent harness reads `requirements/prd.md`, IA structure, wireframe annotations, and PRD requirements (Layer 1, Git) \u2192 generates content type definitions, field structures, and CMS-specific model mappings for the target platform (Contentful, Contentstack, etc.). Agent audits proposed model against CMS best practices. Output is `content-model.json` committed to Git (Layer 1). Human Tech Lead and Content Architect review before CMS implementation.",
+      "aiGeneration": "Content Model Agent harness reads `requirements/prd.md`, IA structure, wireframe annotations, and PRD requirements (Layer 1, Git) → generates content type definitions, field structures, and CMS-specific model mappings for the target platform (Contentful, Contentstack, etc.). Agent audits proposed model against CMS best practices. Output is `content-model.json` committed to Git (Layer 1). Human Tech Lead and Content Architect review before CMS implementation.",
       "clientAudience": [
         "project-owner"
       ],
@@ -4202,6 +4453,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -4255,7 +4509,7 @@
           "Slides, Docs, Recordings"
         ]
       },
-      "aiGeneration": "Change Enablement Agent harness reads `change-strategy.md` (Layer 1, Git) \u2192 produces role-based training guide drafts, FAQ libraries, and communications plan variants. Survey data is synthesized by agent into adoption signal summaries. Human Strategy lead reviews training materials and approves comms calendar before activation. Materials are committed to Git as structured content; recordings and external deliverables are Layer 3 generated outputs.",
+      "aiGeneration": "Change Enablement Agent harness reads `change-strategy.md` (Layer 1, Git) → produces role-based training guide drafts, FAQ libraries, and communications plan variants. Survey data is synthesized by agent into adoption signal summaries. Human Strategy lead reviews training materials and approves comms calendar before activation. Materials are committed to Git as structured content; recordings and external deliverables are Layer 3 generated outputs.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -4290,6 +4544,10 @@
       "engagementType": [
         "strategy",
         "delivery"
+      ],
+      "acxLayer": [
+        "strategy",
+        "governance"
       ]
     },
     {
@@ -4331,7 +4589,7 @@
         "internal": [],
         "external": []
       },
-      "aiGeneration": "Agent harness reads `content-model.json` and authoring workflow definitions \u2192 generates CMS training tasks, sandbox exercises, and workshop facilitation guides. Human Content Author leads live sessions. Agent-generated materials ensure consistency with the implemented content model.",
+      "aiGeneration": "Agent harness reads `content-model.json` and authoring workflow definitions → generates CMS training tasks, sandbox exercises, and workshop facilitation guides. Human Content Author leads live sessions. Agent-generated materials ensure consistency with the implemented content model.",
       "clientAudience": [
         "it-tech-stakeholder",
         "marketing-stakeholder"
@@ -4357,6 +4615,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -4429,6 +4690,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -4476,7 +4740,7 @@
           "Video (MP4s)"
         ]
       },
-      "aiGeneration": "Agent harness reads `content-model.json` \u2192 generates structured training scripts and task lists for screen recording sessions. Human Content Author records walkthroughs using agent-generated scripts. Ensures training materials remain aligned with the implemented content model as it evolves.",
+      "aiGeneration": "Agent harness reads `content-model.json` → generates structured training scripts and task lists for screen recording sessions. Human Content Author records walkthroughs using agent-generated scripts. Ensures training materials remain aligned with the implemented content model as it evolves.",
       "clientAudience": [
         "client-content-author"
       ],
@@ -4503,6 +4767,9 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "technology"
       ]
     },
     {
@@ -4560,7 +4827,7 @@
           "Deck summary"
         ]
       },
-      "aiGeneration": "`/bmad-create-epics-and-stories` reads `prd.md` and `ARCHITECTURE-SPINE.md` (Layer 1, Git) \u2192 produces `epics.md`: a single structured file containing all epics and user stories with full acceptance criteria, built progressively through 4 steps. `/bmad-sprint-planning` reads `epics.md` \u2192 generates `sprint-status.yaml` committed to Git (Layer 1) tracking epic/story status. `/bmad-check-implementation-readiness` validates that the epic set meets definition-of-ready criteria before sprint commitment. Human Product and Tech Lead gate: review and approve epic scope and story readiness before dev handoff.",
+      "aiGeneration": "`/bmad-create-epics-and-stories` reads `prd.md` and `ARCHITECTURE-SPINE.md` (Layer 1, Git) → produces `epics.md`: a single structured file containing all epics and user stories with full acceptance criteria, built progressively through 4 steps. `/bmad-sprint-planning` reads `epics.md` → generates `sprint-status.yaml` committed to Git (Layer 1) tracking epic/story status. `/bmad-check-implementation-readiness` validates that the epic set meets definition-of-ready criteria before sprint commitment. Human Product and Tech Lead gate: review and approve epic scope and story readiness before dev handoff.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder"
@@ -4592,6 +4859,10 @@
       ],
       "engagementType": [
         "delivery"
+      ],
+      "acxLayer": [
+        "strategy",
+        "technology"
       ]
     }
   ]
