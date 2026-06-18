@@ -152,24 +152,37 @@ header .selcount {
   letter-spacing: 0.06em;
   color: var(--color-fg-muted);
 }
-header select.presets {
-  appearance: none;
-  background: var(--color-surface-container-lowest);
+/* Engagement type filter — replaces the old presets <select> */
+header .eng-filter {
+  display: flex;
   border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-default);
+  overflow: hidden;
+}
+header .eng-filter-btn {
+  appearance: none;
+  background: none;
+  border: none;
+  border-right: 1px solid var(--color-border-neutral);
   color: var(--color-fg-muted);
   font-family: var(--font-headline);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.04em;
-  padding: 5px 28px 5px 12px;
-  border-radius: var(--radius-default);
+  padding: 5px 12px;
   cursor: pointer;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%236D6A63' stroke-width='1.3' fill='none' stroke-linecap='round'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
 }
-header select.presets:hover { border-color: var(--color-outline); color: var(--color-fg); }
+header .eng-filter-btn:last-child { border-right: none; }
+header .eng-filter-btn:hover:not(.active) {
+  background: var(--color-surface-container-low);
+  color: var(--color-fg);
+}
+header .eng-filter-btn.active {
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
 
 header button.clear {
   appearance: none;
@@ -212,6 +225,27 @@ header button.zoom-btn.zoomed {
   color: var(--color-primary);
 }
 header button.zoom-btn svg { flex-shrink: 0; }
+
+header button.conn-btn {
+  appearance: none;
+  background: none;
+  border: 1px solid var(--color-border-neutral);
+  color: var(--color-fg-muted);
+  font-family: var(--font-headline);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border-radius: var(--radius-default);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+header button.conn-btn:hover { border-color: var(--color-outline); color: var(--color-fg); }
+header button.conn-btn.active {
+  border-color: var(--color-outline-variant);
+  background: var(--hi-soft);
+  color: var(--color-primary);
+}
 
 /* ── Grid / row indicators ───────────────────────────────────────────────── */
 .col-indicator {
@@ -263,20 +297,24 @@ svg.lines {
   pointer-events: none;
   z-index: 1;
 }
-svg.lines path {
+svg.lines > path {
   fill: none;
-  stroke: var(--color-border-neutral);
-  stroke-width: 1;
+  stroke: #C0C4C9;
+  stroke-width: 1.2;
   transition: stroke 120ms, stroke-width 120ms, opacity 120ms;
 }
-svg.lines path.soft { stroke-dasharray: 3 3; }
+svg.lines > path.soft { stroke-dasharray: 3 3; }
 
-svg.lines path.hl-in    { stroke: var(--color-primary);    stroke-width: 1.6; opacity: 1; }
-svg.lines path.hl-in-t  { stroke: var(--color-primary);    stroke-width: 1.2; opacity: 0.4; }
-svg.lines path.hl-out   { stroke: var(--color-secondary);  stroke-width: 1.6; opacity: 1; }
+svg.lines > path.hl-in    { stroke: var(--color-primary);    stroke-width: 1.6; opacity: 1; }
+svg.lines > path.hl-in-t  { stroke: var(--color-primary);    stroke-width: 1.2; opacity: 0.4; }
+svg.lines > path.hl-out   { stroke: var(--color-secondary);  stroke-width: 1.6; opacity: 1; }
 
-body.has-sel svg.lines path:not(.hl-in):not(.hl-in-t):not(.hl-out) {
+body.has-sel svg.lines > path:not(.hl-in):not(.hl-in-t):not(.hl-out) {
   opacity: 0.12;
+}
+
+svg.lines.no-bg-edges > path:not(.hl-in):not(.hl-in-t):not(.hl-out) {
+  display: none;
 }
 
 /* ── Tracks ─────────────────────────────────────────────────────────────── */
@@ -342,7 +380,7 @@ body.has-sel .box:not(.sel):not(.in):not(.in-t):not(.out) {
 
 .box .row1 {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 6px;
   margin-bottom: 4px;
@@ -356,13 +394,14 @@ body.has-sel .box:not(.sel):not(.in):not(.in-t):not(.out) {
   font-variant-numeric: tabular-nums;
 }
 
-/* Type dot */
+/* Type dot — margin-left:auto pins it to the right regardless of badge presence */
 .box .type-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--color-surface-container-high);
   display: inline-block;
   flex-shrink: 0;
+  margin-left: auto;
 }
 .box.t-Primary .type-dot     { background: var(--color-fg-muted); }
 .box.t-Cornerstone .type-dot { background: var(--color-primary); }
@@ -595,16 +634,22 @@ aside.tray.open { transform: translateX(0); }
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(6px);
   border-top: 1px solid var(--color-border-neutral);
-  padding: 8px 24px;
+  padding: 7px 24px 6px;
   display: flex;
-  gap: 20px;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
   font-family: var(--font-headline);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--color-fg-muted);
   z-index: 20;
+}
+.statusbar-legends {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 .statusbar .legend {
   display: flex;
@@ -626,7 +671,55 @@ aside.tray.open { transform: translateX(0); }
   display: inline-block;
 }
 .statusbar .sep { opacity: 0.4; }
-.statusbar .tip { margin-left: auto; opacity: 0.7; }
+.statusbar .tip { opacity: 0.55; }
 
 .swatch--in  { background: var(--color-primary); }
 .swatch--out { background: var(--color-secondary); }
+
+/* ── Engagement type badges ─────────────────────────────────────────────── */
+.eng-badge {
+  font-family: var(--font-headline);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 1px 4px;
+  border-radius: 2px;
+  display: inline-block;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+.eng-badge.eng-s {
+  background: var(--color-primary);
+  color: #fff;
+}
+.eng-badge.eng-d {
+  background: var(--color-surface-container-high);
+  color: var(--color-fg-muted);
+  border: 1px solid var(--color-border-neutral);
+}
+
+/* ── Sublane divider (D&P: Strategic Discovery / Delivery Discovery) ─────── */
+.sublane-divider {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sublane-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-outline-variant);
+  opacity: 0.6;
+}
+.sublane-label-div {
+  font-family: var(--font-headline);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+  white-space: nowrap;
+  flex-shrink: 0;
+}

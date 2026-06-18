@@ -1,220 +1,298 @@
 (async function(){
-  const data = await (await fetch('data.json')).json();
-  const items = data.deliverables;
-  const byId = new Map(items.map(d => [d.id, d]));
+  const data = await (await fetch('data.json', { cache: 'no-store' })).json();
+  const allItems = data.deliverables;
+  const byId = new Map(allItems.map(d => [d.id, d]));
 
-  // ───── Layout ─────
-  const TOTAL_COLS = 17;
-  const COL_W = 160;     // column pitch
-  const COL_GAP = 14;    // gap between adjacent columns (box width = 146px)
-  const ROW_H = 104;     // row pitch
+  // ───── Layout constants ─────
+  const TOTAL_COLS = 16;
+  const COL_W = 160;
+  const COL_GAP = 14;
+  const ROW_H = 104;
   const BOX_H = 84;
   const PAD_X = 40;
+  const PHASE_GAP = Math.round(COL_W / 4);
 
-  // Phase separator gaps — ½ column pitch inserted at track boundaries
-  const PHASE_GAP = Math.round(COL_W / 4); // 40px between col 4→5 and col 11→12
   function colToX(col) {
-    let x = PAD_X + col * COL_W;
-    if (col >= 5)  x += PHASE_GAP;
+    let x = PAD_X + (col - 1) * COL_W;
+    if (col >= 6)  x += PHASE_GAP;
     if (col >= 12) x += PHASE_GAP;
     return x;
   }
 
-  // Vertical rhythm — from top of stageWrap:
-  const COL_IND_Y   = 8;   // col numbers sit here (above everything)
-  const COL_IND_H   = 20;
-  const PM_TRACK_PAD_TOP = 34; // inside PM bg, above first PM box (space for label)
-  // PM track background starts at COL_IND_Y + COL_IND_H + 14 = 50
-  const PM_TRACK_TOP = COL_IND_Y + COL_IND_H + 14;  // = 50
+  const COL_IND_Y        = 8;
+  const COL_IND_H        = 20;
+  const PM_TRACK_PAD_TOP = 34;
+  const PM_TRACK_TOP     = COL_IND_Y + COL_IND_H + 14;
+  const PM_GRID_GAP      = 52 + COL_GAP + PHASE_GAP - 32;
+  const GRID_TRACK_TOP_PAD = 36;
+  const PM_MIN_ROW       = 7;
+  const PM_MAX_ROW       = 15;
+  const TRACK_PAD        = { x: 16, bottom: 18, right: 16 };
 
-  const PM_GRID_GAP  = 52 + COL_GAP + PHASE_GAP - 32;  // row gap between track bgs = column gap between section bgs (~22px)
-  const GRID_TRACK_TOP_PAD = 36; // space inside grid track bg above first grid box (for label)
+  // D&P sublane: shared rows 1–4 above divider, strategy-only rows 5–7 below
+  const DISC_SUBLANE_SPLIT_ROW = 5; // first row of the strategy-only sublane
 
-  // Split rows: grid = rows 1-8 (collapsed), PM = rows 9-17 (fixed, never collapsed)
-  const PM_MIN_ROW = 9;
-  const PM_MAX_ROW = 17;
-  const rowsUsed = new Set();
-  items.forEach(d => { if (d.row) rowsUsed.add(d.row); });
-  const sortedRows = [...rowsUsed].sort((a,b) => a - b);
-  const gridRows = sortedRows.filter(r => r < PM_MIN_ROW);
-
-  // Build rowY: grid rows first (collapsed), then PM rows (all slots, even if empty)
-  const rowY = {};
-  let y = PM_TRACK_TOP + PM_TRACK_PAD_TOP;
-  gridRows.forEach(r => { rowY[r] = y; y += ROW_H; });
-  
-  const GRID_LAST_BOX_BOTTOM = gridRows.length ? (rowY[gridRows[gridRows.length - 1]] + BOX_H) : y;
-  const PM_Y = GRID_LAST_BOX_BOTTOM + PM_GRID_GAP;
-  
-  for (let r = PM_MIN_ROW; r <= PM_MAX_ROW; r++) {
-    rowY[r] = PM_Y + (r - PM_MIN_ROW) * ROW_H;
-  }
-  const PM_LAST_ROW_Y  = rowY[PM_MAX_ROW];
-  const PM_LAST_BOX_BOTTOM = PM_LAST_ROW_Y + BOX_H;
-
-  // All populated rows (for row indicators)
-  const allRows = gridRows
-    .concat([...Array(PM_MAX_ROW - PM_MIN_ROW + 1).keys()].map(i => i + PM_MIN_ROW));
-
-  items.forEach(d => {
-    const cols = d.cols || [0, 0];
-    const colSpan = cols[1] - cols[0] + 1;
-    d._x = colToX(cols[0]);
-    d._w = colToX(cols[1]) - colToX(cols[0]) + (COL_W - COL_GAP);
-    
-    const row = d.row || 1;
-    d._y = rowY[row] || rowY[1] || PM_Y;
-  });
-
-  // Total canvas
-  const maxX = Math.max(...items.map(d => d._x + d._w)) + PAD_X;
-  const maxY = Math.max(...items.map(d => d._y + BOX_H)) + 80;
-  const stageWrap = document.getElementById('stageWrap');
-  stageWrap.style.width = maxX + 'px';
-  stageWrap.style.height = maxY + 'px';
-
-  // ───── Column indicators — above all tracks ─────
-  for (let col = 0; col < TOTAL_COLS; col++) {
-    const x = colToX(col) + (COL_W - COL_GAP) / 2;
-    const indicator = document.createElement('div');
-    indicator.className = 'col-indicator';
-    indicator.style.left = `${x}px`;
-    indicator.style.top  = `${COL_IND_Y}px`;
-    indicator.textContent = col;
-    stageWrap.appendChild(indicator);
-  }
-
-  // ───── Row indicators — left side, outside any track ─────
-  allRows.forEach(rowNum => {
-    if (!rowY[rowNum]) return;
-    const indicator = document.createElement('div');
-    indicator.className = 'row-indicator';
-    indicator.style.top = `${rowY[rowNum] + BOX_H/2}px`;
-    indicator.textContent = rowNum;
-    stageWrap.appendChild(indicator);
-  });
-
-  // ───── Track containers ─────
-  // Fixed column-based phase bands
   const TRACKS = [
-    { key: 'pm',    name: 'PM Track',              colStart: 0,  colEnd: 16, rowStart: 9,  rowEnd: 17 },
-    { key: 'disc',  name: 'Discovery & Planning',  colStart: 0,  colEnd: 4,  rowStart: 1,  rowEnd: 8  },
-    { key: 'des',   name: 'Design & Requirements', colStart: 5,  colEnd: 11, rowStart: 1,  rowEnd: 8  },
-    { key: 'build', name: 'Build & Run',           colStart: 12, colEnd: 16, rowStart: 1,  rowEnd: 8  },
+    { key: 'pm',    name: 'Project Management',    colStart: 1,  colEnd: 16, rowStart: 7,  rowEnd: 15 },
+    { key: 'disc',  name: 'Discovery & Planning',  colStart: 1,  colEnd: 5,  rowStart: 1,  rowEnd: 6  },
+    { key: 'des',   name: 'Design & Requirements', colStart: 6,  colEnd: 11, rowStart: 1,  rowEnd: 6  },
+    { key: 'build', name: 'Build & Run',           colStart: 12, colEnd: 16, rowStart: 1,  rowEnd: 6  },
   ];
-  const TRACK_PAD = { x: 16, bottom: 18, right: 16 };
-  TRACKS.forEach(t => {
-    const minX = colToX(t.colStart) - TRACK_PAD.x;
-    const maxXt = colToX(t.colEnd) + (COL_W - COL_GAP) + TRACK_PAD.right;
-    const trackRows = (t.key === 'pm')
-      ? allRows.filter(r => r >= t.rowStart && r <= t.rowEnd)
-      : gridRows.filter(r => r >= t.rowStart && r <= t.rowEnd);
-    if (!trackRows.length && t.key !== 'pm') return;
-    
-    // PM track bg: fixed height covering all PM rows; grid tracks: collapsed
-    const minY = t.key === 'pm'
-      ? PM_Y - PM_TRACK_PAD_TOP
-      : (trackRows[0] ? rowY[trackRows[0]] - GRID_TRACK_TOP_PAD : PM_TRACK_TOP);
-    const maxYt = t.key === 'pm'
-      ? PM_LAST_BOX_BOTTOM + TRACK_PAD.bottom
-      : (trackRows.length ? rowY[trackRows[trackRows.length - 1]] + BOX_H + TRACK_PAD.bottom : PM_TRACK_TOP);
-    
-    const tr = document.createElement('div');
-    tr.className = 'track t-' + t.key;
-    tr.style.left = minX + 'px';
-    tr.style.top = minY + 'px';
-    tr.style.width = (maxXt - minX) + 'px';
-    tr.style.height = (maxYt - minY) + 'px';
-    stageWrap.insertBefore(tr, stageWrap.firstChild);
-    const lbl = document.createElement('div');
-    lbl.className = 'track-label';
-    lbl.style.left = (minX + 14) + 'px';
-    lbl.style.top = (minY + 12) + 'px';
-    lbl.textContent = t.name;
-    stageWrap.appendChild(lbl);
-  });
 
-  // ───── Boxes ─────
-  const boxEls = new Map();
-  items.forEach(d => {
-    const el = document.createElement('div');
-    el.className = 'box t-' + d.type;
-    el.style.left = d._x + 'px';
-    el.style.top = d._y + 'px';
-    el.style.width = d._w + 'px';
-    el.dataset.id = d.id;
-    el.dataset.stage = d.stage;
-    el.innerHTML = `
-      <div class="row1">
-        <span class="id">${d.id}</span>
-        <span class="type-dot" title="${d.type}"></span>
-      </div>
-      <div class="title">${escapeHtml(d.title)}</div>
-      <button class="details" data-action="details">Details →</button>
-    `;
-    stageWrap.appendChild(el);
-    boxEls.set(d.id, el);
-  });
+  // ───── Mutable render state (rebuilt on each filterEngagement call) ─────
+  let boxEls    = new Map();
+  let edges     = [];
+  let inboundOf = new Map();
+  let outboundOf = new Map();
+  let items     = allItems;
 
-  // ───── Lines ─────
-  // Each item d depends on d.dependencies.hard (required, solid) and d.dependencies.soft (optional, dotted).
-  // We draw an edge from the dependency (source) to d (target).
-  const svg = document.getElementById('lines');
-  svg.setAttribute('viewBox', `0 0 ${maxX} ${maxY}`);
-  svg.style.width = maxX + 'px';
-  svg.style.height = maxY + 'px';
+  // ───── Selection state (persists across re-renders) ─────
+  const selected = new Set();
+  let chainMode = false; // true when selection was built via ⌘-click chain
+  let showConnections = false;
+  const ROLE_RANK = { 'in': 4, 'out': 3, 'in-t': 2 };
 
-  // Build edges
-  const edges = [];
-  items.forEach(d => {
-    (d.dependencies.hard || []).forEach(srcId => {
-      if (byId.has(srcId)) edges.push({ src: srcId, tgt: d.id, kind: 'hard' });
+  const stageWrap = document.getElementById('stageWrap');
+  const svg       = document.getElementById('lines');
+
+  // ───── Layout computation ─────
+  function buildLayout(activeItems) {
+    const rowsUsed = new Set();
+    activeItems.forEach(d => { if (d.row) rowsUsed.add(d.row); });
+    const sortedRows = [...rowsUsed].sort((a, b) => a - b);
+    const gridRows   = sortedRows.filter(r => r < PM_MIN_ROW);
+
+    const rowY = {};
+    let y = PM_TRACK_TOP + PM_TRACK_PAD_TOP;
+    gridRows.forEach(r => { rowY[r] = y; y += ROW_H; });
+
+    const GRID_LAST_BOX_BOTTOM = gridRows.length
+      ? rowY[gridRows[gridRows.length - 1]] + BOX_H
+      : y;
+    const PM_Y = GRID_LAST_BOX_BOTTOM + PM_GRID_GAP;
+
+    for (let r = PM_MIN_ROW; r <= PM_MAX_ROW; r++) {
+      rowY[r] = PM_Y + (r - PM_MIN_ROW) * ROW_H;
+    }
+
+    activeItems.forEach(d => {
+      const cols = d.cols || [0, 0];
+      d._x = colToX(cols[0]);
+      d._w = colToX(cols[1]) - colToX(cols[0]) + (COL_W - COL_GAP);
+      const row = d.row || 1;
+      d._y = rowY[row] || rowY[1] || PM_Y;
     });
-    (d.dependencies.soft || []).forEach(srcId => {
-      if (byId.has(srcId)) edges.push({ src: srcId, tgt: d.id, kind: 'soft' });
+
+    return {
+      rowY,
+      gridRows,
+      PM_Y,
+      PM_LAST_BOX_BOTTOM: rowY[PM_MAX_ROW] + BOX_H,
+    };
+  }
+
+  // ───── Full map render (called on load and on filter change) ─────
+  function renderMap(activeItems) {
+    items = activeItems;
+    const activeIds = new Set(activeItems.map(d => d.id));
+
+    // Clear previous render (keep SVG <defs>)
+    stageWrap.querySelectorAll(
+      '.box, .track, .track-label, .col-indicator, .row-indicator, .sublane-divider'
+    ).forEach(el => el.remove());
+    [...svg.children]
+      .filter(el => el.tagName.toLowerCase() !== 'defs')
+      .forEach(el => el.remove());
+
+    // Prune selected ids that are no longer visible
+    selected.forEach(id => { if (!activeIds.has(id)) selected.delete(id); });
+
+    // Reset state
+    boxEls     = new Map();
+    edges      = [];
+    inboundOf  = new Map();
+    outboundOf = new Map();
+
+    const { rowY, gridRows, PM_Y, PM_LAST_BOX_BOTTOM } = buildLayout(activeItems);
+
+    const allRows = gridRows.concat(
+      [...Array(PM_MAX_ROW - PM_MIN_ROW + 1).keys()].map(i => i + PM_MIN_ROW)
+    );
+
+    // Canvas size
+    const maxX = Math.max(...activeItems.map(d => d._x + d._w)) + PAD_X;
+    const maxY = Math.max(...activeItems.map(d => d._y + BOX_H)) + 80;
+    stageWrap.style.width  = maxX + 'px';
+    stageWrap.style.height = maxY + 'px';
+    svg.setAttribute('viewBox', `0 0 ${maxX} ${maxY}`);
+    svg.style.width  = maxX + 'px';
+    svg.style.height = maxY + 'px';
+
+    // ── Column indicators ──
+    for (let col = 1; col <= TOTAL_COLS; col++) {
+      const x = colToX(col) + (COL_W - COL_GAP) / 2;
+      const el = document.createElement('div');
+      el.className = 'col-indicator';
+      el.style.left = `${x}px`;
+      el.style.top  = `${COL_IND_Y}px`;
+      el.textContent = col;
+      stageWrap.appendChild(el);
+    }
+
+    // ── Row indicators ──
+    allRows.forEach(rowNum => {
+      if (!rowY[rowNum]) return;
+      const el = document.createElement('div');
+      el.className = 'row-indicator';
+      el.style.top = `${rowY[rowNum] + BOX_H / 2}px`;
+      el.textContent = rowNum;
+      stageWrap.appendChild(el);
     });
-  });
 
-  // Adjacency for highlighting
-  const inboundOf = new Map();  // id -> [{src, kind}]
-  const outboundOf = new Map(); // id -> [{tgt, kind}]
-  edges.forEach(e => {
-    if (!inboundOf.has(e.tgt)) inboundOf.set(e.tgt, []);
-    if (!outboundOf.has(e.src)) outboundOf.set(e.src, []);
-    inboundOf.get(e.tgt).push(e);
-    outboundOf.get(e.src).push(e);
-  });
+    // ── Track containers ──
+    TRACKS.forEach(t => {
+      const minX  = colToX(t.colStart) - TRACK_PAD.x;
+      const maxXt = colToX(t.colEnd) + (COL_W - COL_GAP) + TRACK_PAD.right;
+      // Grid tracks: size to rows that actually have items in THIS track's column range,
+      // so filtering out strategy items collapses the D&P track to only its remaining rows.
+      const trackRows = (t.key === 'pm')
+        ? allRows.filter(r => r >= t.rowStart && r <= t.rowEnd)
+        : [...new Set(
+            activeItems
+              .filter(d => d.row >= t.rowStart && d.row <= t.rowEnd && d.row < PM_MIN_ROW &&
+                           d.cols[0] >= t.colStart && d.cols[1] <= t.colEnd)
+              .map(d => d.row)
+          )].sort((a, b) => a - b);
+      if (!trackRows.length && t.key !== 'pm') return;
 
-  // Draw paths
-  const pathEls = [];
-  edges.forEach((e, i) => {
-    const s = byId.get(e.src);
-    const t = byId.get(e.tgt);
-    const { sx, sy, tx, ty } = anchors(s, t);
-    const d = bezier(sx, sy, tx, ty);
-    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute('d', d);
-    path.setAttribute('marker-end', 'url(#arrow-default)');
-    if (e.kind === 'soft') path.classList.add('soft');
-    path.dataset.src = e.src;
-    path.dataset.tgt = e.tgt;
-    svg.appendChild(path);
-    pathEls.push(path);
-    e._el = path;
-    e._i  = i;
-  });
+      const minY = t.key === 'pm'
+        ? PM_Y - PM_TRACK_PAD_TOP
+        : (trackRows[0] ? rowY[trackRows[0]] - GRID_TRACK_TOP_PAD : PM_TRACK_TOP);
+      const maxYt = t.key === 'pm'
+        ? PM_LAST_BOX_BOTTOM + TRACK_PAD.bottom
+        : (trackRows.length
+            ? rowY[trackRows[trackRows.length - 1]] + BOX_H + TRACK_PAD.bottom
+            : PM_TRACK_TOP);
 
+      const tr = document.createElement('div');
+      tr.className = 'track t-' + t.key;
+      tr.style.left   = minX + 'px';
+      tr.style.top    = minY + 'px';
+      tr.style.width  = (maxXt - minX) + 'px';
+      tr.style.height = (maxYt - minY) + 'px';
+      stageWrap.insertBefore(tr, stageWrap.firstChild);
+
+      const lbl = document.createElement('div');
+      lbl.className = 'track-label';
+      lbl.style.left = (minX + 14) + 'px';
+      lbl.style.top  = (minY + 12) + 'px';
+      lbl.textContent = t.name;
+      stageWrap.appendChild(lbl);
+    });
+
+    // ── D&P sublane divider ──
+    // Renders only when the active set has items in both the strategy sublane
+    // (rows 1–6) and the delivery sublane (rows 7–8) of Discovery & Planning.
+    const discItems = activeItems.filter(d => d.stage === 'Discovery & Planning');
+    const hasStrategyRows = discItems.some(d => d.row < DISC_SUBLANE_SPLIT_ROW);
+    const hasDeliveryRows = discItems.some(d => d.row >= DISC_SUBLANE_SPLIT_ROW);
+
+    if (hasStrategyRows && hasDeliveryRows && rowY[DISC_SUBLANE_SPLIT_ROW]) {
+      const divY = rowY[DISC_SUBLANE_SPLIT_ROW] - Math.round((ROW_H - BOX_H) / 2) - 2;
+      const discTrack = TRACKS.find(t => t.key === 'disc');
+      const divLeft   = colToX(discTrack.colStart) - TRACK_PAD.x + 10;
+      const divWidth  = colToX(discTrack.colEnd) + (COL_W - COL_GAP) + TRACK_PAD.right - divLeft - 10;
+
+      const divider = document.createElement('div');
+      divider.className = 'sublane-divider';
+      divider.style.left  = divLeft + 'px';
+      divider.style.top   = divY + 'px';
+      divider.style.width = divWidth + 'px';
+      divider.innerHTML = `
+        <div class="sublane-line"></div>
+        <span class="sublane-label-div">Strategy Discovery</span>
+        <div class="sublane-line"></div>
+      `;
+      stageWrap.appendChild(divider);
+    }
+
+    // ── Boxes ──
+    activeItems.forEach(d => {
+      const eng = d.engagementType || [];
+      const isStratOnly = eng.length === 1 && eng[0] === 'strategy';
+      const isDelivOnly = eng.length === 1 && eng[0] === 'delivery';
+      const badge = isStratOnly
+        ? '<span class="eng-badge eng-s">S</span>'
+        : isDelivOnly
+          ? '<span class="eng-badge eng-d">D</span>'
+          : '';
+
+      const el = document.createElement('div');
+      el.className = 'box t-' + d.type;
+      el.style.left  = d._x + 'px';
+      el.style.top   = d._y + 'px';
+      el.style.width = d._w + 'px';
+      el.dataset.id    = d.id;
+      el.dataset.stage = d.stage;
+      el.innerHTML = `
+        <div class="row1">
+          <span class="id">${d.id}</span>
+          ${badge}
+          <span class="type-dot" title="${d.type}"></span>
+        </div>
+        <div class="title">${escapeHtml(d.title)}</div>
+        <button class="details" data-action="details">Details →</button>
+      `;
+      stageWrap.appendChild(el);
+      boxEls.set(d.id, el);
+    });
+
+    // ── Edges ──
+    activeItems.forEach(d => {
+      (d.dependencies.hard || []).forEach(srcId => {
+        if (activeIds.has(srcId)) edges.push({ src: srcId, tgt: d.id, kind: 'hard' });
+      });
+      (d.dependencies.soft || []).forEach(srcId => {
+        if (activeIds.has(srcId)) edges.push({ src: srcId, tgt: d.id, kind: 'soft' });
+      });
+    });
+
+    edges.forEach(e => {
+      if (!inboundOf.has(e.tgt))  inboundOf.set(e.tgt, []);
+      if (!outboundOf.has(e.src)) outboundOf.set(e.src, []);
+      inboundOf.get(e.tgt).push(e);
+      outboundOf.get(e.src).push(e);
+    });
+
+    edges.forEach((e, i) => {
+      const s = byId.get(e.src);
+      const t = byId.get(e.tgt);
+      const { sx, sy, tx, ty } = anchors(s, t);
+      const pathD = bezier(sx, sy, tx, ty);
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', pathD);
+      path.setAttribute('marker-end', 'url(#arrow-default)');
+      if (e.kind === 'soft') path.classList.add('soft');
+      path.dataset.src = e.src;
+      path.dataset.tgt = e.tgt;
+      svg.appendChild(path);
+      e._el = path;
+      e._i  = i;
+    });
+
+    render();
+  }
+
+  // ───── Geometry helpers ─────
   function anchors(s, t) {
     const sCx = s._x + s._w / 2;
     const tCx = t._x + t._w / 2;
     const sCy = s._y + BOX_H / 2;
     const tCy = t._y + BOX_H / 2;
-    // Choose horizontal anchors if mostly horizontal flow, else vertical
     const dx = Math.abs(tCx - sCx);
     const dy = Math.abs(tCy - sCy);
     let sx, sy, tx, ty;
     if (dx >= dy) {
-      // horizontal-ish
       if (tCx >= sCx) {
         sx = s._x + s._w; sy = sCy;
         tx = t._x;        ty = tCy;
@@ -223,7 +301,6 @@
         tx = t._x + t._w; ty = tCy;
       }
     } else {
-      // vertical-ish
       if (tCy >= sCy) {
         sx = sCx; sy = s._y + BOX_H;
         tx = tCx; ty = t._y;
@@ -237,7 +314,6 @@
   function bezier(sx, sy, tx, ty) {
     const dx = tx - sx;
     const dy = ty - sy;
-    // Cubic with control points pushed in the dominant direction
     const horizontal = Math.abs(dx) >= Math.abs(dy);
     let c1x, c1y, c2x, c2y;
     if (horizontal) {
@@ -253,31 +329,47 @@
   }
 
   // ───── Selection state ─────
-  const selected = new Set();
   function toggle(id) {
+    chainMode = false;
     if (selected.has(id)) selected.delete(id);
     else selected.add(id);
     render();
   }
   function clearSel() {
+    chainMode = false;
     selected.clear();
     render();
   }
-  // Priority: direct beats transitive; if a node/edge qualifies as both
-  // input-side AND output-side, we keep the strongest tag.
-  const ROLE_RANK = { 'in': 4, 'out': 3, 'in-t': 2 };
+
+  function selectChain(id) {
+    chainMode = true;
+    const toAdd = new Set([id]);
+    let frontier = [id];
+    while (frontier.length) {
+      const next = [];
+      frontier.forEach(nodeId => {
+        (inboundOf.get(nodeId) || []).forEach(e => {
+          if (e.kind === 'hard' && !toAdd.has(e.src)) {
+            toAdd.add(e.src);
+            next.push(e.src);
+          }
+        });
+      });
+      frontier = next;
+    }
+    toAdd.forEach(nodeId => selected.add(nodeId));
+    render();
+  }
+
   function bumpRole(map, key, role) {
     const cur = map.get(key);
     if (!cur || ROLE_RANK[role] > ROLE_RANK[cur]) map.set(key, role);
   }
 
   function computeRoles() {
-    const nodeRole = new Map();   // id -> role
-    const edgeRole = new Map();   // edge index -> role
+    const nodeRole = new Map();
+    const edgeRole = new Map();
 
-    // BFS backward from each selected node:
-    //   - depth 1 (direct inputs):    include BOTH hard and soft  → 'in'
-    //   - depth ≥ 2 (transitive):     HARD only                   → 'in-t'
     selected.forEach(seed => {
       const visited = new Set([seed]);
       let frontier = [seed];
@@ -288,7 +380,7 @@
         const role = depth === 1 ? 'in' : 'in-t';
         frontier.forEach(id => {
           (inboundOf.get(id) || []).forEach(e => {
-            if (depth > 1 && e.kind !== 'hard') return; // transitive walks hard only
+            if ((chainMode || depth > 1) && e.kind !== 'hard') return;
             bumpRole(edgeRole, e._i, role);
             if (!visited.has(e.src)) {
               visited.add(e.src);
@@ -297,11 +389,10 @@
             }
           });
         });
-        frontier = next;
+        frontier = showConnections ? next : [];
       }
     });
 
-    // Forward: DIRECT only, include BOTH hard and soft. No transitive downstream.
     selected.forEach(seed => {
       (outboundOf.get(seed) || []).forEach(e => {
         bumpRole(edgeRole, e._i, 'out');
@@ -314,8 +405,10 @@
 
   function render() {
     document.body.classList.toggle('has-sel', selected.size > 0);
+    svg.classList.toggle('no-bg-edges', !showConnections);
     document.getElementById('clear').disabled = selected.size === 0;
-    document.getElementById('selcount').textContent = selected.size > 0 ? `${selected.size} selected` : '';
+    document.getElementById('selcount').textContent =
+      selected.size > 0 ? `${selected.size} selected` : '';
 
     const { nodeRole, edgeRole } = computeRoles();
     const roleClasses = ['in', 'in-t', 'out'];
@@ -338,6 +431,17 @@
     });
   }
 
+  // ───── Engagement filter ─────
+  function filterEngagement(type) {
+    document.querySelectorAll('.eng-filter-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.filter === type);
+    });
+    const activeItems = type === 'all'
+      ? allItems
+      : allItems.filter(d => d.engagementType && d.engagementType.includes(type));
+    renderMap(activeItems);
+  }
+
   // ───── Events ─────
   stageWrap.addEventListener('click', (ev) => {
     const box = ev.target.closest('.box');
@@ -346,13 +450,28 @@
       openTray(box.dataset.id);
       return;
     }
-    toggle(box.dataset.id);
+    if (ev.metaKey || ev.ctrlKey) {
+      selectChain(box.dataset.id);
+    } else {
+      toggle(box.dataset.id);
+    }
   });
   document.getElementById('clear').addEventListener('click', clearSel);
+  document.getElementById('connBtn').addEventListener('click', () => {
+    showConnections = !showConnections;
+    document.getElementById('connBtn').classList.toggle('active', showConnections);
+    render();
+  });
+  document.getElementById('engFilter').addEventListener('click', (e) => {
+    const btn = e.target.closest('.eng-filter-btn');
+    if (!btn) return;
+    filterEngagement(btn.dataset.filter);
+  });
 
   // ───── Tray ─────
-  const tray = document.getElementById('tray');
+  const tray  = document.getElementById('tray');
   const scrim = document.getElementById('trayScrim');
+
   function openTray(id) {
     const d = byId.get(id);
     if (!d) return;
@@ -373,7 +492,6 @@
   scrim.addEventListener('click', closeTray);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeTray(); });
 
-  // Click a chip in the tray → close tray, select that id, scroll to it
   document.getElementById('trayBody').addEventListener('click', (e) => {
     const chip = e.target.closest('.chip[data-jump]');
     if (!chip) return;
@@ -387,12 +505,12 @@
     const el = boxEls.get(id);
     if (!el) return;
     const canvas = document.getElementById('canvas');
-    const r = el.getBoundingClientRect();
+    const r  = el.getBoundingClientRect();
     const cr = canvas.getBoundingClientRect();
     canvas.scrollBy({
-      left: r.left - cr.left - cr.width / 2 + r.width / 2,
-      top: r.top - cr.top - cr.height / 2 + r.height / 2,
-      behavior: 'smooth'
+      left: r.left - cr.left - cr.width  / 2 + r.width  / 2,
+      top:  r.top  - cr.top  - cr.height / 2 + r.height / 2,
+      behavior: 'smooth',
     });
   }
 
@@ -402,12 +520,23 @@
       const label = it ? escapeHtml(it.title) : 'Unknown';
       return `<button class="chip ${kind}" data-jump="${id}"><span class="cid">${id}</span>${label}</button>`;
     };
-    const list = (arr) => arr && arr.length ? arr.map(escapeHtml).join(', ') : '<span class="empty">—</span>';
-    const code = (arr) => arr && arr.length ? arr.map(s => `<code>${escapeHtml(s)}</code>`).join(' ') : '<span class="empty">—</span>';
+    const list = (arr) =>
+      arr && arr.length ? arr.map(escapeHtml).join(', ') : '<span class="empty">—</span>';
+    const code = (arr) =>
+      arr && arr.length
+        ? arr.map(s => `<code>${escapeHtml(s)}</code>`).join(' ')
+        : '<span class="empty">—</span>';
 
-    const hard = (d.dependencies.hard || []);
-    const soft = (d.dependencies.soft || []);
-    const enables = (d.enables || []);
+    const hard    = d.dependencies.hard   || [];
+    const soft    = d.dependencies.soft   || [];
+
+    // Calculate outputs: items that have d.id as a dependency
+    const outputs = allItems
+      .filter(item => item.id !== d.id && (
+        (item.dependencies?.hard || []).includes(d.id) ||
+        (item.dependencies?.soft || []).includes(d.id)
+      ))
+      .map(item => ({ id: item.id, kind: (item.dependencies?.hard || []).includes(d.id) ? 'hard' : 'soft' }));
 
     return `
       <section>
@@ -416,20 +545,20 @@
       </section>
 
       <section>
-        <h3>Dependencies</h3>
+        <h3>Inputs</h3>
         <div class="dep-group">
           <div class="dep-label">Required</div>
-          <div class="chips">${hard.length ? hard.map(id=>chip(id,'hard')).join('') : '<span class="empty">None</span>'}</div>
+          <div class="chips">${hard.length ? hard.map(id => chip(id, 'hard')).join('') : '<span class="empty">None</span>'}</div>
         </div>
         <div class="dep-group">
           <div class="dep-label">Optional</div>
-          <div class="chips">${soft.length ? soft.map(id=>chip(id,'soft')).join('') : '<span class="empty">None</span>'}</div>
+          <div class="chips">${soft.length ? soft.map(id => chip(id, 'soft')).join('') : '<span class="empty">None</span>'}</div>
         </div>
       </section>
 
       <section>
-        <h3>Enables</h3>
-        <div class="chips">${enables.length ? enables.map(id=>chip(id,'hard')).join('') : '<span class="empty">None</span>'}</div>
+        <h3>Outputs</h3>
+        <div class="chips">${outputs.length ? outputs.map(o => chip(o.id, o.kind)).join('') : '<span class="empty">None</span>'}</div>
       </section>
 
       <section>
@@ -471,7 +600,10 @@
         const lm = d.layerMap;
         if (!lm || (!lm.layer1?.length && !lm.layer2?.length && !lm.layer3?.length)) return '';
         const layerRow = (items, isCode) => items && items.length
-          ? items.map(s => isCode ? `<code>${escapeHtml(s)}</code>` : `<span class="chip-layer">${escapeHtml(s)}</span>`).join(' ')
+          ? items.map(s => isCode
+              ? `<code>${escapeHtml(s)}</code>`
+              : `<span class="chip-layer">${escapeHtml(s)}</span>`
+            ).join(' ')
           : '<span class="empty">—</span>';
         return `
         <section>
@@ -497,7 +629,9 @@
       ${d.skills?.length ? `
       <section>
         <h3>Skills</h3>
-        <div class="chips">${d.skills.map(s => `<span class="chip chip--static">${escapeHtml(s.name)}${s.command ? ` <code>${escapeHtml(s.command)}</code>` : ''}</span>`).join('')}</div>
+        <div class="chips">${d.skills.map(s =>
+          `<span class="chip chip--static">${escapeHtml(s.name)}${s.command ? ` <code>${escapeHtml(s.command)}</code>` : ''}</span>`
+        ).join('')}</div>
       </section>` : ''}
 
       ${d.aiGeneration ? `
@@ -522,10 +656,11 @@
 
   function escapeHtml(s) {
     if (s === undefined || s === null) return '';
-    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    return String(s).replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
+    );
   }
   function renderMd(s) {
-    // very small markdown: **bold**, `code`, preserve line breaks
     let out = escapeHtml(s);
     out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     out = out.replace(/`([^`]+)`/g, '<code>$1</code>');
@@ -534,7 +669,7 @@
   }
 
   // ───── Zoom toggle ─────
-  const zoomBtn = document.getElementById('zoomBtn');
+  const zoomBtn   = document.getElementById('zoomBtn');
   const zoomLabel = document.getElementById('zoomLabel');
   const zoomPlusV = document.getElementById('zoomPlusV');
   let zoomed = localStorage.getItem('delivmap-zoom') === '1';
@@ -543,17 +678,12 @@
     stageWrap.style.zoom = zoomed ? '0.5' : '1';
     zoomLabel.textContent = zoomed ? '50%' : '100%';
     zoomBtn.classList.toggle('zoomed', zoomed);
-    // + when zoomed out (can zoom in), − when at full (can zoom out)
     zoomPlusV.style.display = zoomed ? '' : 'none';
     localStorage.setItem('delivmap-zoom', zoomed ? '1' : '0');
   }
-
-  zoomBtn.addEventListener('click', () => {
-    zoomed = !zoomed;
-    applyZoom();
-  });
-
+  zoomBtn.addEventListener('click', () => { zoomed = !zoomed; applyZoom(); });
   applyZoom();
 
-  render();
+  // ───── Initial render ─────
+  renderMap(allItems);
 })();

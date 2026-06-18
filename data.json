@@ -42,7 +42,7 @@
       "title": "Proposal",
       "type": "Primary",
       "stage": "PM Track",
-      "row": 9,
+      "row": 7,
       "span": 1,
       "description": "Outline the recommended approach, scope, timeline, and cost for potential engagement.",
       "owner": {
@@ -64,9 +64,6 @@
         "hard": [],
         "soft": []
       },
-      "enables": [
-        "101"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
@@ -84,7 +81,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Intake Agent harness reads SOW, BD estimate, and discovery inputs → extracts structured `scope.md` and `constraints.md` committed to Git (Layer 1). Proposal narrative sections are generated from these structured files via the Interface layer (e.g., Cowork). Human PM and Client Partner review and approve before client delivery. PDF is a Layer 3 generated output.",
+      "aiGeneration": "Intake Agent harness reads SOW, BD estimate, and discovery inputs \u2192 extracts structured `scope.md` and `constraints.md` committed to Git (Layer 1). Proposal narrative sections are generated from these structured files via the Interface layer (e.g., Cowork). Human PM and Client Partner review and approve before client delivery. PDF is a Layer 3 generated output.",
       "clientAudience": [
         "business-stakeholder"
       ],
@@ -94,8 +91,8 @@
       "keyActivities": "- Define scope, delivery approach\n- Estimate effort, timeline and project fees\n- Document assumptions and exclusions",
       "structuralFramework": null,
       "cols": [
-        0,
-        0
+        1,
+        1
       ],
       "layerMap": {
         "layer1": [],
@@ -112,6 +109,10 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -119,7 +120,7 @@
       "title": "SOW / CO",
       "type": "Primary",
       "stage": "PM Track",
-      "row": 10,
+      "row": 8,
       "span": 1,
       "description": "Formally document agreed scope, pricing, and contractual changes.",
       "owner": {
@@ -142,16 +143,11 @@
         "hard": [],
         "soft": []
       },
-      "enables": [
-        "103",
-        "104",
-        "106"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
           "constraints.md",
-          "project-brief.md"
+          "brief.md"
         ]
       },
       "formats": {
@@ -165,7 +161,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Human-owned contractual document. Post-signature, Intake Agent harness reads the signed SOW → commits `project-brief.md`, `scope.md`, and `constraints.md` to Git (Layer 1) as the machine-readable SOW summary consumed by all downstream agent harnesses. This structured intake is the intelligence substrate for the entire engagement.",
+      "aiGeneration": "Human-owned contractual document. Post-signature, Intake Agent harness reads the signed SOW \u2192 commits `brief.md`, `scope.md`, and `constraints.md` to Git (Layer 1) as the machine-readable SOW summary consumed by all downstream agent harnesses. This structured intake is the intelligence substrate for the entire engagement.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -177,8 +173,8 @@
       "keyActivities": "- Document scope, deliverables and pricing\n- Align on assumptions and dependencies\n- Support review and signature process",
       "structuralFramework": null,
       "cols": [
-        0,
-        0
+        1,
+        1
       ],
       "layerMap": {
         "layer1": [],
@@ -186,14 +182,18 @@
         "layer3": []
       },
       "humanGate": {},
-      "skills": []
+      "skills": [],
+      "engagementType": [
+        "strategy",
+        "delivery"
+      ]
     },
     {
       "id": "103",
       "title": "Internal Kick Off",
       "type": "Primary",
       "stage": "PM Track",
-      "row": 10,
+      "row": 8,
       "span": 1,
       "description": "Align the internal team on scope, roles, risks, and delivery approach before engaging the client.",
       "owner": {
@@ -215,11 +215,6 @@
         "hard": [],
         "soft": []
       },
-      "enables": [
-        "104",
-        "105",
-        "106"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -234,7 +229,7 @@
         ],
         "external": []
       },
-      "aiGeneration": "Kickoff deck is generated from `project-brief.md`, `scope.md`, and `constraints.md` (Layer 1, Git). Agent harness drafts narrative sections — project goals, scope summary, risk identification — from structured intake inputs. Human PM reviews and refines via the Interface layer (e.g., Cowork). PDF is a Layer 3 generated output.",
+      "aiGeneration": "Kickoff deck is generated from `brief.md`, `scope.md`, and `constraints.md` (Layer 1, Git). Agent harness drafts narrative sections \u2014 project goals, scope summary, risk identification \u2014 from structured intake inputs. Human PM reviews and refines via the Interface layer (e.g., Cowork). PDF is a Layer 3 generated output.",
       "clientAudience": [],
       "internalReceiver": [
         "delivery-team",
@@ -243,8 +238,8 @@
       "keyActivities": "- Translate all internal inputs into kick off deck narrative, outlining why we're working on this, project goals, scope and success criteria\n- Define working dynamics and team's expectations\n- Identify initial risks and dependencies",
       "structuralFramework": null,
       "cols": [
-        1,
-        1
+        2,
+        2
       ],
       "layerMap": {
         "layer1": [],
@@ -261,6 +256,10 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -268,7 +267,7 @@
       "title": "External Kick Off",
       "type": "Primary",
       "stage": "PM Track",
-      "row": 10,
+      "row": 8,
       "span": 1,
       "description": "Establish shared understanding of goals, scope, approach, and next steps with the client.",
       "owner": {
@@ -290,11 +289,6 @@
         "hard": [],
         "soft": []
       },
-      "enables": [
-        "107",
-        "106",
-        "105"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -310,7 +304,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Generated from Git-backed structured inputs — scope, goals, and delivery approach are drawn directly from `project-brief.md` and `scope.md` (Layer 1). Agent harness produces first-draft deck from internal kickoff content. Human PM reviews and approves (Layer 2 gate). PDF is a Layer 3 generated output.",
+      "aiGeneration": "Generated from Git-backed structured inputs \u2014 scope, goals, and delivery approach are drawn directly from `brief.md` and `scope.md` (Layer 1). Agent harness produces first-draft deck from internal kickoff content. Human PM reviews and approves (Layer 2 gate). PDF is a Layer 3 generated output.",
       "clientAudience": [
         "business-stakeholder",
         "delivery-team"
@@ -321,8 +315,8 @@
       "keyActivities": "- Define scope, goals, and delivery approach\n- Confirm roles, cadence and communication with client team\n- Align on success metrics and immediate next steps",
       "structuralFramework": null,
       "cols": [
-        2,
-        2
+        3,
+        3
       ],
       "layerMap": {
         "layer1": [],
@@ -339,6 +333,10 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -346,7 +344,7 @@
       "title": "RACI",
       "type": "Primary",
       "stage": "PM Track",
-      "row": 15,
+      "row": 13,
       "span": 1,
       "description": "Clear definition of roles and responsibilities to support efficient decision-making and execution.",
       "owner": {
@@ -367,10 +365,6 @@
         "hard": [],
         "soft": []
       },
-      "enables": [
-        "103",
-        "104"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
@@ -390,7 +384,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Agent harness generates RACI from `project-brief.md` scope definitions and role configurations (Layer 1, Git). `raci.md` is committed to Git as the canonical version — updated by harness when scope changes are committed. External PDF is a Layer 3 generated output.",
+      "aiGeneration": "Agent harness generates RACI from `brief.md` scope definitions and role configurations (Layer 1, Git). `raci.md` is committed to Git as the canonical version \u2014 updated by harness when scope changes are committed. External PDF is a Layer 3 generated output.",
       "clientAudience": [
         "project-owner",
         "delivery-team"
@@ -402,8 +396,8 @@
       "keyActivities": "- Define roles and responsibilities by deliverable.\n- Confirm decision-makers and approvers.\n- Validate engagement expectations across team.\n- Update RACI as scope or team composition changes.",
       "structuralFramework": null,
       "cols": [
-        2,
-        2
+        3,
+        3
       ],
       "layerMap": {
         "layer1": [],
@@ -411,14 +405,18 @@
         "layer3": []
       },
       "humanGate": {},
-      "skills": []
+      "skills": [],
+      "engagementType": [
+        "strategy",
+        "delivery"
+      ]
     },
     {
       "id": "106",
       "title": "RAIDD Log",
       "type": "Primary",
       "stage": "PM Track",
-      "row": 10,
+      "row": 8,
       "span": 13,
       "description": "Track risks, assumptions, issues, dependencies, and decisions throughout delivery.",
       "owner": {
@@ -439,10 +437,6 @@
         "hard": [],
         "soft": []
       },
-      "enables": [
-        "107",
-        "102"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -462,7 +456,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "`raidd.md` in Git (Layer 1) is the canonical source. Agent harness monitors delivery signals — PR blockers, missed milestones, open decisions — and flags new RAIDD items for PM review. Smartsheet/Notion views are Layer 3 generated outputs, not the source of truth. Human PM owns item triage and mitigation ownership.",
+      "aiGeneration": "`raidd.md` in Git (Layer 1) is the canonical source. Agent harness monitors delivery signals \u2014 PR blockers, missed milestones, open decisions \u2014 and flags new RAIDD items for PM review. Smartsheet/Notion views are Layer 3 generated outputs, not the source of truth. Human PM owns item triage and mitigation ownership.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -474,7 +468,7 @@
       "keyActivities": "- Log and maintain RAIDD items\n- Define owners and mitigation plans\n- Review regularly with team and client",
       "structuralFramework": null,
       "cols": [
-        3,
+        4,
         15
       ],
       "layerMap": {
@@ -494,13 +488,17 @@
       "humanGate": {
         "who": "Project Manager",
         "action": "Triages agent-flagged RAIDD items, assigns mitigation owners, and closes resolved items",
-        "trigger": "Ongoing — each time agent flags a new item"
+        "trigger": "Ongoing \u2014 each time agent flags a new item"
       },
       "skills": [
         {
           "name": "Sprint Status",
           "command": "/bmad-sprint-status"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -508,7 +506,7 @@
       "title": "Account Delivery Update",
       "type": "Primary",
       "stage": "PM Track",
-      "row": 11,
+      "row": 9,
       "span": 13,
       "description": "Regular internal view of delivery health, risks, and financials across the account.",
       "owner": {
@@ -529,9 +527,6 @@
         "hard": [],
         "soft": []
       },
-      "enables": [
-        "106"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -558,7 +553,7 @@
       "keyActivities": "- Review delivery health and milestones\n- Flag risks, resourcing gaps or budget concerns\n- Align on mitigation plans and decisions needed",
       "structuralFramework": null,
       "cols": [
-        3,
+        4,
         15
       ],
       "layerMap": {
@@ -576,6 +571,10 @@
           "name": "PM Agent",
           "command": "/bmad-agent-pm"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -583,7 +582,7 @@
       "title": "Timeline",
       "type": "Secondary",
       "stage": "PM Track",
-      "row": 12,
+      "row": 10,
       "span": 13,
       "description": "Visual representation of key phases, milestones, and dependencies across the engagement.",
       "owner": {
@@ -604,14 +603,11 @@
         "hard": [],
         "soft": []
       },
-      "enables": [
-        "103",
-        "104",
-        "107"
-      ],
       "gitArtifacts": {
         "consumes": [],
-        "produces": []
+        "produces": [
+          "sprint-status.yaml"
+        ]
       },
       "formats": {
         "working": [
@@ -628,7 +624,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Timeline structure is generated from Git milestone definitions and sprint configurations (Layer 1). On build engagements, GitHub Actions (Tier 2 Observability) auto-updates milestone progress from Git activity. Static PDF is a Layer 3 generated output from structured milestone data — not manually maintained.",
+      "aiGeneration": "Timeline structure is generated from Git milestone definitions and sprint configurations (Layer 1). `sprint-status.yaml` is committed to Git by `/bmad-sprint-planning` and tracks epic/story progress. On build engagements, GitHub Actions (Tier 2 Observability) auto-updates milestone progress from Git activity. Static PDF is a Layer 3 generated output from structured milestone data \u2014 not manually maintained.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -640,7 +636,7 @@
       "keyActivities": "- Document scope, deliverables and pricing\n- Align on assumptions and dependencies\n- Support review and signature process",
       "structuralFramework": null,
       "cols": [
-        3,
+        4,
         15
       ],
       "layerMap": {
@@ -654,6 +650,10 @@
           "name": "Sprint Planning",
           "command": "/bmad-sprint-planning"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -661,7 +661,7 @@
       "title": "Status Report",
       "type": "Secondary",
       "stage": "PM Track",
-      "row": 13,
+      "row": 11,
       "span": 13,
       "description": "Provide ongoing visibility into progress, risks, and upcoming work.",
       "owner": {
@@ -682,10 +682,6 @@
         "hard": [],
         "soft": []
       },
-      "enables": [
-        "106",
-        "102"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -704,7 +700,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Status reports are auto-generated via GitHub Actions (Tier 2 Observability) triggered by sprint milestones, PR merge events, and weekly schedule. Agent reads Git activity — story progress, PR throughput, open blockers, hours burned — and produces a structured markdown report committed to the repo and posted to Slack. Human PM reviews before external distribution. Smartsheet/PDF are Layer 3 generated formats from the Git source.",
+      "aiGeneration": "Status reports are auto-generated via GitHub Actions (Tier 2 Observability) triggered by sprint milestones, PR merge events, and weekly schedule. Agent reads Git activity \u2014 story progress, PR throughput, open blockers, hours burned \u2014 and produces a structured markdown report committed to the repo and posted to Slack. Human PM reviews before external distribution. Smartsheet/PDF are Layer 3 generated formats from the Git source.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -716,12 +712,12 @@
       "keyActivities": "- Summarize progress and milestones\n- Flag risks, blockers and decisions needed\n- Outline next steps\n- Report hrs burned (if T&M project)",
       "structuralFramework": null,
       "cols": [
-        3,
+        4,
         15
       ],
       "layerMap": {
         "layer1": [
-          "status-report.md"
+          "sprint-status.yaml"
         ],
         "layer2": [
           "GitHub Actions",
@@ -740,13 +736,13 @@
       },
       "skills": [
         {
-          "name": "Delivery Status Agent",
-          "command": "/status-report"
-        },
-        {
           "name": "Sprint Status",
           "command": "/bmad-sprint-status"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -754,7 +750,7 @@
       "title": "QBR",
       "type": "Secondary",
       "stage": "PM Track",
-      "row": 14,
+      "row": 12,
       "span": 13,
       "description": "Provide ongoing visibility into progress, risks, and upcoming work.",
       "owner": {
@@ -776,9 +772,6 @@
         "hard": [],
         "soft": []
       },
-      "enables": [
-        "308"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -806,7 +799,7 @@
       "keyActivities": "- Review progress against goals and KPIs\n- Highlight wins, risks and learnings\n- Align on upcoming priorities and opportunities",
       "structuralFramework": null,
       "cols": [
-        3,
+        4,
         15
       ],
       "layerMap": {
@@ -824,6 +817,10 @@
           "name": "PM Agent",
           "command": "/bmad-agent-pm"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -831,7 +828,7 @@
       "title": "Completion Memo",
       "type": "Secondary",
       "stage": "PM Track",
-      "row": 9,
+      "row": 7,
       "span": 1,
       "description": "Formal summary of delivered work, outcomes, and closure of the engagement.",
       "owner": {
@@ -850,7 +847,6 @@
         "hard": [],
         "soft": []
       },
-      "enables": [],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -895,6 +891,10 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -925,22 +925,12 @@
       },
       "dependencies": {
         "hard": [
-          "103",
-          "109"
+          "103"
         ],
-        "soft": []
+        "soft": [
+          "109"
+        ]
       },
-      "enables": [
-        "202",
-        "205",
-        "206",
-        "207",
-        "208",
-        "209",
-        "210",
-        "211",
-        "213"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
@@ -958,7 +948,7 @@
           "Slides."
         ]
       },
-      "aiGeneration": "Research Synthesis Agent harness reads raw interview transcripts, workshop notes, and audit inputs → produces structured `findings.md` committed to Git (Layer 1). Discovery readout slide deck is a Layer 3 generated output from structured findings. Human PM gate: review and approve `findings.md` before committing; Delivery Lead reviews deck before client delivery. Miro and NotebookLM remain valid working tools for synthesis sessions.",
+      "aiGeneration": "`/bmad-domain-research`, `/bmad-market-research`, and `/bmad-agent-analyst` harness reads raw interview transcripts, workshop notes, and audit inputs \u2192 produces structured `findings.md` committed to Git (Layer 1). Discovery readout slide deck is a Layer 3 generated output from structured findings. Human PM gate: review and approve `findings.md` before committing; Delivery Lead reviews deck before client delivery. Miro and NotebookLM remain valid working tools for synthesis sessions.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -971,8 +961,8 @@
       "keyActivities": "**Immersion - review and analyze:**\n- Existing collateral (research, strategy, guidelines, tech debt) to understand the client's market, business, and customer context.\n- External market signals (annual statements, competitor press releases, industry reports).\n- Conduct experience/tech/data audits to identify current-state limitations.\n**Research - plan, execute and analyze:**\n- Stakeholder interviews with internal leadership (and external partners) to uncover conflicting priorities, unstated goals, and cultural barriers\n- Competitive and comparative research to benchmark against the market and adjacent innovators.\n** Synthesize - triangulate findings to:**\n- Identify gaps, generate insights, and map future opportunities in the context of broader business objectives and the specific engagement.",
       "structuralFramework": "**Slide deck flow:**\n- **Title page & Agenda**\n- **The journey so far:** quantified summary of effort (e.g. # of weeks, interviews, documents reviewed)\n- **Findings:** detailed current-state analysis with \"So What\" implications for each:\n  - Strategy: alignment with business goals and broader initiatives\n  - Experience Audit: friction points and gaps in UX, UI, Content.\n  - Brand Audit: visual/tonal consistency and market perception.\n  - Technology: technical debt, scalability, and integration blockers.\n  - Data: quality, accessibility, and actionable insight gaps.\n- **Opportunities:** Identification of high-value areas to explore, dig deeper, and refine in the next phase.\n- **Next Steps:** actions and timeline",
       "cols": [
-        0,
-        0
+        1,
+        1
       ],
       "layerMap": {
         "layer1": [
@@ -994,10 +984,6 @@
       },
       "skills": [
         {
-          "name": "Research Synthesis Agent",
-          "command": "/research-synthesis"
-        },
-        {
           "name": "Domain Research",
           "command": "/bmad-domain-research"
         },
@@ -1009,6 +995,10 @@
           "name": "Analyst Agent",
           "command": "/bmad-agent-analyst"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -1045,20 +1035,11 @@
           "206"
         ]
       },
-      "enables": [
-        "203",
-        "204",
-        "205",
-        "301",
-        "302",
-        "211",
-        "212",
-        "213"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
-          "strategy.md"
+          "strategy.md",
+          "brainstorming/"
         ]
       },
       "formats": {
@@ -1072,7 +1053,7 @@
           "Slides"
         ]
       },
-      "aiGeneration": "Research Synthesis Agent consolidates `findings.md`, workshop transcripts, and strategic inputs (Layer 1, Git) → produces structured `strategy.md`. Strategy lead reviews and refines via the Interface layer (e.g., Cowork). Slide deck — including the placemat visualization — is a Layer 3 generated output from the structured strategy file, not the working document.",
+      "aiGeneration": "`/bmad-brainstorming` facilitates ideation sessions and commits session outputs to `brainstorming/` in Git (Layer 2 working reference). Research Synthesis Agent consolidates `findings.md`, workshop transcripts, and strategic inputs (Layer 1, Git) \u2192 produces structured `strategy.md`. Strategy lead reviews and refines via the Interface layer (e.g., Cowork). Slide deck \u2014 including the placemat visualization \u2014 is a Layer 3 generated output from the structured strategy file, not the working document.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -1108,6 +1089,10 @@
           "name": "Analyst Agent",
           "command": "/bmad-agent-analyst"
         }
+      ],
+      "engagementType": [
+        "delivery",
+        "strategy"
       ]
     },
     {
@@ -1141,16 +1126,11 @@
           "202"
         ]
       },
-      "enables": [
-        "213",
-        "301",
-        "305"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
-          "design-tokens.md",
-          "components.md"
+          "DESIGN.md",
+          "EXPERIENCE.md"
         ]
       },
       "formats": {
@@ -1164,7 +1144,7 @@
           "Deck or URL"
         ]
       },
-      "aiGeneration": "Loveable or Figma Make can generate interactive prototypes rapidly from design brief inputs. On engagements with a subsequent build phase, the Design-to-Component pivot applies: Figma/Loveable outputs feed the Spec Extraction Agent harness → produces `components.md` and `design-tokens.md` in Git (Layer 1) for downstream build consumption.",
+      "aiGeneration": "Loveable or Figma Make can generate interactive prototypes rapidly from design brief inputs. On engagements with a subsequent build phase, the Design-to-Component pivot applies: Figma/Loveable outputs feed the UX Agent harness via `/bmad-ux` \u2192 produces `DESIGN.md` (visual identity: tokens, typography, color) and `EXPERIENCE.md` (interaction patterns, IA, states) committed to Git (Layer 1). `/bmad-spec` distills these into a machine-readable `SPEC.md` for downstream build consumption.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -1177,8 +1157,8 @@
       "keyActivities": "**Immersion & Alignment**\n- Review the Digital Growth Strategy and Stakeholder Interviews\n- Meet with the team to understand what the client is most excited about.\n- Align on the direction of the conceptual Design\n- Agree on the fidelity of the concept; sketch, wireframe, hi-fi prototype etc.\n**Design a Concept**\n- Map out the single most important user journey that demonstrates value; we don't design all screens for concepting - just the key ones.\n- Complete the concept design in Figma, Loveable etc.",
       "structuralFramework": "**Conceptual Design can live in either:**\n1. A slide deck\n2. Link to Figma or Loveable\n**Conceptual Design can be in the form of:**\n1. A low fidelity sketch of a user flow\n2. A high fidelity page design\n3. An interactive prototype\n\n**The aim is to get the client excited and bought in on the future work.**",
       "cols": [
-        0,
-        0
+        2,
+        2
       ],
       "layerMap": {
         "layer1": [],
@@ -1194,7 +1174,15 @@
         {
           "name": "Create UX",
           "command": "/bmad-ux"
+        },
+        {
+          "name": "BMAD Spec",
+          "command": "/bmad-spec"
         }
+      ],
+      "engagementType": [
+        "delivery",
+        "strategy"
       ]
     },
     {
@@ -1202,7 +1190,7 @@
       "title": "Strategic Initiative Roadmap",
       "type": "Primary",
       "stage": "Discovery & Planning",
-      "row": 2,
+      "row": 1,
       "span": 1,
       "description": "A high level timeline that prioritizes key strategic initiatives across broad time horizons that communicates to an executive audience what is required to achieve a future state for the business.",
       "owner": {
@@ -1228,10 +1216,6 @@
         ],
         "soft": []
       },
-      "enables": [
-        "301",
-        "213"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
@@ -1249,7 +1233,7 @@
           "slides (Exec Summary)"
         ]
       },
-      "aiGeneration": "Roadmap Agent harness reads `strategy.md` and `tech-strategy.md` (Layer 1, Git) → drafts roadmap structure, time horizons, and initiative sequencing for human review. `roadmap.md` committed to Git is the canonical artifact. Human Product and Strategy leads own final prioritization decisions. Google Slides is a Layer 3 generated output from structured roadmap files.",
+      "aiGeneration": "Roadmap Agent harness reads `strategy.md` and `tech-strategy.md` (Layer 1, Git) \u2192 drafts roadmap structure, time horizons, and initiative sequencing for human review. `roadmap.md` committed to Git is the canonical artifact. Human Product and Strategy leads own final prioritization decisions. Google Slides is a Layer 3 generated output from structured roadmap files.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -1280,6 +1264,10 @@
           "name": "Sprint Planning",
           "command": "/bmad-sprint-planning"
         }
+      ],
+      "engagementType": [
+        "delivery",
+        "strategy"
       ]
     },
     {
@@ -1287,7 +1275,7 @@
       "title": "Technical Strategy Document",
       "type": "Cornerstone",
       "stage": "Discovery & Planning",
-      "row": 3,
+      "row": 2,
       "span": 1,
       "description": "Translation of Program or Digital Strategy into technology capabilities needed to deliver the solution.",
       "owner": {
@@ -1311,14 +1299,6 @@
           "202"
         ]
       },
-      "enables": [
-        "204",
-        "303",
-        "304",
-        "212",
-        "213",
-        "314"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
@@ -1336,7 +1316,7 @@
           "Slides"
         ]
       },
-      "aiGeneration": "Tech Synthesis Agent harness reads audit materials, stakeholder interview transcripts, and existing technical documentation → produces `tech-strategy.md` (Layer 1, Git). This structured file is the machine-readable input consumed by the Requirements Agent in the Design & Requirements phase — it must be committed as structured markdown, not only as slides. Slide deck is a Layer 3 generated output. Human Tech Lead gate before client delivery.",
+      "aiGeneration": "Tech Synthesis Agent harness reads audit materials, stakeholder interview transcripts, and existing technical documentation \u2192 produces `tech-strategy.md` (Layer 1, Git). This structured file is the machine-readable input consumed by the Requirements Agent in the Design & Requirements phase \u2014 it must be committed as structured markdown, not only as slides. Slide deck is a Layer 3 generated output. Human Tech Lead gate before client delivery.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder"
@@ -1348,8 +1328,8 @@
       "keyActivities": "**Current State Analysis Workshops and Ingestion**\n- Current state technical platform ecosystem\n- Current state operating / governance model\n- Current state capabilities and services\n**Platform and Future State Recommendations**\n- Evaluate, recommend and integrate platform recommendations\n- Address capability gaps in future state capability model\n- Define high level future state technical platform ecosystem\n**Synthesize- triangulate findings to:**\n- Summarize findings, gaps and future state architecture",
       "structuralFramework": "**Document outline**\n- **Executive Summary**\n  - Goals and Strategic Objectives\n  - Constraints\n  - Future State Technical Ecosystem\n  - Phasing, roadmap and horizon considerations\n- **Current State Findings:**\n  - Current state capabilities & Identified gaps\n- **Future State**\n  - Future state capabilities & ecosystem diagram\n  - Platform recommendations and capability mapping\n  - Platform vendor evaluation\n  - Content management strategy\n  - API and integration architecture strategy\n  - SEO audit and findings\n  - Data, analytics, and insights enablement\n  - Changes to operating model\n  - Mapping strategy to roadmap / horizons\n  - Other considerations",
       "cols": [
-        4,
-        4
+        5,
+        5
       ],
       "layerMap": {
         "layer1": [],
@@ -1370,6 +1350,10 @@
           "name": "Create Architecture",
           "command": "/bmad-create-architecture"
         }
+      ],
+      "engagementType": [
+        "delivery",
+        "strategy"
       ]
     },
     {
@@ -1377,7 +1361,7 @@
       "title": "Primary Research Findings",
       "type": "Secondary",
       "stage": "Discovery & Planning",
-      "row": 2,
+      "row": 5,
       "span": 1,
       "description": "A comprehensive report of original data collected from target users and/or stakeholders. This report distills raw evidence into foundational insights that identify unmet needs and market gaps, providing the evidentiary basis to define and/or validate future strategic recommendations.",
       "owner": {
@@ -1406,15 +1390,6 @@
           "202"
         ]
       },
-      "enables": [
-        "202",
-        "203",
-        "301",
-        "207",
-        "210",
-        "211",
-        "213"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
@@ -1434,7 +1409,7 @@
           "Slides."
         ]
       },
-      "aiGeneration": "Research Agent harness supports end-to-end: generates interview guides and screeners from defined research objectives; reads and synthesizes transcripts → produces structured `findings.md` (Layer 1, Git); generates first-draft findings slide deck (Layer 3). `interviews/` folder in Git is the structured artifact consumed by downstream agent harnesses. Human researcher reviews findings for accuracy and insight validity before committing.",
+      "aiGeneration": "Research Agent harness supports end-to-end: generates interview guides and screeners from defined research objectives; reads and synthesizes transcripts \u2192 produces structured `findings.md` (Layer 1, Git); generates first-draft findings slide deck (Layer 3). `interviews/` folder in Git is the structured artifact consumed by downstream agent harnesses. Human researcher reviews findings for accuracy and insight validity before committing.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -1445,7 +1420,7 @@
         "data"
       ],
       "keyActivities": "**Research planning:**\n- Define research objectives, participant criteria, and recruitment screener.\n- Develop structured interview guides, questionnaires, and fieldwork protocols to ensure unbiased data collection.\n- Where necessary assess or onboard external research tools,\n\n**Fieldwork & data collection:**\n- Recruit participants\n- Execute research through planned qualitative or quantitative methods.\n\n**Analysis & report creation:**\n- Triangulate data to generate actionable insights, linking specific user needs or digital capabilities to core business KPIs and strategic outcomes.\n- Distill findings into a clear narrative that validates or pivots the current project direction.",
-      "structuralFramework": "**Slide deck**\n- Title page & Agenda\n- The journey so far: we are here on the timeline.\n**Methodology: summary of what we did (e.g., # of participants, demographics, methodology used).**\n- Exec summary of insights: The 3–5 themes or key findings discovered during the research.\n- Detailed Findings: Deep dives into finding themes, supported by:\n**Direct quotes/evidence: voice of the customer.**\n- The so what implications\n- Recommendations: actionable next steps based on validated findings.\n- Next Steps: actions and timeline",
+      "structuralFramework": "**Slide deck**\n- Title page & Agenda\n- The journey so far: we are here on the timeline.\n**Methodology: summary of what we did (e.g., # of participants, demographics, methodology used).**\n- Exec summary of insights: The 3\u20135 themes or key findings discovered during the research.\n- Detailed Findings: Deep dives into finding themes, supported by:\n**Direct quotes/evidence: voice of the customer.**\n- The so what implications\n- Recommendations: actionable next steps based on validated findings.\n- Next Steps: actions and timeline",
       "cols": [
         2,
         2
@@ -1470,10 +1445,6 @@
       },
       "skills": [
         {
-          "name": "Research Synthesis Agent",
-          "command": "/research-synthesis"
-        },
-        {
           "name": "Domain Research",
           "command": "/bmad-domain-research"
         },
@@ -1481,6 +1452,9 @@
           "name": "Market Research",
           "command": "/bmad-market-research"
         }
+      ],
+      "engagementType": [
+        "strategy"
       ]
     },
     {
@@ -1488,7 +1462,7 @@
       "title": "Content/Brand Strategy",
       "type": "Secondary",
       "stage": "Discovery & Planning",
-      "row": 4,
+      "row": 3,
       "span": 1,
       "description": "A deep dive into the definition of the brand voice, messaging pillars, and how content serves user needs.",
       "owner": {
@@ -1518,15 +1492,6 @@
           "206"
         ]
       },
-      "enables": [
-        "203",
-        "305",
-        "208",
-        "213",
-        "310",
-        "312",
-        "313"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -1542,7 +1507,7 @@
           "PDF"
         ]
       },
-      "aiGeneration": "Content Strategy Agent harness reads existing brand materials, audit outputs, and persona definitions from Git → produces structured content pillars, messaging framework, and content audit analysis. Human Content Strategist reviews and refines — expert editorial judgment is required to complete. Agent output is a substantive first draft, not a finished deliverable.",
+      "aiGeneration": "Content Strategy Agent harness reads existing brand materials, audit outputs, and persona definitions from Git \u2192 produces structured content pillars, messaging framework, and content audit analysis. Human Content Strategist reviews and refines \u2014 expert editorial judgment is required to complete. Agent output is a substantive first draft, not a finished deliverable.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -1572,6 +1537,10 @@
           "name": "Market Research",
           "command": "/bmad-market-research"
         }
+      ],
+      "engagementType": [
+        "delivery",
+        "strategy"
       ]
     },
     {
@@ -1579,7 +1548,7 @@
       "title": "Rebrand/Stylescapes",
       "type": "Secondary",
       "stage": "Discovery & Planning",
-      "row": 5,
+      "row": 3,
       "span": 1,
       "description": "High-level \"visual landscapes\" in the form of a 1 page style sheet or a homepage that combine colors, typography, and imagery to show a brand's direction.",
       "owner": {
@@ -1608,16 +1577,11 @@
           "207"
         ]
       },
-      "enables": [
-        "305",
-        "213",
-        "310",
-        "312",
-        "313"
-      ],
       "gitArtifacts": {
         "consumes": [],
-        "produces": []
+        "produces": [
+          "brainstorming/"
+        ]
       },
       "formats": {
         "working": [
@@ -1630,7 +1594,7 @@
           "URL"
         ]
       },
-      "aiGeneration": "Ideation agent harness produces initial moodboard references and stylescape direction from brand brief inputs. Midjourney, VEO, and Flora remain valid for video/animation asset generation. Designer leads creative direction; agent accelerates reference curation and initial concept generation. Human Designer owns final creative decisions.",
+      "aiGeneration": "`/bmad-brainstorming` facilitates creative ideation sessions and commits session outputs to `brainstorming/` in Git (Layer 2 working reference). Midjourney, VEO, and Flora remain valid for video/animation asset generation. Designer leads creative direction; agent accelerates reference curation and initial concept generation. Human Designer owns final creative decisions.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -1643,8 +1607,8 @@
       "keyActivities": "**Strategic Translation:**\n- Review the Content/Brand Strategy (if any) to ensure visual elements match the defined brand voice and messaging pillars.\n- Review any existing brand guidelines or Design Systems in place.\n  **Moodboarding:**\n- Curate a broad collection of references (photography style, UI patterns, color palettes) to pressure-test different \"vibes\" before committing to a full stylescape.\n  **Stylescape Creation:**\n- Create two visual concepts using a blank canvas or the home page.\n- Share with client to gain feedback and iterate.",
       "structuralFramework": "**Figma File**\n- Title page\n- What are we going through today?\n- How do stylescapes work? What are they? How do you do them?\n- Caveats:\n  - \"This is just a stylescape, copy and content is FPO\".\n  - This will have X many rounds of reviews.\n- Version 1 and 2\n  - 2 version of Stylescapes\n- Next Steps",
       "cols": [
-        3,
-        4
+        4,
+        5
       ],
       "layerMap": {
         "layer1": [],
@@ -1656,7 +1620,15 @@
         {
           "name": "UX Designer Agent",
           "command": "/bmad-agent-ux-designer"
+        },
+        {
+          "name": "Brainstorming",
+          "command": "/bmad-brainstorming"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -1664,7 +1636,7 @@
       "title": "Ecosystem Map",
       "type": "Secondary",
       "stage": "Discovery & Planning",
-      "row": 6,
+      "row": 5,
       "span": 1,
       "description": "A visualization of all digital and physical touch points within the user's universe.",
       "owner": {
@@ -1697,13 +1669,11 @@
           "206"
         ]
       },
-      "enables": [
-        "205",
-        "211"
-      ],
       "gitArtifacts": {
         "consumes": [],
-        "produces": []
+        "produces": [
+          "brainstorming/"
+        ]
       },
       "formats": {
         "working": [
@@ -1716,7 +1686,7 @@
           "Slides with PDF or Link"
         ]
       },
-      "aiGeneration": "Agent harness reads stakeholder interview transcripts, technical documentation, and data flow inputs (Layer 1, Git) → produces draft ecosystem inventory and integration map. Figma Make or Loveable can be used for interactive visualization. Human Strategy and Tech leads review for completeness and accuracy before client delivery.",
+      "aiGeneration": "`/bmad-brainstorming` facilitates discovery ideation and commits session outputs to `brainstorming/` in Git (Layer 2 working reference). Agent harness reads stakeholder interview transcripts, technical documentation, and data flow inputs (Layer 1, Git) \u2192 produces draft ecosystem inventory and integration map. Figma Make or Loveable can be used for interactive visualization. Human Strategy and Tech leads review for completeness and accuracy before client delivery.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -1728,8 +1698,8 @@
       "keyActivities": "- **Stakeholder Workshops:**\n  - Conduct workshops or interviews with key stakeholders to identify all known customer touchpoints.\n  - Review internal documentation to uncover hidden data silos or secondary digital platforms.\n- **Current State Inventory:**\n  - Catalog all digital properties (apps, sites, portals) and physical interactions (in-store, support calls, mailers).\n  - Identify the primary actors (users, employees, third-party vendors) involved at each stage.\n- **Data Flow & Integration Mapping:**\n  - Trace how information moves between systems (e.g., CRM to Email Marketing tool).\n- **Synthesis & Visualization:**\n  - Draft the map in Figma or MIRO to create a cohesive \"universe\" of the user experience.\n  - Apply visual hierarchy to distinguish between primary, secondary, and background touchpoints.",
       "structuralFramework": "**Link to Miro or Figma. Link should contain:**\n- **Intro to Map**\n  - Purpose\n  - Intent\n- **Static or Interactive Map**\n  - Outlining the main properties of the digital experience",
       "cols": [
-        2,
-        2
+        3,
+        3
       ],
       "layerMap": {
         "layer1": [],
@@ -1745,7 +1715,14 @@
         {
           "name": "Architect Agent",
           "command": "/bmad-agent-architect"
+        },
+        {
+          "name": "Brainstorming",
+          "command": "/bmad-brainstorming"
         }
+      ],
+      "engagementType": [
+        "strategy"
       ]
     },
     {
@@ -1753,7 +1730,7 @@
       "title": "Journey Map",
       "type": "Secondary",
       "stage": "Discovery & Planning",
-      "row": 3,
+      "row": 6,
       "span": 1,
       "description": "A visual narrative of a user's end-to-end experience, highlighting pain points, gaps in user needs and opportunities.",
       "owner": {
@@ -1780,12 +1757,6 @@
           "206"
         ]
       },
-      "enables": [
-        "301",
-        "303",
-        "211",
-        "213"
-      ],
       "gitArtifacts": {
         "consumes": [
           "findings.md"
@@ -1803,7 +1774,7 @@
           "PDF or Deck"
         ]
       },
-      "aiGeneration": "Journey Map Agent harness reads `findings.md` and persona definitions (Layer 1, Git) → produces draft journey stages, user actions, thinking/feeling layers, and friction point identification. Human Design and Strategy leads validate against user research evidence and refine the emotional journey. Agent output is a structured first draft; human expertise is required for the empathy and insight layer.",
+      "aiGeneration": "Journey Map Agent harness reads `findings.md` and persona definitions (Layer 1, Git) \u2192 produces draft journey stages, user actions, thinking/feeling layers, and friction point identification. Human Design and Strategy leads validate against user research evidence and refine the emotional journey. Agent output is a structured first draft; human expertise is required for the empathy and insight layer.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -1816,8 +1787,8 @@
       "keyActivities": "**Note: usually paired with User Research unless the research has already been conducted by the client and passed to us.**\n\n**Identifying User \"Stages\":**\n- Phase Definition: Establish high-level phases (e.g. Awareness, Discovery, Purchase, Retention, Advocacy).\n- Goal Alignment: Define user objectives for each phase.\n\n**Map \"Doing, Thinking, Feeling\" Layers:**\n- User Actions: Detail the specific steps and touchpoints the user interacts with (e.g. visiting site, or receiving an email).\n- Mindset: Document the user's thoughts and questions at each stage (e.g., \"I need information I can use right now\").\n- Emotional Journey: Capture emotional states to identify delight or high-stress moments.\n\n**Identifying Friction Points and Opportunities:**\n- Pain Point Discovery: Spot where users get stuck or experience conversion declines (e.g., cart abandonment).\n- Opportunity Synthesis: Translate friction into actionable \"How Might We\" statements to improve future experience.",
       "structuralFramework": "**PDF should include the following:**\n- **Context & Methodology**\n- **User Persona:**  Profile summary (name, goals, expectations) the map represents.\n- **The Scenario: **Definition of the specific journey explored (e.g. \"First-time purchase flow\").\n- **The Visual Journey Map (The Core Output)**\n- **Horizontal Axis:** chronological Journey Stages.\n- **Vertical Lanes:**\n  - Actions: Step-by-step behaviors.\n  - Touchpoints: Channels used (Web, Mobile, App).\n  - The \"Experience\" Curve: Visual graph of user sentiment (Highs and Lows).\n  - Thinking/Feeling Layers: Quotes and internal monologues from the user.\n    **Key Findings & Strategic Recommendations**\n- Moments that Matter:Identification of critical \"make or break\" moments (emotional & functional)\n- Prioritized Friction Points: A list of blockers tied to real business impact.\n- Roadmap of Opportunities: Strategic features or process changes for Downstream Deliverables (e.g., Product Brief or Story Map).",
       "cols": [
-        2,
-        2
+        3,
+        3
       ],
       "layerMap": {
         "layer1": [],
@@ -1834,6 +1805,9 @@
           "name": "Create UX",
           "command": "/bmad-ux"
         }
+      ],
+      "engagementType": [
+        "strategy"
       ]
     },
     {
@@ -1841,7 +1815,7 @@
       "title": "Service Blueprint",
       "type": "Secondary",
       "stage": "Discovery & Planning",
-      "row": 6,
+      "row": 5,
       "span": 1,
       "description": "A visual map detailing the end-to-end service journey, connecting user touchpoints to the specific behind-the-scenes processes and systems required to deliver them. It aligns cross-functional teams on how the front-end experience is operationally supported.",
       "owner": {
@@ -1874,15 +1848,6 @@
           "210"
         ]
       },
-      "enables": [
-        "204",
-        "301",
-        "303",
-        "304",
-        "305",
-        "308",
-        "409"
-      ],
       "gitArtifacts": {
         "consumes": [
           "strategy.md"
@@ -1900,7 +1865,7 @@
           "Slides"
         ]
       },
-      "aiGeneration": "Service Blueprint Agent harness reads `findings.md`, `strategy.md`, and technical architecture inputs (Layer 1, Git) → drafts front-stage journey stages, user actions, outcomes, and initial backstage process mapping. Human cross-functional team validates backstage accuracy in workshop. Agent-produced draft significantly reduces facilitation prep time.",
+      "aiGeneration": "Service Blueprint Agent harness reads `findings.md`, `strategy.md`, and technical architecture inputs (Layer 1, Git) \u2192 drafts front-stage journey stages, user actions, outcomes, and initial backstage process mapping. Human cross-functional team validates backstage accuracy in workshop. Agent-produced draft significantly reduces facilitation prep time.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder",
@@ -1915,8 +1880,8 @@
       "keyActivities": "",
       "structuralFramework": "**Blueprint template**\n- Front-end layers: Future-state journey, User need state/mindset, Key actions & interaction\n  - Optional: content, comms and other channels/touchpoints, key outcomes\n- Backstage layers: Systems & infrastructure, Data orchestration\n  - Optional:  Operations & People, KPIs\n**Slide deck**\n- Title page & Agenda\n- The journey so far: we are here on the timeline.\n- Navigating the blueprint: how to read the artefact, guide of the various layers and why it is valuable.\n- Link to full blueprint miro\n- Optional: translate full blueprint into slide deck, capturing all the vertical  information per journey stage onto one slide.\n- Next Steps: actions and timeline",
       "cols": [
-        3,
-        3
+        4,
+        4
       ],
       "layerMap": {
         "layer1": [],
@@ -1933,6 +1898,9 @@
           "name": "Create UX",
           "command": "/bmad-ux"
         }
+      ],
+      "engagementType": [
+        "strategy"
       ]
     },
     {
@@ -1940,7 +1908,7 @@
       "title": "Value Case",
       "type": "Secondary",
       "stage": "Discovery & Planning",
-      "row": 1,
+      "row": 5,
       "span": 1,
       "description": "A financial framework that quantifies the projected ROI, efficiency gains, and revenue growth of a digital initiative. It serves as the primary tool for securing budget and aligning stakeholders on value realization.",
       "owner": {
@@ -1968,16 +1936,13 @@
         ],
         "soft": []
       },
-      "enables": [
-        "307",
-        "403",
-        "213"
-      ],
       "gitArtifacts": {
         "consumes": [
           "tech-strategy.md"
         ],
-        "produces": []
+        "produces": [
+          "brainstorming/"
+        ]
       },
       "formats": {
         "working": [
@@ -1990,7 +1955,7 @@
           "Slides & Excel"
         ]
       },
-      "aiGeneration": "Financial modelling agent harness reads `strategy.md`, `tech-strategy.md`, and SOW scope inputs → generates baseline assumptions model and sensitivity analysis structure. Agent runs best/expected/worst-case scenario simulations from defined variables. Human Strategy and Data leads validate assumptions and review model logic before client presentation. Excel model is the working artifact; slides are a Layer 3 generated output.",
+      "aiGeneration": "`/bmad-brainstorming` supports assumption discovery sessions committed to `brainstorming/` in Git (Layer 2 working reference). Financial modelling agent harness reads `strategy.md`, `tech-strategy.md`, and SOW scope inputs \u2192 generates baseline assumptions model and sensitivity analysis structure. Agent runs best/expected/worst-case scenario simulations from defined variables. Human Strategy and Data leads validate assumptions and review model logic before client presentation. Excel model is the working artifact; slides are a Layer 3 generated output.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -2004,8 +1969,8 @@
       "keyActivities": "**Baseline & assumption- gather & document:**\nHistorical performance data, current operational costs, and growth projections.\n- Foundational assumptions (e.g., average order value, customer acquisition cost, internal labor rates)\n\n**Financial modelling - define & calculate:**\nTotal Cost of Ownership (TCO) incl build, licensing, maintenance, and internal operational overhead.\n- Calculate projected revenue uplift and cost savings by applying assumptions and  industry benchmarks\n- Risk-adjust the projected returns by modelling Best, Expected, and Worst-case scenarios (Sensitivity Analysis).\n\n**Model validation:**\n- Conduct validation sessions with client stakeholders to pressure-test assumptions and ensure the logic aligns with their internal reporting standards.",
       "structuralFramework": null,
       "cols": [
-        4,
-        4
+        5,
+        5
       ],
       "layerMap": {
         "layer1": [],
@@ -2017,7 +1982,14 @@
         {
           "name": "Analyst Agent",
           "command": "/bmad-agent-analyst"
+        },
+        {
+          "name": "Brainstorming",
+          "command": "/bmad-brainstorming"
         }
+      ],
+      "engagementType": [
+        "strategy"
       ]
     },
     {
@@ -2025,7 +1997,7 @@
       "title": "Executive Summary",
       "type": "Secondary",
       "stage": "Discovery & Planning",
-      "row": 7,
+      "row": 6,
       "span": 1,
       "description": "A summary of the whole project's core findings, strategic recommendations, and projected impact. It provides our clients the ability to share back with their executive stakeholders to communicate value and drive alignment and action.",
       "owner": {
@@ -2049,7 +2021,6 @@
         "hard": [],
         "soft": []
       },
-      "enables": [],
       "gitArtifacts": {
         "consumes": [
           "roadmap.md"
@@ -2067,7 +2038,7 @@
           "Slides"
         ]
       },
-      "aiGeneration": "Synthesis Agent harness reads all committed deliverable files in Git (Layer 1) — `findings.md`, `strategy.md`, `tech-strategy.md`, `product-brief.md`, `roadmap.md` — and produces a structured first-draft executive summary. Human Strategy lead reviews, refines narrative, and approves before client delivery. Slide deck is a Layer 3 generated output. NotebookLM remains a valid working tool for synthesis sessions prior to committing structured files.",
+      "aiGeneration": "Synthesis Agent harness reads all committed deliverable files in Git (Layer 1) \u2014 `findings.md`, `strategy.md`, `tech-strategy.md`, `product-brief.md`, `roadmap.md` \u2014 and produces a structured first-draft executive summary. Human Strategy lead reviews, refines narrative, and approves before client delivery. Slide deck is a Layer 3 generated output. NotebookLM remains a valid working tool for synthesis sessions prior to committing structured files.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -2079,8 +2050,8 @@
       "keyActivities": "**Review & synthesize:**\n- Review all project deliverables, strategic recommendations, and key decisions made throughout the engagement.\n- Extract the most critical proof points and insights that support the final strategic direction.\n**Narrative & summary development:**\n- Summarize all workstreams into a concise, impactful narrative.\n- Distill complex technical and experience findings into high-level business outcomes.\n- Structure the summary to move quickly from the problem to the solution and the Value, ensuring it is optimized for high-level stakeholder socialization.",
       "structuralFramework": null,
       "cols": [
-        4,
-        4
+        5,
+        5
       ],
       "layerMap": {
         "layer1": [],
@@ -2097,6 +2068,9 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "strategy"
       ]
     },
     {
@@ -2104,7 +2078,7 @@
       "title": "Change Management Strategy",
       "type": "Secondary",
       "stage": "Discovery & Planning",
-      "row": 8,
+      "row": 4,
       "span": 1,
       "description": "A structured plan for introducing, driving adoption of, and sustaining organizational and process change, aligning people, communications, and training to support successful transformation outcomes.",
       "owner": {
@@ -2137,9 +2111,6 @@
           "308"
         ]
       },
-      "enables": [
-        "409"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
@@ -2157,7 +2128,7 @@
           "Slides, Docs"
         ]
       },
-      "aiGeneration": "Change Strategy Agent harness reads `project-brief.md`, `findings.md`, and strategic roadmap inputs (Layer 1, Git) → produces structured stakeholder impact analysis, readiness assessment, and communications plan framework. `change-strategy.md` committed to Git is the canonical artifact consumed by the Change Management Enablement harness (409). Human Strategy lead reviews and approves before client delivery.",
+      "aiGeneration": "Change Strategy Agent harness reads `brief.md`, `findings.md`, and strategic roadmap inputs (Layer 1, Git) \u2192 produces structured stakeholder impact analysis, readiness assessment, and communications plan framework. `change-strategy.md` committed to Git is the canonical artifact consumed by the Change Management Enablement harness (409). Human Strategy lead reviews and approves before client delivery.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -2173,8 +2144,8 @@
       "keyActivities": "**Define change vision, success metrics, and adoption milestones articulate and align**\n- Translate objectives into a clear change narrative that explains the \"why,\" the future state, and what will be different for teams day-to-day.\n- Establish measurable success criteria, behavioral indicators, and adoption milestones to track progress beyond go-live.\n**Map stakeholder impact, readiness, and resistance risks - assess and prioritize**\n- Identify impacted audiences, roles, and workflows to understand the scale and nature of change across the org..\n- Evaluate readiness, and potential resistance to inform tailored engagement and mitigation strategies\n**Develop communications, training, and reinforcement plans - design and activate**\n- Create a comms  by audience, channel, and moment in the journey.",
       "structuralFramework": "**Slide deck**\n- **Title & agenda:** Frame objectives, scope, and decisions required from stakeholders.\n- **Journey so far: **Visual timeline showing discovery, strategy, design, and activation with \"you are here\" orientation.\n- **Change context:** Summary of business drivers, impacted groups, and critical dependencies shaping the approach.\n- **Change vision & outcomes:** Articulation of the future state, success metrics, and adoption milestones.\n- **Stakeholder landscape:** High-level view of audiences, impact levels, and engagement approach.\n- **Governance & next steps:** define change ambassadors and accountability for sustaining the change.",
       "cols": [
-        3,
-        3
+        5,
+        5
       ],
       "layerMap": {
         "layer1": [],
@@ -2191,6 +2162,10 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -2230,18 +2205,12 @@
           "205"
         ]
       },
-      "enables": [
-        "302",
-        "303",
-        "314",
-        "305",
-        "307",
-        "309"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
-          "product-brief.md"
+          "brief.md",
+          "addendum.md",
+          ".decision-log.md"
         ]
       },
       "formats": {
@@ -2255,7 +2224,7 @@
           "Slides (Exec Summary)"
         ]
       },
-      "aiGeneration": "Requirements Agent harness reads `findings.md`, `strategy.md`, `tech-strategy.md`, and interview transcripts (Layer 1, Git) → produces structured `product-brief.md`. Human PM and Strategy lead review and approve via the Interface layer (e.g., Cowork) before proceeding to story mapping. Google Doc is a Layer 3 generated view for client-facing review — not the working document.",
+      "aiGeneration": "`/bmad-product-brief` reads `findings.md`, `strategy.md`, `tech-strategy.md`, and interview transcripts (Layer 1, Git) \u2192 produces structured `brief.md` with `addendum.md` (personas, rejected alternatives, sizing) and `.decision-log.md` (append-only decision audit trail). Human PM and Strategy lead review and approve via the Interface layer (e.g., Cowork) before proceeding to story mapping. Google Doc is a Layer 3 generated view for client-facing review \u2014 not the working document.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -2268,12 +2237,12 @@
       "keyActivities": "**Stakeholder engagement and information gathering**\n- Facilitate workshops to align on user needs and solution level goals and objectives\n- Success mapping, defining KPIs , and prioritization criteria\n**Epic Generation**\n- Define the outcomes (business and user needs) the solution is seeking to deliver.\n- Describe the scope associated epics that connect to business goals and prioritized sequence of epics that will deliver value\n**Constraints and dependencies definition**\n- Describe the capability and/or technical constraints that exist for the solution that need to be accommodated for\n- List all current assumptions and open questions that exist with the solution.\n**Design Brief**\n- Outline design guidance and template and component strategy",
       "structuralFramework": "**Slide deck**\n- Title page & Table of Contents\n- Business Context and Product vision\n- Key Objectives and KPIs\n- Description of User types and needs\n- List of prioritization criteria\n- Epic level descriptions that include core user goals and value drivers\n- List of current assumptions and open questions to be addressed\n- Design team scope and guiding principles",
       "cols": [
-        5,
-        5
+        6,
+        6
       ],
       "layerMap": {
         "layer1": [
-          "product-brief.md"
+          "brief.md"
         ],
         "layer2": [
           "Cowork",
@@ -2285,14 +2254,10 @@
       },
       "humanGate": {
         "who": "PM & Strategy Lead",
-        "action": "Review and approve product-brief.md via Cowork",
+        "action": "Review and approve brief.md via Cowork",
         "trigger": "Before proceeding to story mapping"
       },
       "skills": [
-        {
-          "name": "Requirements Agent",
-          "command": "/requirements-agent"
-        },
         {
           "name": "Product Brief",
           "command": "/bmad-product-brief"
@@ -2301,6 +2266,10 @@
           "name": "PRFAQ Challenge",
           "command": "/bmad-prfaq"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -2337,14 +2306,9 @@
           "301"
         ]
       },
-      "enables": [
-        "303",
-        "305",
-        "309"
-      ],
       "gitArtifacts": {
         "consumes": [
-          "product-brief.md"
+          "brief.md"
         ],
         "produces": []
       },
@@ -2359,7 +2323,7 @@
           "PDF, PPT"
         ]
       },
-      "aiGeneration": "Agent harness reads `product-brief.md` and content audit inputs (Layer 1, Git) → produces draft site structure and IA hierarchy for designer review. Agent accelerates initial structure generation from defined user types, content inventory, and navigation patterns. Human Designer leads final IA decisions and client validation sessions.",
+      "aiGeneration": "Agent harness reads `brief.md` and content audit inputs (Layer 1, Git) \u2192 produces draft site structure and IA hierarchy for designer review. Agent accelerates initial structure generation from defined user types, content inventory, and navigation patterns. Human Designer leads final IA decisions and client validation sessions.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -2371,8 +2335,8 @@
       "keyActivities": "**Outline the current state IA in Figma.**\n**Create the future state IA:**\n- **Organization Systems:** Choose a structural format, such as Hierarchical (broad to specific), Sequential (step-by-step), or Matrix (multiple user choices).\n- **Sitemap Construction:** Create a visual graphic showing the relationship between \"parent\" and \"child\" pages across the entire site.\n**  Validation and Testing: (optional)**\n- **Card Sorting:** Conduct exercises where users organize content into their own sensible groupings to reveal their \"mental models\".\n- **Tree Testing:** Have users attempt to find specific information using only the link names to validate if category names are easy to understand.",
       "structuralFramework": "**Figma Presentation**\n- Title page & Agenda\n- What is an IA? How do we read one?\n- Current State IA\n- What went into building the future state?\n  - Outline gaps from Experience Audit\n  - Outline points from the Stakeholder Interviews\n  - Outline key points from the Data (if any)\n- Future State IA\n- Next Steps",
       "cols": [
-        5,
-        5
+        6,
+        6
       ],
       "layerMap": {
         "layer1": [],
@@ -2389,6 +2353,9 @@
           "name": "Create UX",
           "command": "/bmad-ux"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -2423,17 +2390,10 @@
           "302"
         ]
       },
-      "enables": [
-        "304",
-        "305",
-        "307",
-        "308",
-        "314"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
-          "stories/"
+          "requirements.json"
         ]
       },
       "formats": {
@@ -2447,7 +2407,7 @@
           "Exec summary slide deck"
         ]
       },
-      "aiGeneration": "Story Map Agent harness reads `product-brief.md` and epic definitions (Layer 1, Git) → produces structured user story drafts organized by user type and epic. Agent output populates Storiesonboard for human review and prioritization. `stories/` folder in Git is the structured artifact consumed by the Requirements Agent and, downstream, the Developer Agent harness during build.",
+      "aiGeneration": "`/apply-requirements-system` reads `brief.md` and stakeholder inputs (Layer 1, Git) \u2192 produces `requirements.json`, a structured machine-readable requirements register organized by epic, user type, and priority. Agent output populates Storiesonboard for human review and prioritization. `requirements.json` in Git is the canonical artifact consumed downstream by `/bmad-create-epics-and-stories` and sprint planning. `/bmad-spec` distills the requirements into a machine-readable `SPEC.md` capability contract.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder"
@@ -2457,15 +2417,15 @@
         "data",
         "tech"
       ],
-      "keyActivities": "**Cross Functional Workshops**\n- Facilitate cross-functional reviews with stakeholders to review breadth and depth of functionality based on epics from the product brief.\n- Facilitate workshops to review and prioritize high-level functional scope across releases\n- Define key user flows and states that outlines how the solution  should function\n**Story mapping**\n- Drafting of high level user stories across all user types and epics outlined in the product brief\n- Individual user stories describe the functionality by completing \"I want to…\"\n- Prioritization criteria organization user stories from highest to lowest priority so scope lines can be drawn.",
+      "keyActivities": "**Cross Functional Workshops**\n- Facilitate cross-functional reviews with stakeholders to review breadth and depth of functionality based on epics from the product brief.\n- Facilitate workshops to review and prioritize high-level functional scope across releases\n- Define key user flows and states that outlines how the solution  should function\n**Story mapping**\n- Drafting of high level user stories across all user types and epics outlined in the product brief\n- Individual user stories describe the functionality by completing \"I want to\u2026\"\n- Prioritization criteria organization user stories from highest to lowest priority so scope lines can be drawn.",
       "structuralFramework": "**Storiesonboard spreadsheet including:**\n- Users\n- Epics\n- User Activities\n- High Level User Stories\n- Prioritization and release lines",
       "cols": [
-        5,
-        6
+        6,
+        7
       ],
       "layerMap": {
         "layer1": [
-          "stories/"
+          "requirements.json"
         ],
         "layer2": [
           "Storiesonboard",
@@ -2483,17 +2443,20 @@
       },
       "skills": [
         {
-          "name": "Story Map Agent",
-          "command": "/story-map"
-        },
-        {
-          "name": "Requirements Refinement System",
-          "command": "/reqs-requirements-system"
+          "name": "Apply Requirements System",
+          "command": "/apply-requirements-system"
         },
         {
           "name": "Create Epics & Stories",
           "command": "/bmad-create-epics-and-stories"
+        },
+        {
+          "name": "BMAD Spec",
+          "command": "/bmad-spec"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -2501,7 +2464,7 @@
       "title": "Technical Architecture Document",
       "type": "Cornerstone",
       "stage": "Design & Requirements",
-      "row": 3,
+      "row": 2,
       "span": 1,
       "description": "Detailed application, data, security, infrastructure and operations architecture documented for the Solution.",
       "owner": {
@@ -2527,17 +2490,11 @@
           "303"
         ]
       },
-      "enables": [
-        "402",
-        "403",
-        "407",
-        "315",
-        "408"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
-          "architecture/tad.md"
+          "ARCHITECTURE-SPINE.md",
+          "SPEC.md"
         ]
       },
       "formats": {
@@ -2551,7 +2508,7 @@
           "Document"
         ]
       },
-      "aiGeneration": "Architecture Agent harness reads `product-brief.md`, `tech-strategy.md`, `stories/`, and HL User Story Map (Layer 1, Git) → produces TAD structure, system diagram components, and integration map drafts. `architecture/tad.md` in Git (Layer 1) is the canonical artifact — version-controlled and consumed by the Developer Agent harness during build. Diagramming agent generates system diagrams from structured architecture files. Human Tech Lead owns final review and sign-off.",
+      "aiGeneration": "`/bmad-create-architecture` reads `brief.md`, `tech-strategy.md`, and `epics.md` (Layer 1, Git) \u2192 produces `ARCHITECTURE-SPINE.md`: the named paradigm, core invariants, and AD-n architecture decisions that serve as the consistency contract for all downstream build work. `/bmad-spec` derives `SPEC.md` from the architecture decisions and PRD \u2014 the machine-readable kernel consumed by Developer Agent harnesses. Diagramming agent generates system diagrams from structured architecture files. Human Tech Lead owns final review and sign-off.",
       "clientAudience": [
         "it-tech-stakeholder"
       ],
@@ -2563,11 +2520,13 @@
       "keyActivities": "**Requirements Mapping**\n- Review Product Brief, User Story Map, Technical Strategy\n**Workshops to map user stories to APIs, integration workflows, data models, sequence diagrams and classes**\n- Workshops to identify APIs to either be consumed or developed\n**Evolving the TAD through Build:**\n- TAD should be updated throughout the build process to reflect any architecture changes",
       "structuralFramework": "**Document Outline**\n- **Executive Summary**\n  - High Level Architecture: System Diagram & Integration Map\n  - Infrastructure: Cloud Provider, Architecture Overview, Infrastructure As Code, Security and Permissions, Environments\n- **Backend Services:** Architecture and Patterns, Backend language and Framework, Data Persistence, Migrations, Authentication, API Specifications, Unit Tests, Webhooks and Asynchronous Services, Event Driven Services, Email Service, Notification Services, Admin Tools\n- **Frontend Application:** Application framework, State and Data Management, Rendering Strategy, Localization and Internationalization, SEO, Styling, Responsive Design, Assets Optimization, Accessibility, Unit Tests, Code Standards, Design System, Atomic Design Principles, Variant Authority, Themes and Customizations, Icons and Fonts, Versioning\n- **Data and Analytics:** Consent Management Platform, Analytics Solution. Data Acquisition, Injection, Storage, Transformation Service, Data Catalog and Observability, Reporting & Business Intelligence Platform, AI/ML/LLM Service, Testing & Personalization Platform, Consumer Data Platform (CDP), Marketing Automation Platform (MA), Data Sharing Service\n- **Third Party Integrations:** CMS, DAM, Search, Video Streaming, Forms and Lead Capturing, Social Media Integrations, Cookie and Privacy Compliance (Consent Management)\n- **Delivery Methodology and Tools:** Code Repository, Branching Strategy, Code Review Process, CI/CD Pipeline, Feature Flags, Static Code Analysis, Quality Engineering",
       "cols": [
-        9,
-        9
+        10,
+        10
       ],
       "layerMap": {
-        "layer1": [],
+        "layer1": [
+          "ARCHITECTURE-SPINE.md"
+        ],
         "layer2": [],
         "layer3": []
       },
@@ -2580,7 +2539,14 @@
         {
           "name": "Architect Agent",
           "command": "/bmad-agent-architect"
+        },
+        {
+          "name": "BMAD Spec",
+          "command": "/bmad-spec"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -2620,22 +2586,13 @@
           "208"
         ]
       },
-      "enables": [
-        "306",
-        "307",
-        "308",
-        "402",
-        "310",
-        "311",
-        "312",
-        "313",
-        "408"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
+          "DESIGN.md",
+          "EXPERIENCE.md",
           "src/components/",
-          "components.md"
+          "SPEC.md"
         ]
       },
       "formats": {
@@ -2649,7 +2606,7 @@
           "Figma"
         ]
       },
-      "aiGeneration": "**Design-to-Component Pivot (build projects only):** On engagements with a build phase, Figma is the exploration and iteration tool but the designer's final deliverable is functional UI component code viewable in Storybook — not Figma files. Spec Extraction Agent harness reads Figma via MCP or design notes → produces `components.md` and `design-tokens.md` (Layer 1, Git). Components are built and committed to `src/components/`. Storybook is the Layer 3 generated view for stakeholder review. Tech Lead and Designer jointly approve component output before Developer Agent stories reference it. For design-only projects, Figma remains the deliverable as specified.",
+      "aiGeneration": "**Design-to-Component Pivot (build projects only):** On engagements with a build phase, Figma is the exploration and iteration tool but the designer's final deliverable is functional UI component code viewable in Storybook \u2014 not Figma files. `/bmad-ux` reads Figma via MCP or design notes \u2192 produces `DESIGN.md` (visual design system: colors, typography, spacing, component anatomy) and `EXPERIENCE.md` (interaction design: IA, behavior, states, accessibility, journeys) committed to Git (Layer 1). `/bmad-spec` distills these into `SPEC.md` \u2014 the machine-readable interaction contract. Components are built and committed to `src/components/`. Storybook is the Layer 3 generated view for stakeholder review. Tech Lead and Designer jointly approve component output before Developer Agent stories reference it. For design-only projects, Figma remains the deliverable as specified.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -2675,7 +2632,14 @@
         {
           "name": "UX Designer Agent",
           "command": "/bmad-agent-ux-designer"
+        },
+        {
+          "name": "BMAD Spec",
+          "command": "/bmad-spec"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -2707,9 +2671,6 @@
         ],
         "soft": []
       },
-      "enables": [
-        "402"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -2725,7 +2686,7 @@
           "Figma + Storybook"
         ]
       },
-      "aiGeneration": "**Applies when Design-to-Component pivot is active.** Git (`src/components/`) is the canonical source (Layer 1). Storybook is the Layer 3 generated view replacing the traditional Figma-only handoff. Component scaffolding is agent-assisted — the Design-to-Component onboarding skill bootstraps Storybook environment, component structure, and initial token setup. Figma file remains a Layer 2 working artifact for the design team.",
+      "aiGeneration": "**Applies when Design-to-Component pivot is active.** Git (`src/components/`) is the canonical source (Layer 1). Storybook is the Layer 3 generated view replacing the traditional Figma-only handoff. Component scaffolding is agent-assisted \u2014 the Design-to-Component onboarding skill bootstraps Storybook environment, component structure, and initial token setup. Figma file remains a Layer 2 working artifact for the design team.",
       "clientAudience": [
         "it-tech-stakeholder",
         "marketing-stakeholder"
@@ -2737,8 +2698,8 @@
       "keyActivities": "- Design to create Figma file; break page designs own into atoms, molecules and organisms & annotate where needed.\n- Development should prepare a Storybook that pairs with the Component Library.",
       "structuralFramework": "**Figma File should be broken down in the way the Product Brief outlines it.**\n**Figma File Should Contain:**\n- Design Token System\n- Library of Components broken down atomically\n- Page Designs (broken into Atoms, Molecules + Organisms Templates)\n- Desktop and Mobile Breakpoints outlined + Tablet Breakpoint\n- Figma Component Documentation (Annotations, Do's & Don'ts)\n- Figma Governance (Min)\n- Storybook - provided by tech team",
       "cols": [
-        8,
-        9
+        9,
+        10
       ],
       "layerMap": {
         "layer1": [],
@@ -2755,6 +2716,9 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -2789,13 +2753,9 @@
           "202"
         ]
       },
-      "enables": [
-        "402",
-        "403"
-      ],
       "gitArtifacts": {
         "consumes": [
-          "product-brief.md"
+          "brief.md"
         ],
         "produces": []
       },
@@ -2810,7 +2770,7 @@
           "Sheets"
         ]
       },
-      "aiGeneration": "Measurement Agent harness reads `product-brief.md`, KPI definitions, and production design specifications (Layer 1, Git) → generates event taxonomy, tracking matrix, and developer implementation specifications. Agent validates coverage gaps against defined business outcomes and flags missing tracking requirements. Structured tracking specs are committed to Git for Developer Agent consumption. Human Data lead reviews and approves before engineering implementation.",
+      "aiGeneration": "Measurement Agent harness reads `brief.md`, KPI definitions, and production design specifications (Layer 1, Git) \u2192 generates event taxonomy, tracking matrix, and developer implementation specifications. Agent validates coverage gaps against defined business outcomes and flags missing tracking requirements. Structured tracking specs are committed to Git for Developer Agent consumption. Human Data lead reviews and approves before engineering implementation.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -2823,8 +2783,8 @@
       "keyActivities": "**KPI & Outcome Alignment Section**\n- Define north star and supporting KPIs\n- Map objectives to leading & lagging indicators\n- Establish success criteria per use case\n- Define ROI and attribution logic upfront\n\n**Design the Event & Analytics Architecture**\n- Develop enterprise event taxonomy & naming standards & Tracking Matrix\n- Define required properties & data layer specifications\n- Map cross-channel tracking (web, app, backend, POS)\n- Define compliance & attribution logic\n\n**Governance & QA**\n- Define tracking implementation approach\n- Translate event taxonomy into engineering-ready specifications\n- Define tracking validation framework\n- Identify implementation risks & dependencies",
       "structuralFramework": "**Google Sheet**\n- Outcome & OKR Layer\n- Measurement Strategy\n- Tracking Matrix and Event Design\n- Developer Implementation Readiness\n- Platform Configuration",
       "cols": [
-        8,
-        8
+        10,
+        10
       ],
       "layerMap": {
         "layer1": [],
@@ -2837,6 +2797,10 @@
           "name": "Analyst Agent",
           "command": "/bmad-agent-analyst"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -2844,7 +2808,7 @@
       "title": "Product Feature Roadmap",
       "type": "Primary",
       "stage": "Design & Requirements",
-      "row": 1,
+      "row": 3,
       "span": 1,
       "description": "A prioritized timeline of product capabilities and enhancements aligned with business goals. It serves as a strategic communication tool that bridges the gap between high-level vision and tactical execution.",
       "owner": {
@@ -2869,9 +2833,6 @@
           "305"
         ]
       },
-      "enables": [
-        "315"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
@@ -2889,7 +2850,7 @@
           "slide deck"
         ]
       },
-      "aiGeneration": "Roadmap Agent harness reads `stories/`, `product-brief.md`, and epic priorities (Layer 1, Git) → generates RICE scoring inputs and initial roadmap sequencing for team review. `roadmap.md` committed to Git (Layer 1) is the canonical artifact. Human Product lead owns final prioritization decisions. Slide deck is a Layer 3 generated output from structured roadmap files.",
+      "aiGeneration": "Roadmap Agent harness reads `epics.md`, `brief.md`, and epic priorities (Layer 1, Git) \u2192 generates RICE scoring inputs and initial roadmap sequencing for team review. `roadmap.md` committed to Git (Layer 1) is the canonical artifact. Human Product lead owns final prioritization decisions. Slide deck is a Layer 3 generated output from structured roadmap files.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder"
@@ -2918,6 +2879,10 @@
           "name": "PM Agent",
           "command": "/bmad-agent-pm"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -2950,16 +2915,11 @@
         ],
         "soft": []
       },
-      "enables": [
-        "305",
-        "310",
-        "314",
-        "408"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
-          "components.md"
+          "EXPERIENCE.md",
+          "SPEC.md"
         ]
       },
       "formats": {
@@ -2973,7 +2933,7 @@
           "Figma"
         ]
       },
-      "aiGeneration": "Wireframe generation agent (Figma Make, Loveable, or equivalent) produces initial low-fidelity layouts from `product-brief.md` and IA structure. Designer reviews and iterates. On build projects, wireframe component annotations should map to the component catalog in Git (`components.md`) to ensure alignment with the Design-to-Component pipeline.",
+      "aiGeneration": "Wireframe generation agent (Figma Make, Loveable, or equivalent) produces initial low-fidelity layouts from `brief.md` and IA structure. Designer reviews and iterates. On build projects, `/bmad-ux` extracts interaction contracts from wireframe annotations \u2192 produces `EXPERIENCE.md` (component behavior, states, IA) committed to Git (Layer 1). `/bmad-spec` derives `SPEC.md` stubs per component area. Wireframe component annotations map to the interaction catalog in `EXPERIENCE.md` to ensure alignment with the Design-to-Component pipeline.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -2985,8 +2945,8 @@
       "keyActivities": "- Create low-mid fidelity mockups of pages.\n- Participate in client reviews to finalize the information hierarchy and functionality of key pages.\n- Create Figma file to house the wireframes.",
       "structuralFramework": "**Figma File should be broken down in the way the Product Brief outlines it.**\n- **Figma File:**\n  - Wireframes must be attached to a component list that is IDed to each component being built.\n    - Components should point to either SHADCN or Cafe.\n  - Wireframes must be annotated; purpose, questions etc. must be outlined.\n  - Wireframes must be at the fidelity where all field level information should be outlined to support the content modeller.",
       "cols": [
-        6,
-        7
+        7,
+        8
       ],
       "layerMap": {
         "layer1": [],
@@ -3002,7 +2962,14 @@
         {
           "name": "Create UX",
           "command": "/bmad-ux"
+        },
+        {
+          "name": "BMAD Spec",
+          "command": "/bmad-spec"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -3010,7 +2977,7 @@
       "title": "Content Copywriting",
       "type": "Secondary",
       "stage": "Design & Requirements",
-      "row": 7,
+      "row": 5,
       "span": 2,
       "description": "Copy and content for the solution aligned to content strategy and brand voice. Optional: SEO tags.",
       "owner": {
@@ -3037,10 +3004,6 @@
         ],
         "soft": []
       },
-      "enables": [
-        "402",
-        "408"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -3056,7 +3019,7 @@
           "Delivered in CMS or doc"
         ]
       },
-      "aiGeneration": "Copywriting Agent harness takes an AI-first approach: reads persona definitions, content strategy, and page hierarchy from Git → produces first-draft copy per page. Copy is committed to Git or CMS as structured content. Human copywriter reviews for brand voice, accuracy, and SEO optimization. Copy tracker and review cycles are structured around Git-backed content states.",
+      "aiGeneration": "Copywriting Agent harness takes an AI-first approach: reads persona definitions, content strategy, and page hierarchy from Git \u2192 produces first-draft copy per page. Copy is committed to Git or CMS as structured content. Human copywriter reviews for brand voice, accuracy, and SEO optimization. Copy tracker and review cycles are structured around Git-backed content states.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder",
@@ -3069,8 +3032,8 @@
       "keyActivities": "- Write copy for pages of the product.\n- Organize all the client revisions for copy via a copy tracker.\n- Participate in client reviews.",
       "structuralFramework": "**Copy Tracker Should Outline:**\n- Page Inventory: A list of all unique indexable pages, organized by locale (e.g., US, CA, BR).\n- Link to Copy Deck per page\n- URL Mapping: Current URL vs. New Redirect URL.\n- Authoring Status: A workflow tracker for \"Not Started,\" \"In Progress,\" \"Ready for Review,\" and \"Published\".\n**Copy Decks Should Contain:**\n- The page purpose\n- Intended audience\n- Page copy broken into hierarchy: H1, H2 etc.\n- ALT Text for images.\n- Component annotation; which component is each content block using.\n- Optional (SEO tags)",
       "cols": [
-        8,
-        9
+        11,
+        11
       ],
       "layerMap": {
         "layer1": [],
@@ -3083,6 +3046,9 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -3114,10 +3080,6 @@
         ],
         "soft": []
       },
-      "enables": [
-        "305",
-        "314"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -3133,7 +3095,7 @@
           "Summary deck"
         ]
       },
-      "aiGeneration": "Research Agent harness generates discussion guides, screeners, and test plans from `product-brief.md` and user type definitions (Layer 1, Git). Agent synthesizes test session transcripts into structured findings post-research. Human researcher leads facilitation and validates insight interpretation. Agent output reduces planning overhead significantly.",
+      "aiGeneration": "Research Agent harness generates discussion guides, screeners, and test plans from `brief.md` and user type definitions (Layer 1, Git). Agent synthesizes test session transcripts into structured findings post-research. Human researcher leads facilitation and validates insight interpretation. Agent output reduces planning overhead significantly.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -3145,8 +3107,8 @@
       "keyActivities": "- Develop a discussion guide and screener\n- Conduct usability testing with users; could be IA Testing, A/B Testing, Copy Testing, Concept Testing etc.\n- Create a summary of findings, insights and recommendations.",
       "structuralFramework": "**Test Plan:**\n- **Screener:** Archetypes, Behavioral Qualification, Technical Requirements, Logistics & Compliance and Articulation.\n- **Discussion Guide:**\n  - Introduction & Setup: Moderator Briefing & Consent, Logistics & Recording Permissions, Bias Mitigation\n  - Core Testing Questions\n  - Wrap Up\n**Summary of Findings:**\n**Section 1: Executive Summary**\n- **Vision:** 1-sentence goal of the initiative.\n- **The Problem:** The specific gap between current digital tools and guest needs.\n**Section 2: Methodology at a Glance**\n- Scope: Number of participants and key demographics (e.g., 10 participants: High-Value vs. New Guests).\n- Activities: Testing duration and format (e.g., 10 weeks, 75-minute 1:1 sessions).\n**Section 3: Concept Overviews (The Prototypes)**\n**Section 4: Key Insights**\n**Section 5: Synthesis & Outcomes**\n**Slide 6: Unmet Needs & Friction**\n**Section 7: Roadmap & Strategic Recommendations**",
       "cols": [
-        7,
-        7
+        9,
+        9
       ],
       "layerMap": {
         "layer1": [],
@@ -3163,6 +3125,10 @@
           "name": "Domain Research",
           "command": "/bmad-domain-research"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -3170,7 +3136,7 @@
       "title": "Design Systems",
       "type": "Secondary",
       "stage": "Design & Requirements",
-      "row": 6,
+      "row": 5,
       "span": 2,
       "description": "Reusable design standards, components, and documentation that ensure consistency and efficiency across the product.",
       "owner": {
@@ -3197,10 +3163,6 @@
           "207"
         ]
       },
-      "enables": [
-        "306",
-        "402"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -3216,7 +3178,7 @@
           "Figma, Storybook"
         ]
       },
-      "aiGeneration": "**Applies when Design-to-Component pivot is active.** Design token definitions are committed to Git as `design/tokens/` (Layer 1). Design System Agent harness reads component structure and token definitions → produces documentation framework and component usage guidelines. Storybook (Layer 3 generated) serves as the primary documentation layer on build projects, supplementing or replacing ZeroHeight/Supernova. Figma file remains a Layer 2 working artifact for the design team.",
+      "aiGeneration": "**Applies when Design-to-Component pivot is active.** Design token definitions are committed to Git as `design/tokens/` (Layer 1). Design System Agent harness reads component structure and token definitions \u2192 produces documentation framework and component usage guidelines. Storybook (Layer 3 generated) serves as the primary documentation layer on build projects, supplementing or replacing ZeroHeight/Supernova. Figma file remains a Layer 2 working artifact for the design team.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder",
@@ -3247,6 +3209,9 @@
           "name": "Developer Agent",
           "command": "/bmad-agent-dev"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -3279,10 +3244,6 @@
         ],
         "soft": []
       },
-      "enables": [
-        "306",
-        "402"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -3310,8 +3271,8 @@
       "keyActivities": "- Design to create Figma file; break page designs own into atoms, molecules and organisms\n- Create 1 page style guide",
       "structuralFramework": "**Figma file should contain:**\n- Page Style Guide\n- Library of Figma Components\n- Page Designs (include pages broken into Atoms and Molecules)\n**Desktop and Mobile Breakpoints outlined**\n- Component States outlined (default, hover, disabled, pressed, focus)",
       "cols": [
-        10,
-        10
+        11,
+        11
       ],
       "layerMap": {
         "layer1": [],
@@ -3328,6 +3289,9 @@
           "name": "Developer Agent",
           "command": "/bmad-agent-dev"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -3364,15 +3328,13 @@
           "205"
         ]
       },
-      "enables": [
-        "315",
-        "408",
-        "304"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
-          "requirements/prd.md"
+          "prd.md",
+          "addendum.md",
+          ".decision-log.md",
+          "SPEC.md"
         ]
       },
       "formats": {
@@ -3387,7 +3349,7 @@
           "Notion page, GitHub Wiki, or interactive SPA (per-project decision)"
         ]
       },
-      "aiGeneration": "**Gold standard: BMAD Draft PRD workflow.** The BMAD Draft PRD agent workflow reads all structured inputs from Git (Layer 1) — `product-brief.md`, `findings.md`, `tech-strategy.md`, `stories/`, `architecture/tad.md`, and measurement plan — and generates a complete, structured PRD to BMAD standards. Output is `requirements/prd.md` committed to Git. Human PM and Product lead review and approve via the Interface layer (e.g., Cowork). The client-consumable PRD is a Layer 3 generated output (Notion page, GitHub Wiki, or interactive SPA — format is a per-project decision). Client feedback flows back into `requirements/prd.md`, not into the generated view.",
+      "aiGeneration": "**Gold standard: BMAD PRD workflow.** `/bmad-prd` reads all structured inputs from Git (Layer 1) \u2014 `brief.md`, `findings.md`, `tech-strategy.md`, `epics.md`, `ARCHITECTURE-SPINE.md`, and measurement plan \u2014 and generates a complete, structured `prd.md` to BMAD standards, with `addendum.md` (personas, rejected alternatives) and `.decision-log.md` (append-only decisions). `/bmad-spec` derives `SPEC.md` \u2014 the machine-readable 5-field kernel that development agents consume. Human PM and Product lead review and approve via the Interface layer (e.g., Cowork). The client-consumable PRD is a Layer 3 generated output (Notion page, GitHub Wiki, or interactive SPA \u2014 format is a per-project decision). Client feedback flows back into `prd.md`, not into the generated view.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder",
@@ -3398,15 +3360,15 @@
         "tech",
         "qa"
       ],
-      "keyActivities": "- Run BMAD Draft PRD workflow against Git-structured inputs (`product-brief.md`, `findings.md`, `stories/`, `architecture/tad.md`) to generate `requirements/prd.md`\n- Human PM and Product lead review generated PRD for completeness, accuracy, and scope alignment via the Interface layer (e.g., Cowork)\n- Decompose High-level user stories prioritized for release to a level that can be sized for estimations\n- Associate key assumptions to user stories so that work efforts can be appropriately sized\n- Define all non-functional requirements and platform constraints that exist for the solution to be built\n- Publish client-consumable Layer 3 view and collect structured feedback into Git",
-      "structuralFramework": "**Git file: `requirements/prd.md`**\n- Title page & Table of Contents\n- Product Description and Overview\n- Product Brief Summary & link\n- List of Epic and User Stories that include:\n  - User Story Descriptions\n  - Associated Assumptions\n  - Assigned level of priority and effort\n- Product Feature Roadmap Summary & assumptions\n- List of Non-Functional Requirements\n  - Performance requirements\n  - Security and privacy\n  - Analytics and Accessibility\n- Technical Constraints & Dependencies\n  - Platform support and integrations\n- Design Requirements\n  - Description and assumptions for design needed to build solution\n- Launch considerations",
+      "keyActivities": "- Run BMAD PRD workflow against Git-structured inputs (`brief.md`, `findings.md`, `epics.md`, `ARCHITECTURE-SPINE.md`) to generate `prd.md`\n- Human PM and Product lead review generated PRD for completeness, accuracy, and scope alignment via the Interface layer (e.g., Cowork)\n- Decompose High-level user stories prioritized for release to a level that can be sized for estimations\n- Associate key assumptions to user stories so that work efforts can be appropriately sized\n- Define all non-functional requirements and platform constraints that exist for the solution to be built\n- Publish client-consumable Layer 3 view and collect structured feedback into Git",
+      "structuralFramework": "**Git file: `prd.md`**\n- Title page & Table of Contents\n- Product Description and Overview\n- Product Brief Summary & link\n- List of Epic and User Stories that include:\n  - User Story Descriptions\n  - Associated Assumptions\n  - Assigned level of priority and effort\n- Product Feature Roadmap Summary & assumptions\n- List of Non-Functional Requirements\n  - Performance requirements\n  - Security and privacy\n  - Analytics and Accessibility\n- Technical Constraints & Dependencies\n  - Platform support and integrations\n- Design Requirements\n  - Description and assumptions for design needed to build solution\n- Launch considerations",
       "cols": [
         8,
         8
       ],
       "layerMap": {
         "layer1": [
-          "requirements/prd.md"
+          "prd.md"
         ],
         "layer2": [
           "Cowork"
@@ -3419,14 +3381,10 @@
       },
       "humanGate": {
         "who": "PM & Product Lead",
-        "action": "Review and approve requirements/prd.md via Cowork",
+        "action": "Review and approve prd.md via Cowork",
         "trigger": "Before publishing client-consumable Layer 3 view"
       },
       "skills": [
-        {
-          "name": "BMAD Draft PRD",
-          "command": "/bmad-draft-prd"
-        },
         {
           "name": "PRD Workflow",
           "command": "/bmad-prd"
@@ -3438,12 +3396,19 @@
         {
           "name": "Validate PRD",
           "command": "/bmad-validate-prd"
+        },
+        {
+          "name": "BMAD Spec",
+          "command": "/bmad-spec"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
       "id": "401",
-      "title": "User Story Backlog (Deprecated)",
+      "title": "Implementation Stories",
       "type": "Primary",
       "stage": "Build & Run",
       "row": 1,
@@ -3464,12 +3429,21 @@
         ]
       },
       "dependencies": {
-        "hard": [],
-        "soft": []
+        "hard": [
+          "304",
+          "306",
+          "315"
+        ],
+        "soft": [
+          "408",
+          "313"
+        ]
       },
-      "enables": [],
       "gitArtifacts": {
-        "consumes": [],
+        "consumes": [
+          "epics.md",
+          "prd.md"
+        ],
         "produces": []
       },
       "formats": {
@@ -3483,7 +3457,7 @@
           "JIRA"
         ]
       },
-      "aiGeneration": "Developer Agent harness reads `stories/`, `requirements/prd.md`, and acceptance criteria definitions (Layer 1, Git) → elaborates detailed JIRA-ready user stories with business rules, acceptance criteria in Gherkin format, and design/technical references. Agent output populates JIRA (Layer 3 view) for sprint planning. Human PM and Tech Lead gate: story refinement and pointing before sprint commitment.",
+      "aiGeneration": "Developer Agent harness reads `epics.md`, `prd.md`, and acceptance criteria definitions (Layer 1, Git) \u2192 elaborates detailed JIRA-ready user stories with business rules, acceptance criteria in Gherkin format, and design/technical references. Agent output populates JIRA (Layer 3 view) for sprint planning. Human PM and Tech Lead gate: story refinement and pointing before sprint commitment.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder"
@@ -3496,7 +3470,7 @@
       "structuralFramework": "**JIRA User Stories that are inclusive of:**\n- Linked to Epics\n- Detailed description and business rules\n- Acceptance Criteria in Gherkin format\n- Design and technical reference\n- Accessibility requirements\n- Link to test cases\n- Linked Subtasks\n- Storypointed (anything over 8 pts is too big and should be broken down to another user story)",
       "cols": [
         13,
-        15
+        14
       ],
       "layerMap": {
         "layer1": [],
@@ -3510,13 +3484,12 @@
           "command": "/bmad-create-story"
         },
         {
-          "name": "Dev Story",
-          "command": "/bmad-dev-story"
-        },
-        {
           "name": "Developer Agent",
           "command": "/bmad-agent-dev"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -3545,22 +3518,19 @@
       "dependencies": {
         "hard": [
           "304",
-          "305",
           "306",
-          "315"
+          "401"
         ],
         "soft": [
           "307"
         ]
       },
-      "enables": [
-        "405",
-        "407",
-        "413"
-      ],
       "gitArtifacts": {
         "consumes": [
-          "architecture/tad.md"
+          "ARCHITECTURE-SPINE.md",
+          "prd.md",
+          "SPEC.md",
+          "epics.md"
         ],
         "produces": []
       },
@@ -3576,7 +3546,7 @@
           "Demo environment, QA releases"
         ]
       },
-      "aiGeneration": "Developer Agent harness (Claude Code or equivalent) reads `requirements/prd.md`, `stories/`, `architecture/tad.md`, and component definitions (Layer 1, Git) → implements features, unit tests, and devops scripts via PR workflow. Human engineers review and approve PRs — this is the human gate before merge. QA Agent runs automated validation on every PR via CI/CD pipeline. Sprint status, PR throughput, and DORA metrics are surfaced via Tier 1–3 Observability; no separate reporting artifact required during active build.",
+      "aiGeneration": "Developer Agent harness (Claude Code or equivalent) reads `prd.md`, `SPEC.md`, `epics.md`, and `ARCHITECTURE-SPINE.md` (Layer 1, Git) \u2192 implements features, unit tests, and devops scripts via PR workflow. `sprint-status.yaml` is updated by `/bmad-sprint-status` each sprint cycle. Human engineers review and approve PRs \u2014 this is the human gate before merge. `/bmad-tea` runs automated validation on every PR via CI/CD pipeline. Sprint status, PR throughput, and DORA metrics are surfaced via Tier 1\u20133 Observability; no separate reporting artifact required during active build.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder",
@@ -3597,7 +3567,8 @@
         "layer1": [
           "src/",
           "tests/",
-          ".github/workflows/"
+          ".github/workflows/",
+          "sprint-status.yaml"
         ],
         "layer2": [
           "Claude Code",
@@ -3619,8 +3590,12 @@
           "command": "claude"
         },
         {
-          "name": "QA Agent",
-          "command": "/qa-agent"
+          "name": "Dev Story",
+          "command": "/bmad-dev-story"
+        },
+        {
+          "name": "Test Architect",
+          "command": "/bmad-tea"
         },
         {
           "name": "Developer Agent",
@@ -3634,6 +3609,9 @@
           "name": "Code Review",
           "command": "/bmad-code-review"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -3641,7 +3619,7 @@
       "title": "UAT",
       "type": "Primary",
       "stage": "Build & Run",
-      "row": 2,
+      "row": 3,
       "span": 1,
       "description": "User acceptance testing with client to identify defects, content issues, missed requirements or other non-functional requirements.",
       "owner": {
@@ -3666,19 +3644,18 @@
         ],
         "soft": []
       },
-      "enables": [],
       "gitArtifacts": {
-        "consumes": [],
-        "produces": [
-          "requirements/prd.md"
-        ]
+        "consumes": [
+          "prd.md"
+        ],
+        "produces": []
       },
       "formats": {
         "working": [],
         "internal": [],
         "external": []
       },
-      "aiGeneration": "QA Agent harness generates UAT test scripts and scenario walkthroughs from acceptance criteria in `requirements/prd.md` (Layer 1, Git) for the client team to execute. Agent tracks and categorizes defects logged during UAT sessions and produces a structured defect summary and resolution status report. Human client team owns test execution; PM owns defect triage and sign-off.",
+      "aiGeneration": "QA Agent harness generates UAT test scripts and scenario walkthroughs from acceptance criteria in `prd.md` (Layer 1, Git) for the client team to execute. Agent tracks and categorizes defects logged during UAT sessions and produces a structured defect summary and resolution status report. Human client team owns test execution; PM owns defect triage and sign-off.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder",
@@ -3714,6 +3691,9 @@
           "name": "Test Architect",
           "command": "/bmad-tea"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -3721,7 +3701,7 @@
       "title": "Monitoring & Performance Dashboards",
       "type": "Primary",
       "stage": "Build & Run",
-      "row": 4,
+      "row": 3,
       "span": 1,
       "description": "Defines and delivers operational and business dashboards that monitor platform health, product performance, and key outcomes to support faster, more confident decision-making.",
       "owner": {
@@ -3747,9 +3727,6 @@
         ],
         "soft": []
       },
-      "enables": [
-        "407"
-      ],
       "gitArtifacts": {
         "consumes": [
           "measurement-plan.md"
@@ -3767,7 +3744,7 @@
           "Live dashboards, Slides"
         ]
       },
-      "aiGeneration": "Observability Agent harness reads metric definitions from `measurement-plan.md` and business KPIs (Layer 1, Git) → generates SQL queries, dashboard data models, and metric documentation. Aligns with Agentic Delivery Tier 3 Observability: Executive, Product, and Operational dashboards are Layer 3 generated artifacts maintained alongside delivery dashboards. Human Data lead reviews metric definitions and validates data model before launch.",
+      "aiGeneration": "Observability Agent harness reads metric definitions from `measurement-plan.md` and business KPIs (Layer 1, Git) \u2192 generates SQL queries, dashboard data models, and metric documentation. Aligns with Agentic Delivery Tier 3 Observability: Executive, Product, and Operational dashboards are Layer 3 generated artifacts maintained alongside delivery dashboards. Human Data lead reviews metric definitions and validates data model before launch.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -3794,6 +3771,9 @@
           "name": "Analyst Agent",
           "command": "/bmad-agent-analyst"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -3801,7 +3781,7 @@
       "title": "Solution Test Plan",
       "type": "Primary",
       "stage": "Build & Run",
-      "row": 3,
+      "row": 4,
       "span": 1,
       "description": "A structured plan that defines what will be tested, how it will be tested, and who is responsible, ensuring the solution meets functional, technical, performance, security, and acceptance requirements before release.",
       "owner": {
@@ -3826,12 +3806,10 @@
         ],
         "soft": []
       },
-      "enables": [
-        "405"
-      ],
       "gitArtifacts": {
         "consumes": [
-          "stories/"
+          "epics.md",
+          "prd.md"
         ],
         "produces": []
       },
@@ -3847,7 +3825,7 @@
           "strategy"
         ]
       },
-      "aiGeneration": "QA Agent harness reads `requirements/prd.md`, `stories/`, and acceptance criteria (Layer 1, Git) → generates comprehensive test case library, edge-case scenarios, and test data specifications. Test plan is committed to Git as a structured artifact alongside the stories it covers. Agent summarizes defect patterns and release readiness signals. Human QA lead reviews test coverage and approves scope before execution.",
+      "aiGeneration": "QA Agent harness reads `prd.md`, `epics.md`, and acceptance criteria (Layer 1, Git) \u2192 generates comprehensive test case library, edge-case scenarios, and test data specifications. Test plan is committed to Git as a structured artifact alongside the stories it covers. Agent summarizes defect patterns and release readiness signals. Human QA lead reviews test coverage and approves scope before execution.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -3860,8 +3838,8 @@
       "keyActivities": "- Define test scope, objectives, and success criteria across functional, integration, performance, security, and acceptance testing\n- Design detailed test scenarios, cases, and scripts aligned to requirements and user stories\n- Plan test environments, data, tooling, and execution sequencing (including defect tracking and retesting)",
       "structuralFramework": "**Document**\n- Overview\n- QA Objectives\n- Scope of Testing\n- CMS Validation\n- Accessibility Testing\n- Test Management and Traceability\n- Testing Environments\n- Smoke Testing\n- User Story Validation\n- Defect Prioritization\n- Release Sign-Off Checklist\n- UAT",
       "cols": [
-        14,
-        14
+        13,
+        13
       ],
       "layerMap": {
         "layer1": [],
@@ -3886,6 +3864,9 @@
           "name": "Test Architect",
           "command": "/bmad-tea"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -3893,7 +3874,7 @@
       "title": "Solution Tests",
       "type": "Primary",
       "stage": "Build & Run",
-      "row": 3,
+      "row": 4,
       "span": 1,
       "description": "Execution of test cases and scripts to validate the solution against the test plan.",
       "owner": {
@@ -3913,14 +3894,10 @@
       },
       "dependencies": {
         "hard": [
-          "315",
           "404"
         ],
         "soft": []
       },
-      "enables": [
-        "406"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -3948,8 +3925,8 @@
       "keyActivities": "",
       "structuralFramework": null,
       "cols": [
-        15,
-        15
+        14,
+        14
       ],
       "layerMap": {
         "layer1": [],
@@ -3974,6 +3951,9 @@
           "name": "QA E2E Tests",
           "command": "/bmad-qa-generate-e2e-tests"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -3981,7 +3961,7 @@
       "title": "Solution Test Results",
       "type": "Primary",
       "stage": "Build & Run",
-      "row": 5,
+      "row": 4,
       "span": 1,
       "description": "The execution and documented results of planned testing activities, comprising the actual test cases, scripts, runs, defects, and outcomes used to verify that the solution meets defined requirements.",
       "owner": {
@@ -4001,11 +3981,11 @@
       },
       "dependencies": {
         "hard": [
-          "404"
+          "404",
+          "405"
         ],
         "soft": []
       },
-      "enables": [],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -4051,6 +4031,9 @@
           "name": "Traceability",
           "command": "/bmad-testarch-trace"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -4058,7 +4041,7 @@
       "title": "Run Book",
       "type": "Primary",
       "stage": "Build & Run",
-      "row": 4,
+      "row": 1,
       "span": 1,
       "description": "An operational guide that documents how the solution is run, supported, and maintained in production, providing clear, actionable instructions for monitoring, incident response, troubleshooting, deployments, and ongoing operations.",
       "owner": {
@@ -4084,7 +4067,6 @@
           "403"
         ]
       },
-      "enables": [],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
@@ -4102,7 +4084,7 @@
           "Client-facing operational documentation (as required)."
         ]
       },
-      "aiGeneration": "Run Book Agent harness reads `architecture/tad.md`, `src/` implementation details, and failure patterns from Git history (Layer 1) → generates `runbook.md` with troubleshooting guides, deployment procedures, and escalation matrices. Human Tech Lead reviews and approves before client handoff. `runbook.md` in Git is the canonical source; Confluence/Notion/PDF are Layer 3 generated outputs. Agent keeps `runbook.md` current as architecture evolves through the build phase.",
+      "aiGeneration": "Run Book Agent harness reads `ARCHITECTURE-SPINE.md`, `src/` implementation details, and failure patterns from Git history (Layer 1) \u2192 generates `runbook.md` with troubleshooting guides, deployment procedures, and escalation matrices. Human Tech Lead reviews and approves before client handoff. `runbook.md` in Git is the canonical source; Confluence/Notion/PDF are Layer 3 generated outputs. Agent keeps `runbook.md` current as architecture evolves through the build phase.",
       "clientAudience": [
         "it-tech-stakeholder"
       ],
@@ -4130,6 +4112,9 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -4167,9 +4152,6 @@
           "207"
         ]
       },
-      "enables": [
-        "410"
-      ],
       "gitArtifacts": {
         "consumes": [],
         "produces": [
@@ -4187,7 +4169,7 @@
           "Documentation"
         ]
       },
-      "aiGeneration": "Content Model Agent harness reads `requirements/prd.md`, IA structure, wireframe annotations, and PRD requirements (Layer 1, Git) → generates content type definitions, field structures, and CMS-specific model mappings for the target platform (Contentful, Contentstack, etc.). Agent audits proposed model against CMS best practices. Output is `content-model.json` committed to Git (Layer 1). Human Tech Lead and Content Architect review before CMS implementation.",
+      "aiGeneration": "Content Model Agent harness reads `requirements/prd.md`, IA structure, wireframe annotations, and PRD requirements (Layer 1, Git) \u2192 generates content type definitions, field structures, and CMS-specific model mappings for the target platform (Contentful, Contentstack, etc.). Agent audits proposed model against CMS best practices. Output is `content-model.json` committed to Git (Layer 1). Human Tech Lead and Content Architect review before CMS implementation.",
       "clientAudience": [
         "project-owner"
       ],
@@ -4217,6 +4199,9 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -4224,7 +4209,7 @@
       "title": "Change Management Enablement",
       "type": "Secondary",
       "stage": "Build & Run",
-      "row": 8,
+      "row": 6,
       "span": 1,
       "description": "An action-oriented set of tools, training, and communications that put the change strategy into practice and equip teams to drive and sustain new behaviors and processes.",
       "owner": {
@@ -4253,7 +4238,6 @@
           "308"
         ]
       },
-      "enables": [],
       "gitArtifacts": {
         "consumes": [
           "change-strategy.md"
@@ -4271,7 +4255,7 @@
           "Slides, Docs, Recordings"
         ]
       },
-      "aiGeneration": "Change Enablement Agent harness reads `change-strategy.md` (Layer 1, Git) → produces role-based training guide drafts, FAQ libraries, and communications plan variants. Survey data is synthesized by agent into adoption signal summaries. Human Strategy lead reviews training materials and approves comms calendar before activation. Materials are committed to Git as structured content; recordings and external deliverables are Layer 3 generated outputs.",
+      "aiGeneration": "Change Enablement Agent harness reads `change-strategy.md` (Layer 1, Git) \u2192 produces role-based training guide drafts, FAQ libraries, and communications plan variants. Survey data is synthesized by agent into adoption signal summaries. Human Strategy lead reviews training materials and approves comms calendar before activation. Materials are committed to Git as structured content; recordings and external deliverables are Layer 3 generated outputs.",
       "clientAudience": [
         "project-owner",
         "business-stakeholder"
@@ -4302,6 +4286,10 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "strategy",
+        "delivery"
       ]
     },
     {
@@ -4309,7 +4297,7 @@
       "title": "CMS Enablement",
       "type": "Secondary",
       "stage": "Build & Run",
-      "row": 6,
+      "row": 5,
       "span": 1,
       "description": "Interactive sessions designed to train client editors on how to use the CMS, manage workflows, and maintain site integrity. (includes training, guidelines, training materials, etc.)",
       "owner": {
@@ -4332,7 +4320,6 @@
         ],
         "soft": []
       },
-      "enables": [],
       "gitArtifacts": {
         "consumes": [
           "content-model.json"
@@ -4344,7 +4331,7 @@
         "internal": [],
         "external": []
       },
-      "aiGeneration": "Agent harness reads `content-model.json` and authoring workflow definitions → generates CMS training tasks, sandbox exercises, and workshop facilitation guides. Human Content Author leads live sessions. Agent-generated materials ensure consistency with the implemented content model.",
+      "aiGeneration": "Agent harness reads `content-model.json` and authoring workflow definitions \u2192 generates CMS training tasks, sandbox exercises, and workshop facilitation guides. Human Content Author leads live sessions. Agent-generated materials ensure consistency with the implemented content model.",
       "clientAudience": [
         "it-tech-stakeholder",
         "marketing-stakeholder"
@@ -4367,6 +4354,9 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -4374,7 +4364,7 @@
       "title": "CMS Guidelines",
       "type": "Secondary",
       "stage": "Build & Run",
-      "row": 6,
+      "row": 5,
       "span": 1,
       "description": "A training document for Content Authors to reference for guidance on how to use the CMS.",
       "owner": {
@@ -4397,7 +4387,6 @@
         ],
         "soft": []
       },
-      "enables": [],
       "gitArtifacts": {
         "consumes": [],
         "produces": []
@@ -4437,6 +4426,9 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -4444,7 +4436,7 @@
       "title": "CMS Training Guides & Walkthroughs",
       "type": "Secondary",
       "stage": "Build & Run",
-      "row": 7,
+      "row": 5,
       "span": 1,
       "description": "A series of short, modular screen-recordings that allow new hires or new client authors to learn specific CMS tasks asynchronously.",
       "owner": {
@@ -4467,7 +4459,6 @@
         ],
         "soft": []
       },
-      "enables": [],
       "gitArtifacts": {
         "consumes": [
           "content-model.json"
@@ -4485,7 +4476,7 @@
           "Video (MP4s)"
         ]
       },
-      "aiGeneration": "Agent harness reads `content-model.json` → generates structured training scripts and task lists for screen recording sessions. Human Content Author records walkthroughs using agent-generated scripts. Ensures training materials remain aligned with the implemented content model as it evolves.",
+      "aiGeneration": "Agent harness reads `content-model.json` \u2192 generates structured training scripts and task lists for screen recording sessions. Human Content Author records walkthroughs using agent-generated scripts. Ensures training materials remain aligned with the implemented content model as it evolves.",
       "clientAudience": [
         "client-content-author"
       ],
@@ -4509,6 +4500,9 @@
           "name": "Tech Writer Agent",
           "command": "/bmad-agent-tech-writer"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     },
     {
@@ -4516,11 +4510,11 @@
       "title": "Epics",
       "type": "Primary",
       "stage": "Design & Requirements",
-      "row": 2,
+      "row": 1,
       "span": 1,
       "cols": [
-        10,
-        10
+        11,
+        11
       ],
       "description": "Structured epics derived from the Technical Architecture Document, defining the high-level units of work for planning and backlog creation.",
       "owner": {
@@ -4545,15 +4539,14 @@
         ],
         "soft": []
       },
-      "enables": [
-        "402"
-      ],
       "gitArtifacts": {
         "consumes": [
-          "architecture/tad.md"
+          "ARCHITECTURE-SPINE.md",
+          "prd.md"
         ],
         "produces": [
-          "epics/"
+          "epics.md",
+          "sprint-status.yaml"
         ]
       },
       "formats": {
@@ -4567,7 +4560,7 @@
           "Deck summary"
         ]
       },
-      "aiGeneration": "",
+      "aiGeneration": "`/bmad-create-epics-and-stories` reads `prd.md` and `ARCHITECTURE-SPINE.md` (Layer 1, Git) \u2192 produces `epics.md`: a single structured file containing all epics and user stories with full acceptance criteria, built progressively through 4 steps. `/bmad-sprint-planning` reads `epics.md` \u2192 generates `sprint-status.yaml` committed to Git (Layer 1) tracking epic/story status. `/bmad-check-implementation-readiness` validates that the epic set meets definition-of-ready criteria before sprint commitment. Human Product and Tech Lead gate: review and approve epic scope and story readiness before dev handoff.",
       "clientAudience": [
         "project-owner",
         "it-tech-stakeholder"
@@ -4579,7 +4572,10 @@
       "keyActivities": "",
       "structuralFramework": null,
       "layerMap": {
-        "layer1": [],
+        "layer1": [
+          "epics.md",
+          "sprint-status.yaml"
+        ],
         "layer2": [],
         "layer3": []
       },
@@ -4593,6 +4589,9 @@
           "name": "Check Implementation Readiness",
           "command": "/bmad-check-implementation-readiness"
         }
+      ],
+      "engagementType": [
+        "delivery"
       ]
     }
   ]
